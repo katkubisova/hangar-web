@@ -1,68 +1,128 @@
 "use client"
 
+import { Menu, X } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useState } from "react"
-import { Avatar, AvatarBadge, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { cn } from "@/lib/utils"
 
-const navLinks = [
-	{ href: "/", label: "Domů" },
-	{ href: "/navstivte-nas", label: "Navštivte nás" },
-	{ href: "/hangar-cafe", label: "Hangar Cafe" },
-	{ href: "/aktuality", label: "Aktuality" },
-	{ href: "/o-nas", label: "O nás" },
-	{ href: "/kontakt", label: "Kontakt" },
+interface NavLink {
+	label: string
+	href: string
+}
+
+interface NavGroup {
+	trigger: string
+	activeMatch: string[]
+	items: NavLink[]
+}
+
+// Placeholder — the spec names an existing e-shop but doesn't give its URL.
+const ESHOP_URL = "#"
+
+const visitUsGroup: NavGroup = {
+	trigger: "Visit Us",
+	activeMatch: ["/visit", "/cafe", "/physio"],
+	items: [
+		{ label: "Gym", href: "/visit" },
+		{ label: "Cafe", href: "/cafe" },
+		{ label: "Physio", href: "/physio" },
+	],
+}
+
+// Trigger only highlights for paths starting with "/about" — /contact does
+// NOT count as active even though it's grouped here. That's a deliberate
+// quirk documented in the spec (Section 2.1), not a bug.
+const aboutGroup: NavGroup = {
+	trigger: "About",
+	activeMatch: ["/about"],
+	items: [
+		{ label: "Our Team", href: "/about/team" },
+		{ label: "Careers", href: "/about/careers" },
+		{ label: "Contact", href: "/contact" },
+	],
+}
+
+const directLinks: NavLink[] = [
+	{ label: "Events", href: "/events" },
+	{ label: "News", href: "/news" },
+]
+
+const mobileLinks: NavLink[] = [
+	...visitUsGroup.items,
+	...directLinks,
+	...aboutGroup.items,
 ]
 
 export function Header() {
+	const pathname = usePathname()
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-	return (
-		<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-			<div className="container mx-auto flex h-16 items-center justify-between px-4">
-				<div className="flex items-baseline gap-3">
-					<a href="/" className="text-xl font-bold tracking-tight">
-						HANGAR
-					</a>
-					<span className="hidden text-xs text-muted-foreground sm:inline">
-						Bouldering & komunita
-					</span>
-				</div>
+	const isGroupActive = (group: NavGroup) =>
+		group.activeMatch.some(path => pathname.startsWith(path))
 
-				<nav className="hidden gap-1 md:flex" aria-label="Main navigation">
-					{navLinks.map(link => (
+	return (
+		<header className="sticky top-0 z-50 w-full border-b bg-background">
+			<div className="container mx-auto flex h-16 items-center justify-between px-4">
+				<Link href="/" className="text-lg font-bold tracking-tight">
+					HANGARGYMS
+				</Link>
+
+				<nav
+					className="hidden items-center gap-1 md:flex"
+					aria-label="Main navigation"
+				>
+					<NavDropdown
+						group={visitUsGroup}
+						active={isGroupActive(visitUsGroup)}
+					/>
+
+					{directLinks.map(link => (
 						<Button
 							key={link.href}
 							variant="ghost"
-							render={<a href={link.href} />}
+							className={cn(
+								!pathname.startsWith(link.href) && "text-muted-foreground"
+							)}
+							render={<Link href={link.href} />}
 						>
 							{link.label}
 						</Button>
 					))}
+
+					<NavDropdown group={aboutGroup} active={isGroupActive(aboutGroup)} />
+
+					<Button
+						variant="ghost"
+						className="text-muted-foreground"
+						render={
+							<a href={ESHOP_URL} target="_blank" rel="noopener noreferrer" />
+						}
+					>
+						E-shop
+					</Button>
 				</nav>
 
 				<div className="flex items-center gap-3">
-					<div className="hidden items-center gap-2 sm:flex">
-						<Avatar size="sm">
-							<AvatarFallback className="text-xs">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="14"
-									height="14"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									aria-hidden="true"
-								>
-									<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-								</svg>
-							</AvatarFallback>
-							<AvatarBadge className="bg-green-500" />
-						</Avatar>
-						<span className="text-sm text-muted-foreground">
-							+420 123 456 789
+					<div className="hidden items-center gap-1 text-sm sm:flex">
+						<span className="sr-only">
+							Language switcher (not yet functional)
+						</span>
+						<span className="text-muted-foreground" aria-hidden="true">
+							CZ
+						</span>
+						<span className="text-muted-foreground" aria-hidden="true">
+							/
+						</span>
+						<span className="font-medium text-foreground" aria-hidden="true">
+							EN
 						</span>
 					</div>
 
@@ -75,62 +135,11 @@ export function Header() {
 						aria-expanded={isMenuOpen}
 					>
 						{isMenuOpen ? (
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								aria-hidden="true"
-							>
-								<path d="M18 6 6 18" />
-								<path d="m6 6 12 12" />
-							</svg>
+							<X className="size-5" aria-hidden="true" />
 						) : (
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								aria-hidden="true"
-							>
-								<line x1="4" x2="20" y1="12" y2="12" />
-								<line x1="4" x2="20" y1="6" y2="6" />
-								<line x1="4" x2="20" y1="18" y2="18" />
-							</svg>
+							<Menu className="size-5" aria-hidden="true" />
 						)}
 					</Button>
-
-					<div className="flex items-center gap-2 sm:hidden">
-						<Avatar size="sm">
-							<AvatarFallback className="text-xs">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="14"
-									height="14"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									aria-hidden="true"
-								>
-									<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-								</svg>
-							</AvatarFallback>
-							<AvatarBadge className="bg-green-500" />
-						</Avatar>
-					</div>
 				</div>
 			</div>
 
@@ -140,19 +149,65 @@ export function Header() {
 						className="container mx-auto flex flex-col gap-1 px-4 py-4"
 						aria-label="Mobile navigation"
 					>
-						{navLinks.map(link => (
+						{mobileLinks.map(link => (
 							<Button
 								key={link.href}
 								variant="ghost"
 								className="justify-start"
-								render={<a href={link.href} />}
+								render={
+									<Link href={link.href} onClick={() => setIsMenuOpen(false)} />
+								}
 							>
 								{link.label}
 							</Button>
 						))}
+						<Button
+							variant="ghost"
+							className="justify-start text-muted-foreground"
+							render={
+								<a href={ESHOP_URL} target="_blank" rel="noopener noreferrer" />
+							}
+						>
+							E-shop
+						</Button>
+						<div className="flex items-center gap-2 px-2.5 py-1.5 text-sm">
+							<span className="sr-only">
+								Language switcher (not yet functional)
+							</span>
+							<span className="text-muted-foreground" aria-hidden="true">
+								CZ
+							</span>
+							<span className="text-muted-foreground" aria-hidden="true">
+								/
+							</span>
+							<span className="font-medium text-foreground" aria-hidden="true">
+								EN
+							</span>
+						</div>
 					</nav>
 				</div>
 			)}
 		</header>
+	)
+}
+
+function NavDropdown({ group, active }: { group: NavGroup; active: boolean }) {
+	return (
+		<DropdownMenu>
+			<Button
+				variant="ghost"
+				className={cn(!active && "text-muted-foreground")}
+				render={<DropdownMenuTrigger />}
+			>
+				{group.trigger}
+			</Button>
+			<DropdownMenuContent>
+				{group.items.map(item => (
+					<DropdownMenuItem key={item.href} render={<Link href={item.href} />}>
+						{item.label}
+					</DropdownMenuItem>
+				))}
+			</DropdownMenuContent>
+		</DropdownMenu>
 	)
 }

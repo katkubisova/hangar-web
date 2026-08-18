@@ -1,0 +1,16 @@
+import Link from "next/link"
+
+import { Button } from "@/components/ui/button"
+
+export default function NotFound() {
+	return (
+		<div className="flex flex-col items-center gap-4 px-4 py-24 text-center">
+			<p className="text-sm font-medium text-muted-foreground">404</p>
+			<h1 className="text-3xl font-bold">Page not found</h1>
+			<p className="max-w-md text-muted-foreground">
+				The page you&apos;re looking for doesn&apos;t exist or has been moved.
+			</p>
+			<Button render={<Link href="/" />}>Back to Home</Button>
+		</div>
+	)
+}
