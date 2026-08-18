@@ -1,5 +1,7 @@
 "use client"
 
+import { Suspense } from "react"
+
 import { HeroSection } from "@/components/shared/hero-section"
 import { LocationSelector } from "@/components/shared/location-selector"
 import { Section } from "@/components/shared/section"
@@ -16,6 +18,14 @@ const galleryImages = [
 ]
 
 export default function CafePage() {
+	return (
+		<Suspense fallback={null}>
+			<CafePageContent />
+		</Suspense>
+	)
+}
+
+function CafePageContent() {
 	const { gyms: selectableGyms, selected, setSelected } = useGymSelector(gyms)
 	const isComingSoon = selected.status === "coming-soon"
 

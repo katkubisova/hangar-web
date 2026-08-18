@@ -1,5 +1,7 @@
 "use client"
 
+import { Suspense } from "react"
+
 import { HeroSection } from "@/components/shared/hero-section"
 import { LocationSelector } from "@/components/shared/location-selector"
 import { Section } from "@/components/shared/section"
@@ -10,6 +12,14 @@ import { gyms } from "@/lib/data/gyms"
 const physioGyms = gyms.filter(gym => gym.physio?.enabled)
 
 export default function PhysioPage() {
+	return (
+		<Suspense fallback={null}>
+			<PhysioPageContent />
+		</Suspense>
+	)
+}
+
+function PhysioPageContent() {
 	const {
 		gyms: selectableGyms,
 		selected,

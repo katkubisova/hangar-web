@@ -1,6 +1,7 @@
 "use client"
 
 import { FileText } from "lucide-react"
+import { Suspense } from "react"
 
 import { FaqAccordion } from "@/components/shared/faq-accordion"
 import { HeroSection } from "@/components/shared/hero-section"
@@ -13,6 +14,14 @@ import { faqItems } from "@/lib/data/faq-items"
 import { gyms } from "@/lib/data/gyms"
 
 export default function VisitPage() {
+	return (
+		<Suspense fallback={null}>
+			<VisitPageContent />
+		</Suspense>
+	)
+}
+
+function VisitPageContent() {
 	const { gyms: selectableGyms, selected, setSelected } = useGymSelector(gyms)
 	const isComingSoon = selected.status === "coming-soon"
 

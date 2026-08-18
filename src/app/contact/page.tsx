@@ -1,5 +1,7 @@
 "use client"
 
+import { Suspense } from "react"
+
 import { HeroSection } from "@/components/shared/hero-section"
 import { LocationSelector } from "@/components/shared/location-selector"
 import { Section } from "@/components/shared/section"
@@ -8,6 +10,14 @@ import { useGymSelector } from "@/hooks/use-gym-selector"
 import { gyms } from "@/lib/data/gyms"
 
 export default function ContactPage() {
+	return (
+		<Suspense fallback={null}>
+			<ContactPageContent />
+		</Suspense>
+	)
+}
+
+function ContactPageContent() {
 	const { gyms: selectableGyms, selected, setSelected } = useGymSelector(gyms)
 	const isComingSoon = selected.status === "coming-soon"
 
