@@ -1,0 +1,55 @@
+import type { TeamMember } from "@/lib/types/team-member"
+
+export const teamMembers: TeamMember[] = [
+	{
+		photo: "Team photo — Adam Ondra",
+		name: "Adam Ondra",
+		role: "Founder & Ambassador",
+		groupSlug: "core",
+		bio: "Placeholder bio — professional climber and founder backing the Hangar network.",
+		displayOrder: 1,
+	},
+	{
+		photo: "Team photo — Core team member",
+		name: "Placeholder Name",
+		role: "Network Operations Lead",
+		groupSlug: "core",
+		bio: "Placeholder bio for the network operations lead.",
+		email: "operations@hangargyms.example",
+		displayOrder: 2,
+	},
+	{
+		photo: "Team photo — Brno gym manager",
+		name: "Placeholder Name",
+		role: "Gym Manager",
+		groupSlug: "brno",
+		bio: "Placeholder bio for the Hangar Brno gym manager.",
+		email: "brno.manager@hangargyms.example",
+		displayOrder: 1,
+	},
+	{
+		photo: "Team photo — Brno head coach",
+		name: "Placeholder Name",
+		role: "Head Coach",
+		groupSlug: "brno",
+		bio: "Placeholder bio for the Hangar Brno head coach.",
+		displayOrder: 2,
+	},
+	{
+		photo: "Team photo — Ostrava gym manager",
+		name: "Placeholder Name",
+		role: "Gym Manager",
+		groupSlug: "ostrava",
+		bio: "Placeholder bio for the Hangar Ostrava gym manager.",
+		email: "ostrava.manager@hangargyms.example",
+		displayOrder: 1,
+	},
+	{
+		photo: "Team photo — Ostrava head coach",
+		name: "Placeholder Name",
+		role: "Head Coach",
+		groupSlug: "ostrava",
+		bio: "Placeholder bio for the Hangar Ostrava head coach.",
+		displayOrder: 2,
+	},
+]
