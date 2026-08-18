@@ -6,6 +6,12 @@ export type ArticleCategory =
 
 export type ArticleStatus = "published" | "draft"
 
+export type ArticleBodyBlock =
+	| { type: "paragraph"; text: string }
+	| { type: "blockquote"; text: string }
+	| { type: "image"; label: string; caption?: string }
+	| { type: "video"; label: string }
+
 export interface Article {
 	title: string
 	subtitle: string
@@ -13,7 +19,7 @@ export interface Article {
 	category: ArticleCategory
 	author: string
 	heroImage: string
-	body: string
+	body: ArticleBodyBlock[]
 	publishedDate: string
 	readTime: string
 	status: ArticleStatus
