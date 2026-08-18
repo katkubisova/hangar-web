@@ -1,36 +1,43 @@
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { PlaceholderImage } from "@/components/ui/placeholder-image"
 import { cn } from "@/lib/utils"
 
 interface HeroSectionProps {
 	title: string
 	subtitle?: string
-	image?: string
+	imageLabel?: string
 	cta?: {
 		label: string
 		href: string
 	}
 	className?: string
+	id?: string
 }
 
 export function HeroSection({
 	title,
 	subtitle,
-	image,
+	imageLabel,
 	cta,
 	className,
+	id,
 }: HeroSectionProps) {
 	return (
 		<section
+			id={id}
 			className={cn(
-				"relative flex min-h-[50vh] flex-col items-center justify-center bg-gradient-to-b from-muted/50 to-background px-4 py-16 text-center",
+				"relative flex min-h-[50vh] flex-col items-center justify-center px-4 py-16 text-center",
+				!imageLabel && "bg-gradient-to-b from-muted/50 to-background",
 				className
 			)}
 		>
-			{image && (
-				<div
-					className="absolute inset-0 z-0 bg-cover bg-center opacity-20"
-					style={{ backgroundImage: `url(${image})` }}
-					aria-hidden="true"
+			{imageLabel && (
+				<PlaceholderImage
+					label={imageLabel}
+					labelPosition="top-left"
+					aspectRatio="h-full"
+					className="absolute inset-0 z-0"
 				/>
 			)}
 
@@ -48,7 +55,13 @@ export function HeroSection({
 				{cta && (
 					<Button
 						size="lg"
-						render={<a href={cta.href} aria-label={cta.label} />}
+						render={
+							cta.href.startsWith("#") ? (
+								<a href={cta.href} />
+							) : (
+								<Link href={cta.href} />
+							)
+						}
 					>
 						{cta.label}
 					</Button>
