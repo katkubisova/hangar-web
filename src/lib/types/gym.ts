@@ -30,6 +30,9 @@ export interface PhysioInfo {
 	intro: string
 	team: PhysioTeamMember[]
 	prices: PriceItem[]
+	// Placeholder — no real booking system is wired up yet; see the
+	// physio contact form for the actual point of contact.
+	bookingUrl: string
 }
 
 export interface Gym {
@@ -57,5 +60,8 @@ export interface Gym {
 	visitorRulesUrl: string
 	cafeMenuUrl: string
 	cafeMenuThumbnail: string
+	galleryImages: string[]
+	instagramUrl: string
+	facebookUrl: string
 	displayOrder: number
 }

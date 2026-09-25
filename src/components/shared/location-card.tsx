@@ -43,7 +43,7 @@ export function LocationCard({ gym }: LocationCardProps) {
 				<Button
 					variant="outline"
 					className="w-fit"
-					render={<Link href={`/visit?gym=${gym.slug}`} />}
+					render={<Link href={`/visit/${gym.slug}`} />}
 				>
 					Visit
 				</Button>

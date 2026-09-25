@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+import { ContactForm } from "@/components/shared/contact-form"
 import { Section } from "@/components/shared/section"
 import { Badge } from "@/components/ui/badge"
 import { gyms } from "@/lib/data/gyms"
@@ -81,10 +82,8 @@ export default async function PositionPage({ params }: PositionPageProps) {
 			)}
 
 			<div className="max-w-md rounded-lg bg-muted/30 p-4">
-				<h2 className="mb-2 text-lg font-semibold">Apply</h2>
-				<p className="text-sm text-muted-foreground">
-					Application form — coming in Phase 5 (see CLAUDE.md).
-				</p>
+				<h2 className="mb-4 text-lg font-semibold">Apply</h2>
+				<ContactForm variant="careers" />
 			</div>
 		</Section>
 	)

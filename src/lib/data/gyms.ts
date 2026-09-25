@@ -69,11 +69,20 @@ export const gyms: Gym[] = [
 				{ name: "Initial consultation", price: "900 CZK", note: "60 min" },
 				{ name: "Follow-up session", price: "700 CZK", note: "45 min" },
 			],
+			bookingUrl: "#",
 		},
 		consentFormUrl: "#",
 		visitorRulesUrl: "#",
 		cafeMenuUrl: "#",
 		cafeMenuThumbnail: "Gallery image — Brno cafe menu",
+		galleryImages: [
+			"Gallery image — Hangar Brno bouldering hall",
+			"Gallery image — Hangar Brno training zone",
+			"Gallery image — Hangar Brno cafe interior",
+			"Gallery image — Hangar Brno reception",
+		],
+		instagramUrl: "https://instagram.com/hangarbrno",
+		facebookUrl: "https://facebook.com/hangarbrno",
 		displayOrder: 1,
 	},
 	{
@@ -129,10 +138,36 @@ export const gyms: Gym[] = [
 				],
 			},
 		],
+		physio: {
+			enabled: true,
+			intro:
+				"Our physiotherapy team helps climbers recover faster and move better, with sessions available on site.",
+			team: [
+				{
+					photo: "Physio photo — Tomáš Dvořák",
+					name: "Tomáš Dvořák",
+					specialisation: "Sports physiotherapy, climbing-specific rehab",
+					bio: "Placeholder bio — background in sports physiotherapy working with climbers of all levels.",
+				},
+			],
+			prices: [
+				{ name: "Initial consultation", price: "900 CZK", note: "60 min" },
+				{ name: "Follow-up session", price: "700 CZK", note: "45 min" },
+			],
+			bookingUrl: "#",
+		},
 		consentFormUrl: "#",
 		visitorRulesUrl: "#",
 		cafeMenuUrl: "#",
 		cafeMenuThumbnail: "Gallery image — Ostrava cafe menu",
+		galleryImages: [
+			"Gallery image — Hangar Ostrava bouldering hall",
+			"Gallery image — Hangar Ostrava high-wall area",
+			"Gallery image — Hangar Ostrava cafe interior",
+			"Gallery image — Hangar Ostrava reception",
+		],
+		instagramUrl: "https://instagram.com/hangarostrava",
+		facebookUrl: "https://facebook.com/hangarostrava",
 		displayOrder: 2,
 	},
 	{
@@ -161,6 +196,9 @@ export const gyms: Gym[] = [
 		visitorRulesUrl: "#",
 		cafeMenuUrl: "#",
 		cafeMenuThumbnail: "Gallery image — Plzeň cafe menu (coming soon)",
+		galleryImages: [],
+		instagramUrl: "#",
+		facebookUrl: "#",
 		displayOrder: 3,
 	},
 ]

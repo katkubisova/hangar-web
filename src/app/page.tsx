@@ -1,22 +1,17 @@
 import Link from "next/link"
 
-import { ArticleCard } from "@/components/shared/article-card"
+import { FaqAccordion } from "@/components/shared/faq-accordion"
 import { HeroSection } from "@/components/shared/hero-section"
 import { LocationCard } from "@/components/shared/location-card"
 import { Section } from "@/components/shared/section"
 import { Button } from "@/components/ui/button"
 import { PlaceholderImage } from "@/components/ui/placeholder-image"
-import { articles } from "@/lib/data/articles"
+import { faqItems } from "@/lib/data/faq-items"
 import { gyms } from "@/lib/data/gyms"
 
 const visibleGyms = gyms
 	.filter(gym => gym.status !== "hidden")
 	.sort((a, b) => a.displayOrder - b.displayOrder)
-
-const recentArticles = articles
-	.filter(article => article.status === "published")
-	.sort((a, b) => b.publishedDate.localeCompare(a.publishedDate))
-	.slice(0, 3)
 
 export default function HomePage() {
 	return (
@@ -64,6 +59,22 @@ export default function HomePage() {
 
 			<Section>
 				<div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+					<div className="space-y-4">
+						<h2 className="text-3xl font-bold">Events & Activities</h2>
+						<p className="text-muted-foreground leading-relaxed">
+							Placeholder copy line one — courses, classes, and one-off events.
+						</p>
+						<p className="text-muted-foreground leading-relaxed">
+							Placeholder copy line two — the year-round Hangar Challenge.
+						</p>
+						<Button render={<Link href="/events" />}>See what's on</Button>
+					</div>
+					<PlaceholderImage label="Events photo" className="rounded-lg" />
+				</div>
+			</Section>
+
+			<Section className="bg-muted/30">
+				<div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
 					<PlaceholderImage
 						label="Visit Us photo"
 						className="rounded-lg lg:order-2"
@@ -82,36 +93,11 @@ export default function HomePage() {
 				</div>
 			</Section>
 
-			<Section className="bg-muted/30">
-				<div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
-					<div className="space-y-4">
-						<h2 className="text-3xl font-bold">Events & Activities</h2>
-						<p className="text-muted-foreground leading-relaxed">
-							Placeholder copy line one — courses, classes, and one-off events.
-						</p>
-						<p className="text-muted-foreground leading-relaxed">
-							Placeholder copy line two — the year-round Hangar Challenge.
-						</p>
-						<Button render={<Link href="/events" />}>See what's on</Button>
-					</div>
-					<PlaceholderImage label="Events photo" className="rounded-lg" />
-				</div>
-			</Section>
-
 			<Section>
-				<div className="mb-8 flex items-center justify-between">
-					<h2 className="text-3xl font-bold">News</h2>
-					<Link href="/news" className="text-sm font-medium hover:underline">
-						All news
-					</Link>
+				<h2 className="mb-8 text-center text-3xl font-bold">FAQ</h2>
+				<div className="mx-auto max-w-2xl">
+					<FaqAccordion items={faqItems} />
 				</div>
-				<ul className="grid gap-6 md:grid-cols-3">
-					{recentArticles.map(article => (
-						<li key={article.slug}>
-							<ArticleCard article={article} />
-						</li>
-					))}
-				</ul>
 			</Section>
 		</>
 	)
