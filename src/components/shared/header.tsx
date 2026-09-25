@@ -29,11 +29,11 @@ const ESHOP_URL = "#"
 
 const visitUsGroup: NavGroup = {
 	trigger: "Visit Us",
-	activeMatch: ["/visit", "/cafe", "/physio"],
+	activeMatch: ["/visit"],
 	items: [
-		{ label: "Gym", href: "/visit" },
-		{ label: "Cafe", href: "/cafe" },
-		{ label: "Physio", href: "/physio" },
+		{ label: "Visit Us", href: "/visit" },
+		{ label: "Hangar Brno", href: "/visit/brno" },
+		{ label: "Hangar Ostrava", href: "/visit/ostrava" },
 	],
 }
 
@@ -50,10 +50,7 @@ const aboutGroup: NavGroup = {
 	],
 }
 
-const directLinks: NavLink[] = [
-	{ label: "Events", href: "/events" },
-	{ label: "News", href: "/news" },
-]
+const directLinks: NavLink[] = [{ label: "Events", href: "/events" }]
 
 const mobileLinks: NavLink[] = [
 	...visitUsGroup.items,

@@ -1,7 +1,5 @@
-import { Share2 } from "lucide-react"
 import Link from "next/link"
 
-import { Button } from "@/components/ui/button"
 import { globalSettings } from "@/lib/data/global-settings"
 import { gyms } from "@/lib/data/gyms"
 
@@ -9,9 +7,8 @@ const navLinks = [
 	{ href: "/visit", label: "Visit Us" },
 	{ href: "/events", label: "Events" },
 	{ href: "/hangar-challenge", label: "Hangar Challenge" },
-	{ href: "/cafe", label: "Cafe" },
-	{ href: "/physio", label: "Physio" },
-	{ href: "/news", label: "News" },
+	{ href: "/visit/brno", label: "Hangar Brno" },
+	{ href: "/visit/ostrava", label: "Hangar Ostrava" },
 	{ href: "/about/team", label: "About" },
 	{ href: "/contact", label: "Contact" },
 ]
@@ -21,10 +18,6 @@ const legalLinks = [
 	{ href: "/cookie-policy", label: "Cookie Policy" },
 	{ href: "/visitor-rules", label: "Visitor Rules" },
 ]
-
-// Platforms are unconfirmed with the client (spec Open Question 4) — these
-// are generic placeholder slots, not tied to any specific platform yet.
-const socialPlaceholders = ["social-1", "social-2", "social-3"]
 
 const openLocations = gyms.filter(gym => gym.status === "open")
 
@@ -101,20 +94,6 @@ export function Footer() {
 								</Link>
 							))}
 						</nav>
-						<div className="flex gap-2 pt-2">
-							{socialPlaceholders.map((id, index) => (
-								<Button
-									key={id}
-									type="button"
-									variant="outline"
-									size="icon"
-									disabled
-									aria-label={`Social link ${index + 1} (platform to be confirmed)`}
-								>
-									<Share2 className="size-4" aria-hidden="true" />
-								</Button>
-							))}
-						</div>
 					</div>
 				</div>
 
