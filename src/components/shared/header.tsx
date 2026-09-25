@@ -24,8 +24,7 @@ interface NavGroup {
 	items: NavLink[]
 }
 
-// Placeholder — the spec names an existing e-shop but doesn't give its URL.
-const ESHOP_URL = "#"
+const ESHOP_URL = "https://www.hangareshop.cz/"
 
 // Trigger only highlights for paths starting with "/about" — /contact does
 // NOT count as active even though it's grouped here. That's a deliberate
