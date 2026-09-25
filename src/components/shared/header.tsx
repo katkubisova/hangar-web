@@ -27,16 +27,6 @@ interface NavGroup {
 // Placeholder — the spec names an existing e-shop but doesn't give its URL.
 const ESHOP_URL = "#"
 
-const visitUsGroup: NavGroup = {
-	trigger: "Visit Us",
-	activeMatch: ["/visit"],
-	items: [
-		{ label: "Visit Us", href: "/visit" },
-		{ label: "Hangar Brno", href: "/visit/brno" },
-		{ label: "Hangar Ostrava", href: "/visit/ostrava" },
-	],
-}
-
 // Trigger only highlights for paths starting with "/about" — /contact does
 // NOT count as active even though it's grouped here. That's a deliberate
 // quirk documented in the spec (Section 2.1), not a bug.
@@ -50,13 +40,12 @@ const aboutGroup: NavGroup = {
 	],
 }
 
-const directLinks: NavLink[] = [{ label: "Events", href: "/events" }]
-
-const mobileLinks: NavLink[] = [
-	...visitUsGroup.items,
-	...directLinks,
-	...aboutGroup.items,
+const directLinks: NavLink[] = [
+	{ label: "Visit Us", href: "/visit" },
+	{ label: "Events", href: "/events" },
 ]
+
+const mobileLinks: NavLink[] = [...directLinks, ...aboutGroup.items]
 
 export function Header() {
 	const pathname = usePathname()
@@ -76,11 +65,6 @@ export function Header() {
 					className="hidden items-center gap-1 md:flex"
 					aria-label="Main navigation"
 				>
-					<NavDropdown
-						group={visitUsGroup}
-						active={isGroupActive(visitUsGroup)}
-					/>
-
 					{directLinks.map(link => (
 						<Button
 							key={link.href}
