@@ -75,11 +75,7 @@ export default function HomePage() {
 
 			<Section className="bg-muted/30">
 				<div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
-					<PlaceholderImage
-						label="Visit Us photo"
-						className="rounded-lg lg:order-2"
-					/>
-					<div className="space-y-4 lg:order-1">
+					<div className="space-y-4">
 						<h2 className="text-3xl font-bold">Visit Us</h2>
 						<p className="text-muted-foreground leading-relaxed">
 							Placeholder copy line one — planning a visit, registration, and
@@ -90,6 +86,7 @@ export default function HomePage() {
 						</p>
 						<Button render={<Link href="/visit" />}>Plan your visit</Button>
 					</div>
+					<PlaceholderImage label="Visit Us photo" className="rounded-lg" />
 				</div>
 			</Section>
 

@@ -1,4 +1,5 @@
 import { Facebook, FileText, Instagram } from "lucide-react"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 
 import { ContactForm } from "@/components/shared/contact-form"
@@ -102,11 +103,6 @@ export default async function BranchPage({ params }: BranchPageProps) {
 			</Section>
 
 			<Section className="bg-muted/30">
-				<h2 className="mb-6 text-2xl font-bold">Gallery</h2>
-				<PhotoGallery images={gym.galleryImages} />
-			</Section>
-
-			<Section>
 				<h2 className="mb-4 text-2xl font-bold">Register online</h2>
 				<p className="mb-4 text-muted-foreground leading-relaxed">
 					Placeholder copy about registering online before your first visit.
@@ -125,6 +121,11 @@ export default async function BranchPage({ params }: BranchPageProps) {
 				</Button>
 			</Section>
 
+			<Section>
+				<h2 className="mb-6 text-2xl font-bold">Gallery</h2>
+				<PhotoGallery images={gym.galleryImages} />
+			</Section>
+
 			<Section className="bg-muted/30">
 				<h2 className="mb-4 text-2xl font-bold">Current Occupancy</h2>
 				{/* No live occupancy source exists yet — spec Open Question 2 is
@@ -136,27 +137,57 @@ export default async function BranchPage({ params }: BranchPageProps) {
 			</Section>
 
 			<Section>
-				<h2 className="mb-4 text-2xl font-bold">Prices</h2>
-				<PricesAccordion categories={gym.prices} />
+				<h2 className="mb-4 text-2xl font-bold">Book a Ticket & Activities</h2>
+				<div className="grid gap-8 md:grid-cols-2">
+					<div>
+						<h3 className="mb-2 text-lg font-medium">Tickets</h3>
+						<p className="mb-4 text-muted-foreground leading-relaxed">
+							Placeholder copy about booking a ticket online ahead of your
+							visit.
+						</p>
+						<Button
+							render={
+								// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
+								<a
+									href={gym.bookingUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+								/>
+							}
+						>
+							Book now
+						</Button>
+					</div>
+					<div>
+						<h3 className="mb-2 text-lg font-medium">Events & activities</h3>
+						<p className="mb-4 text-muted-foreground leading-relaxed">
+							Placeholder copy about booking courses, classes, and events.
+						</p>
+						<Button
+							render={
+								// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
+								<a
+									href={gym.activitiesBookingUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+								/>
+							}
+						>
+							Book activities
+						</Button>
+						<Link
+							href="/events#activity-types"
+							className="mt-3 block w-fit text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+						>
+							See all activity types
+						</Link>
+					</div>
+				</div>
 			</Section>
 
 			<Section className="bg-muted/30">
-				<h2 className="mb-4 text-2xl font-bold">Book a Ticket</h2>
-				<p className="mb-4 text-muted-foreground leading-relaxed">
-					Placeholder copy about booking a ticket online ahead of your visit.
-				</p>
-				<Button
-					render={
-						// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
-						<a
-							href={gym.bookingUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-						/>
-					}
-				>
-					Book now
-				</Button>
+				<h2 className="mb-4 text-2xl font-bold">Prices</h2>
+				<PricesAccordion categories={gym.prices} />
 			</Section>
 
 			<Section>
@@ -188,13 +219,11 @@ export default async function BranchPage({ params }: BranchPageProps) {
 			</Section>
 
 			<Section className="bg-muted/30">
-				<h2 className="mb-8 text-3xl font-bold">Cafe & Physio</h2>
-
-				<div className="mb-12 space-y-6">
-					<h3 className="text-xl font-semibold">Hangar Cafe</h3>
+				<h2 className="mb-6 text-2xl font-bold">Hangar Cafe</h2>
+				<div className="space-y-6">
 					<div className="grid gap-8 md:grid-cols-2">
 						<div className="space-y-3">
-							<h4 className="text-lg font-medium">Specialty Coffee</h4>
+							<h3 className="text-lg font-medium">Specialty Coffee</h3>
 							<p className="text-muted-foreground leading-relaxed">
 								Placeholder copy about the specialty coffee offer.
 							</p>
@@ -204,7 +233,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 							/>
 						</div>
 						<div className="space-y-3">
-							<h4 className="text-lg font-medium">Fresh Bistro</h4>
+							<h3 className="text-lg font-medium">Fresh Bistro</h3>
 							<p className="text-muted-foreground leading-relaxed">
 								Placeholder copy about the fresh bistro food offer.
 							</p>
@@ -234,95 +263,89 @@ export default async function BranchPage({ params }: BranchPageProps) {
 						</Button>
 					</div>
 				</div>
+			</Section>
 
-				<div className="space-y-6 border-t border-border pt-12">
-					<h3 className="text-xl font-semibold">Physio</h3>
-					{!gym.physio ? (
-						<p className="text-muted-foreground">
-							Physio isn't offered at this location yet.
+			<Section>
+				<h2 className="mb-6 text-2xl font-bold">Physio</h2>
+				{!gym.physio ? (
+					<p className="text-muted-foreground">
+						Physio isn't offered at this location yet.
+					</p>
+				) : (
+					<div className="space-y-6">
+						<p className="text-muted-foreground leading-relaxed">
+							{gym.physio.intro}
 						</p>
-					) : (
-						<>
-							<p className="text-muted-foreground leading-relaxed">
-								{gym.physio.intro}
-							</p>
-							<ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-								{gym.physio.team.map(member => (
-									<li
-										key={member.name}
-										className="flex flex-col gap-3 rounded-lg border border-border bg-background p-4"
-									>
-										<PlaceholderImage
-											label={member.photo}
-											aspectRatio="aspect-square"
-											className="rounded-full"
-										/>
-										<div>
-											<p className="font-medium">{member.name}</p>
-											<p className="text-sm text-muted-foreground">
-												{member.specialisation}
-											</p>
-										</div>
+						<ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+							{gym.physio.team.map(member => (
+								<li
+									key={member.name}
+									className="flex flex-col gap-3 rounded-lg border border-border bg-background p-4"
+								>
+									<PlaceholderImage
+										label={member.photo}
+										aspectRatio="aspect-square"
+										className="rounded-full"
+									/>
+									<div>
+										<p className="font-medium">{member.name}</p>
 										<p className="text-sm text-muted-foreground">
-											{member.bio}
+											{member.specialisation}
 										</p>
-									</li>
-								))}
-							</ul>
-							<table className="w-full max-w-lg text-sm">
-								<thead>
-									<tr className="border-b border-border text-left text-muted-foreground">
-										<th className="py-2 font-medium">Service</th>
-										<th className="py-2 font-medium">Duration</th>
-										<th className="py-2 text-right font-medium">Price</th>
+									</div>
+									<p className="text-sm text-muted-foreground">{member.bio}</p>
+								</li>
+							))}
+						</ul>
+						<table className="w-full max-w-lg text-sm">
+							<thead>
+								<tr className="border-b border-border text-left text-muted-foreground">
+									<th className="py-2 font-medium">Service</th>
+									<th className="py-2 font-medium">Duration</th>
+									<th className="py-2 text-right font-medium">Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								{gym.physio.prices.map(item => (
+									<tr key={item.name} className="border-b border-border">
+										<td className="py-2">{item.name}</td>
+										<td className="py-2 text-muted-foreground">{item.note}</td>
+										<td className="py-2 text-right font-medium">
+											{item.price}
+										</td>
 									</tr>
-								</thead>
-								<tbody>
-									{gym.physio.prices.map(item => (
-										<tr key={item.name} className="border-b border-border">
-											<td className="py-2">{item.name}</td>
-											<td className="py-2 text-muted-foreground">
-												{item.note}
-											</td>
-											<td className="py-2 text-right font-medium">
-												{item.price}
-											</td>
-										</tr>
-									))}
-								</tbody>
-							</table>
+								))}
+							</tbody>
+						</table>
 
-							<div className="grid gap-8 md:grid-cols-2">
-								<div>
-									<h4 className="mb-2 text-lg font-medium">
-										Book an appointment
-									</h4>
-									<p className="mb-4 text-muted-foreground leading-relaxed">
-										Placeholder copy about booking a physio appointment online.
-									</p>
-									<Button
-										render={
-											// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
-											<a
-												href={gym.physio.bookingUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-											/>
-										}
-									>
-										Book now
-									</Button>
-								</div>
-								<div>
-									<h4 className="mb-2 text-lg font-medium">
-										Or send a message
-									</h4>
-									<ContactForm />
-								</div>
+						<div className="space-y-8">
+							<div>
+								<h3 className="mb-2 text-lg font-medium">
+									Book an appointment
+								</h3>
+								<p className="mb-4 text-muted-foreground leading-relaxed">
+									Placeholder copy about booking a physio appointment online.
+								</p>
+								<Button
+									render={
+										// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
+										<a
+											href={gym.physio.bookingUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+										/>
+									}
+								>
+									Book now
+								</Button>
 							</div>
-						</>
-					)}
-				</div>
+							<div className="max-w-xl">
+								<h3 className="mb-2 text-lg font-medium">Or send a message</h3>
+								<ContactForm />
+							</div>
+						</div>
+					</div>
+				)}
 			</Section>
 		</>
 	)

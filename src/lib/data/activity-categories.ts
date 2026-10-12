@@ -7,6 +7,7 @@ export const activityCategories: ActivityCategory[] = [
 		description:
 			"Placeholder description — structured courses for climbers progressing beyond the basics.",
 		displayOrder: 1,
+		bookingPath: "/kurzy/",
 	},
 	{
 		icon: "flower",
@@ -14,6 +15,8 @@ export const activityCategories: ActivityCategory[] = [
 		description:
 			"Placeholder description — studio classes focused on mobility and recovery for climbers.",
 		displayOrder: 2,
+		// No category page in the booking systems. Target pending client confirmation.
+		bookingPath: undefined,
 	},
 	{
 		icon: "activity",
@@ -21,6 +24,7 @@ export const activityCategories: ActivityCategory[] = [
 		description:
 			"Placeholder description — strength and conditioning classes to support your climbing.",
 		displayOrder: 3,
+		bookingPath: "/fitness/",
 	},
 	{
 		icon: "cake",
@@ -28,6 +32,7 @@ export const activityCategories: ActivityCategory[] = [
 		description:
 			"Placeholder description — book the wall for a birthday celebration.",
 		displayOrder: 4,
+		bookingPath: "/narozeninove-oslavy/",
 	},
 	{
 		icon: "tent",
@@ -35,6 +40,8 @@ export const activityCategories: ActivityCategory[] = [
 		description:
 			"Placeholder description — holiday camps introducing kids to bouldering.",
 		displayOrder: 5,
+		// No category page in the booking systems. Target pending client confirmation.
+		bookingPath: undefined,
 	},
 	{
 		icon: "calendar",
@@ -42,5 +49,6 @@ export const activityCategories: ActivityCategory[] = [
 		description:
 			"Placeholder description — team-building days, private hire, and one-off events.",
 		displayOrder: 6,
+		bookingPath: "/akce-dalsi/",
 	},
 ]
