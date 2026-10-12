@@ -22,8 +22,10 @@ export function LocationCard({ gym }: LocationCardProps) {
 	return (
 		<div
 			className={cn(
-				"flex flex-col gap-4 rounded-lg border border-border p-4",
-				isComingSoon && "opacity-60"
+				"relative flex flex-col gap-4 rounded-lg border border-border p-4",
+				isComingSoon
+					? "opacity-60"
+					: "transition-colors hover:border-foreground/40 hover:bg-muted/50 has-[a:focus-visible]:border-ring has-[a:focus-visible]:ring-3 has-[a:focus-visible]:ring-ring/50"
 			)}
 		>
 			<PlaceholderImage label={gym.heroImage} className="rounded-md" />
@@ -40,9 +42,15 @@ export function LocationCard({ gym }: LocationCardProps) {
 				</p>
 			)}
 			{!isComingSoon && (
+				// Stretched link: the ::after overlay makes the whole card clickable
+				// while keeping a single focusable link inside it. The button's
+				// pressed-state translate must be `none` (not 0): any translate value
+				// makes the button the overlay's containing block mid-click, shrinking
+				// the overlay and dropping clicks outside the button.
 				<Button
 					variant="outline"
-					className="w-fit"
+					className="w-fit after:absolute after:inset-0 after:rounded-lg after:content-[''] active:not-aria-[haspopup]:translate-none"
+					aria-label={`Visit ${gym.name}`}
 					render={<Link href={`/visit/${gym.slug}`} />}
 				>
 					Visit

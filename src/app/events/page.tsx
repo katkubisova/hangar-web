@@ -12,6 +12,8 @@ const bookableGyms = gyms
 	.filter(gym => gym.status !== "hidden")
 	.sort((a, b) => a.displayOrder - b.displayOrder)
 
+const openGyms = bookableGyms.filter(gym => gym.status === "open")
+
 const sortedActivityCategories = [...activityCategories].sort(
 	(a, b) => a.displayOrder - b.displayOrder
 )
@@ -67,12 +69,12 @@ export default function EventsPage() {
 				</ul>
 			</Section>
 
-			<Section className="bg-muted/30">
+			<Section id="activity-types" className="scroll-mt-16 bg-muted/30">
 				<h2 className="mb-6 text-2xl font-bold">Activity Types</h2>
 				<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{sortedActivityCategories.map(activity => (
 						<li key={activity.name}>
-							<ActivityCard activity={activity} />
+							<ActivityCard activity={activity} gyms={openGyms} />
 						</li>
 					))}
 				</ul>
