@@ -42,3 +42,6 @@ yarn-error.log*
 next-env.d.ts
 
 .worktrees/**/*
+
+# Brand guide PDF (18.8 MB) stays local
+HANGAR_Brand_Guidelines_2026.pdf
