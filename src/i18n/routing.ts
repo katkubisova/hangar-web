@@ -32,6 +32,8 @@ export const routing = defineRouting({
 		"/privacy-policy": { cs: "/ochrana-osobnich-udaju", en: "/privacy-policy" },
 		"/cookie-policy": { cs: "/cookies", en: "/cookie-policy" },
 		"/visitor-rules": { cs: "/navstevni-rad", en: "/visitor-rules" },
+		// Internal design reference: not linked, not indexed.
+		"/styleguide": "/styleguide",
 	},
 })
 
