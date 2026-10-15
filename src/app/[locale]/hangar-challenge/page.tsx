@@ -1,13 +1,26 @@
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 
+import { Sticker } from "@/components/brand/sticker"
+import {
+	WallProfile,
+	type WallProfileName,
+} from "@/components/brand/wall-profile"
 import { HeroSection } from "@/components/shared/hero-section"
 import { Section } from "@/components/shared/section"
-import { PlaceholderImage } from "@/components/ui/placeholder-image"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { FlagIcon } from "@/components/ui/icons"
 import { getPageMetadata } from "@/i18n/metadata"
 import { getPageLocale, type LocaleParams } from "@/i18n/page-locale"
 
 const STEP_KEYS = ["step1", "step2", "step3", "step4"] as const
+
+// The three categories named in the Challenge rules, each on a wall profile.
+const CATEGORIES: { name: string; profile: WallProfileName }[] = [
+	{ name: "Hobby", profile: "beast" },
+	{ name: "Sport", profile: "boomerang" },
+	{ name: "Elite", profile: "monster" },
+]
 
 export async function generateMetadata({
 	params,
@@ -27,32 +40,54 @@ export default async function HangarChallengePage({ params }: LocaleParams) {
 
 	return (
 		<>
-			<HeroSection title={t("title")} subtitle={t("subtitle")} />
+			<HeroSection
+				eyebrow={t("eyebrow")}
+				title={t("title")}
+				subtitle={t("subtitle")}
+				image={{
+					src: "/photos/brno-routesetting.jpg",
+					alt: t("what.imageLabel"),
+				}}
+			/>
 
 			<Section>
-				<div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
-					<div className="space-y-4">
-						<h2 className="text-3xl font-bold">{t("what.title")}</h2>
-						<p className="text-muted-foreground leading-relaxed">
-							{t("what.text")}
-						</p>
-						<p className="text-muted-foreground leading-relaxed">
-							{t("what.challenger")}
-						</p>
+				<div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+					<div className="lg:col-span-6">
+						<SectionHeading title={t("what.title")} />
+						<p className="text-muted-foreground">{t("what.text")}</p>
 					</div>
-					<PlaceholderImage
-						label={t("what.imageLabel")}
-						className="rounded-lg"
-					/>
+					<ul
+						aria-label={t("categories")}
+						className="grid grid-cols-3 gap-3 lg:col-span-6"
+					>
+						{CATEGORIES.map(category => (
+							<li key={category.name}>
+								<WallProfile
+									profile={category.profile}
+									contentClassName="items-center"
+								>
+									<span className="text-xs font-bold tracking-eyebrow uppercase sm:text-sm">
+										{category.name}
+									</span>
+								</WallProfile>
+							</li>
+						))}
+					</ul>
 				</div>
 			</Section>
 
 			<Section tone="muted">
-				<h2 className="mb-8 text-3xl font-bold">{t("howItWorks")}</h2>
-				<ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+				<SectionHeading title={t("howItWorks")} />
+				<ol className="grid gap-px border border-foreground bg-foreground md:grid-cols-2 lg:grid-cols-4">
 					{STEP_KEYS.map((key, index) => (
-						<li key={key} className="space-y-2">
-							<span className="text-sm font-medium text-muted-foreground">
+						<li key={key} className="flex flex-col gap-6 bg-background p-6">
+							<span
+								aria-hidden="true"
+								className="font-display text-display font-bold tracking-heading text-electric-violet"
+							>
+								{String(index + 1).padStart(2, "0")}
+							</span>
+							<span className="sr-only">
 								{t("stepLabel", { number: index + 1 })}
 							</span>
 							<p className="font-medium">{t(`steps.${key}`)}</p>
@@ -60,6 +95,32 @@ export default async function HangarChallengePage({ params }: LocaleParams) {
 					))}
 				</ol>
 			</Section>
+
+			{/* Challenger: the race series, on the saturated gradient the
+			guide reserves for it. Text sits on the violet end. */}
+			<section className="dark relative isolate overflow-hidden bg-gradient-violet-trinidad">
+				<div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-12 lg:items-center lg:px-8">
+					<div className="lg:col-span-7">
+						<p className="eyebrow mb-4 text-alabaster">
+							{t("challengerEyebrow")}
+						</p>
+						<h2 className="mb-6 text-display font-bold text-alabaster">
+							Challenger 2026
+						</h2>
+						<p className="max-w-2xl text-lead text-alabaster">
+							{t("what.challenger")}
+						</p>
+					</div>
+					<div className="flex justify-center lg:col-span-5">
+						<Sticker
+							text="Challenger 2026"
+							className="w-48 bg-cod-gray text-alabaster md:w-64"
+						>
+							<FlagIcon aria-hidden="true" className="size-12" />
+						</Sticker>
+					</div>
+				</div>
+			</section>
 		</>
 	)
 }

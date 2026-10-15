@@ -124,7 +124,9 @@ flag it**. Don't silently resolve it, don't guess, don't pick the
       `public/photos/` are stand-ins taken from the live sites (one with a
       third-party photographer credit left out); replace with the final
       photography before launch.
-- [ ] 4d Pages, one by one.
+- [x] 4d Pages: every page uses the brand components and the stand-in
+      photos (`src/lib/types/photo.ts`). Team and physio portraits are
+      initials on a pastel gradient (`Portrait`) until real photos arrive.
 
 ### Phase 5 — QA
 

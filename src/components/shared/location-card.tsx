@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl"
 
+import { BrandImage } from "@/components/brand/brand-image"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { PlaceholderImage } from "@/components/ui/placeholder-image"
+import { ArrowRightIcon, TimeIcon } from "@/components/ui/icons"
 import { Link } from "@/i18n/navigation"
 import type { Gym } from "@/lib/types/gym"
 import { cn } from "@/lib/utils"
@@ -16,46 +16,58 @@ export function LocationCard({ gym }: LocationCardProps) {
 	const isComingSoon = gym.status === "coming-soon"
 
 	return (
-		<div
+		<article
 			className={cn(
-				"relative flex flex-col gap-4 rounded-lg border border-border p-4",
-				isComingSoon
-					? "opacity-60"
-					: "transition-colors hover:border-foreground/40 hover:bg-muted/50 has-[a:focus-visible]:border-ring has-[a:focus-visible]:ring-3 has-[a:focus-visible]:ring-ring/50"
+				"group relative flex h-full flex-col border border-foreground bg-background",
+				!isComingSoon &&
+					"transition-colors has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring"
 			)}
 		>
-			<PlaceholderImage label={gym.heroImage} className="rounded-md" />
-			<div className="flex items-center justify-between gap-2">
-				<h3 className="font-medium">{gym.name}</h3>
-				<Badge variant={isComingSoon ? "secondary" : "default"}>
-					{t(`status.${gym.status}`)}
-				</Badge>
+			<div className="overflow-hidden border-b border-foreground">
+				{/* A branch that isn't open yet has no photo: the brand
+				gradient stands in for it. */}
+				<BrandImage
+					src={gym.heroImage.src}
+					alt={gym.heroImage.alt}
+					gradient={isComingSoon ? "pastel-violet" : undefined}
+					aspectRatio="aspect-[4/3]"
+					sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+					className={cn(
+						!isComingSoon &&
+							"transition-transform duration-500 group-hover:scale-[1.03]"
+					)}
+				/>
 			</div>
-			<p className="text-sm text-muted-foreground">{gym.shortDescription}</p>
-			{gym.openingHours[0] && (
-				<p className="text-sm text-muted-foreground">
-					{gym.openingHours[0].label}: {gym.openingHours[0].hours}
-				</p>
-			)}
-			{!isComingSoon && (
-				// Stretched link: the ::after overlay makes the whole card clickable
-				// while keeping a single focusable link inside it. The button's
-				// pressed-state translate must be `none` (not 0): any translate value
-				// makes the button the overlay's containing block mid-click, shrinking
-				// the overlay and dropping clicks outside the button.
-				<Button
-					variant="outline"
-					className="w-fit after:absolute after:inset-0 after:rounded-lg after:content-[''] active:not-aria-[haspopup]:translate-none"
-					aria-label={t("visitGym", { gym: gym.name })}
-					render={
-						<Link
-							href={{ pathname: "/visit/[gym]", params: { gym: gym.slug } }}
+			<div className="flex flex-1 flex-col gap-4 p-5">
+				<div className="flex items-start justify-between gap-3">
+					<h3 className="text-h3 font-bold uppercase">{gym.name}</h3>
+					<Badge variant={isComingSoon ? "secondary" : "signal"}>
+						{t(`status.${gym.status}`)}
+					</Badge>
+				</div>
+				<p className="text-sm text-muted-foreground">{gym.shortDescription}</p>
+				{gym.openingHours[0] && (
+					<p className="flex items-center gap-2 text-sm">
+						<TimeIcon aria-hidden="true" className="size-4 shrink-0" />
+						{gym.openingHours[0].label}: {gym.openingHours[0].hours}
+					</p>
+				)}
+				{!isComingSoon && (
+					// Stretched link: the ::after overlay makes the whole card
+					// clickable while keeping one focusable link inside it.
+					<Link
+						href={{ pathname: "/visit/[gym]", params: { gym: gym.slug } }}
+						aria-label={t("visitGym", { gym: gym.name })}
+						className="mt-auto inline-flex w-fit items-center gap-2 pt-2 text-xs font-medium tracking-eyebrow uppercase outline-none after:absolute after:inset-0 after:content-['']"
+					>
+						{t("visit")}
+						<ArrowRightIcon
+							aria-hidden="true"
+							className="size-4 transition-transform group-hover:translate-x-1"
 						/>
-					}
-				>
-					{t("visit")}
-				</Button>
-			)}
-		</div>
+					</Link>
+				)}
+			</div>
+		</article>
 	)
 }

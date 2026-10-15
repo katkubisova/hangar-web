@@ -59,7 +59,7 @@ function PriceTableView({ table }: { table: Resolved<PriceTable> }) {
 	const [labelColumn, ...valueColumns] = table.columns
 
 	return (
-		<div className="overflow-x-auto rounded-lg border border-border bg-background">
+		<div className="overflow-x-auto border border-foreground bg-background">
 			<table className="w-full text-sm">
 				<thead>
 					<tr className="text-left text-muted-foreground *:border-b *:border-border">

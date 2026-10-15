@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server"
 
 import { HeroSection } from "@/components/shared/hero-section"
 import { Section } from "@/components/shared/section"
+import { SectionHeading } from "@/components/shared/section-heading"
 import { TeamMemberCard } from "@/components/shared/team-member-card"
 import { getPageMetadata } from "@/i18n/metadata"
 import { getPageLocale, type LocaleParams } from "@/i18n/page-locale"
@@ -34,7 +35,11 @@ export default async function TeamPage({ params }: LocaleParams) {
 
 	return (
 		<>
-			<HeroSection title={t("title")} subtitle={t("subtitle")} />
+			<HeroSection
+				eyebrow={t("eyebrow")}
+				title={t("title")}
+				subtitle={t("subtitle")}
+			/>
 
 			{groups.map((group, index) => {
 				const members = localize(teamMembers, locale)
@@ -50,11 +55,11 @@ export default async function TeamPage({ params }: LocaleParams) {
 						key={group.slug}
 						tone={index % 2 === 1 ? "muted" : "default"}
 					>
-						<h2 className="mb-6 text-2xl font-bold">{group.label}</h2>
-						<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+						<SectionHeading title={group.label} />
+						<ul className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 lg:grid-cols-5">
 							{members.map(member => (
 								<li key={member.name}>
-									<TeamMemberCard member={member} groupLabel={group.label} />
+									<TeamMemberCard member={member} />
 								</li>
 							))}
 						</ul>

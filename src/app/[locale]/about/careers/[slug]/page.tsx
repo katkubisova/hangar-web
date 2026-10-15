@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/shared/contact-form"
 import { Paragraphs } from "@/components/shared/paragraphs"
 import { Section } from "@/components/shared/section"
 import { Badge } from "@/components/ui/badge"
+import { ArrowLeftIcon } from "@/components/ui/icons"
 import { getPageMetadata } from "@/i18n/metadata"
 import { Link } from "@/i18n/navigation"
 import { getPageLocale } from "@/i18n/page-locale"
@@ -57,75 +58,94 @@ export default async function PositionPage({ params }: PositionPageProps) {
 	const company = locations[0]
 
 	return (
-		<Section>
-			<Link
-				href="/about/careers"
-				className="mb-6 inline-block text-sm text-muted-foreground hover:text-foreground"
-			>
-				← {t("back")}
-			</Link>
-
-			<h1 className="mb-3 text-3xl font-bold">{position.title}</h1>
-			<div className="mb-6 flex flex-wrap gap-2">
-				{locations.map(location => (
-					<Badge key={location.slug} variant="outline">
-						{location.name}
-					</Badge>
-				))}
-				<Badge variant="secondary">
-					{t(`employmentType.${position.employmentType}`)}
-				</Badge>
-			</div>
-
-			<div className="mb-8 max-w-2xl space-y-6 text-muted-foreground">
-				<Paragraphs paragraphs={position.description} />
-				{(["responsibilities", "requirements", "offer"] as const).map(
-					list =>
-						position[list] && (
-							<div key={list}>
-								<h2 className="mb-2 font-medium text-foreground">
-									{t(`lists.${list}`)}
-								</h2>
-								<ul className="list-disc space-y-1 pl-5">
-									{position[list].map(item => (
-										<li key={item}>{item}</li>
-									))}
-								</ul>
-							</div>
-						)
-				)}
-			</div>
-
-			<div className="mb-8 max-w-md rounded-lg border border-border p-4">
-				<p className="mb-2 text-sm font-medium">{t("contact")}</p>
-				<p className="text-sm">
-					{position.contactPerson.name} — {position.contactPerson.role}
-				</p>
-				{position.contactPerson.phone && (
-					<p className="text-sm text-muted-foreground">
-						{position.contactPerson.phone}
-					</p>
-				)}
-				<a
-					href={`mailto:${position.contactPerson.email}`}
-					className="text-sm text-muted-foreground hover:text-foreground"
-				>
-					{position.contactPerson.email}
-				</a>
-			</div>
-
-			{company && (
-				<div className="mb-8 max-w-md space-y-1 text-sm text-muted-foreground">
-					<p>{company.companyName}</p>
-					<p>{company.companyId}</p>
-					<p>{company.taxId}</p>
+		<>
+			<section className="border-b border-foreground">
+				<div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 pt-10 pb-12 sm:px-6 md:pt-16 md:pb-16 lg:px-8">
+					<Link
+						href="/about/careers"
+						className="inline-flex w-fit items-center gap-2 text-xs font-medium tracking-eyebrow text-muted-foreground uppercase transition-colors hover:text-foreground"
+					>
+						<ArrowLeftIcon aria-hidden="true" className="size-4" />
+						{t("back")}
+					</Link>
+					<h1 className="max-w-5xl text-h1 font-bold">{position.title}</h1>
+					<div className="flex flex-wrap gap-2">
+						{locations.map(location => (
+							<Badge key={location.slug} variant="outline">
+								{location.name}
+							</Badge>
+						))}
+						<Badge variant="signal">
+							{t(`employmentType.${position.employmentType}`)}
+						</Badge>
+					</div>
 				</div>
-			)}
+			</section>
 
-			<div className="max-w-md rounded-lg bg-muted/30 p-4">
-				<h2 className="mb-4 text-lg font-semibold">{t("apply")}</h2>
-				<ContactForm variant="careers" />
-			</div>
-		</Section>
+			<Section>
+				<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+					<div className="space-y-10 lg:col-span-7">
+						<div className="space-y-4">
+							<Paragraphs
+								paragraphs={position.description}
+								className="text-lead"
+							/>
+						</div>
+						{(["responsibilities", "requirements", "offer"] as const).map(
+							list =>
+								position[list] && (
+									<div key={list}>
+										<h2 className="mb-4 text-h3 font-bold">
+											{t(`lists.${list}`)}
+										</h2>
+										<ul className="space-y-2 text-muted-foreground">
+											{position[list].map(item => (
+												<li key={item} className="flex gap-3">
+													<span
+														aria-hidden="true"
+														className="mt-2.5 size-1.5 shrink-0 bg-electric-violet"
+													/>
+													{item}
+												</li>
+											))}
+										</ul>
+									</div>
+								)
+						)}
+
+						<div className="border-t border-foreground pt-8 text-sm">
+							<p className="eyebrow mb-3">{t("contact")}</p>
+							<p className="font-medium">
+								{position.contactPerson.name} — {position.contactPerson.role}
+							</p>
+							{position.contactPerson.phone && (
+								<p className="text-muted-foreground">
+									{position.contactPerson.phone}
+								</p>
+							)}
+							<a
+								href={`mailto:${position.contactPerson.email}`}
+								className="link"
+							>
+								{position.contactPerson.email}
+							</a>
+							{company && (
+								<div className="mt-4 space-y-1 text-xs text-muted-foreground">
+									<p>{company.companyName}</p>
+									<p>
+										{company.companyId}, {company.taxId}
+									</p>
+								</div>
+							)}
+						</div>
+					</div>
+
+					<aside className="h-fit border border-foreground p-5 md:p-8 lg:sticky lg:top-24 lg:col-span-5">
+						<h2 className="mb-6 text-h3 font-bold">{t("apply")}</h2>
+						<ContactForm variant="careers" />
+					</aside>
+				</div>
+			</Section>
+		</>
 	)
 }

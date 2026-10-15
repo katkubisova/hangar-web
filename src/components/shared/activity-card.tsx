@@ -33,22 +33,27 @@ interface ActivityCardProps {
 
 export function ActivityCard({ activity, gyms }: ActivityCardProps) {
 	const t = useTranslations("ActivityCard")
+	const bookableGyms = gyms.filter(
+		(gym): gym is Gym & { activitiesBookingUrl: string } =>
+			Boolean(gym.activitiesBookingUrl)
+	)
 	const Icon = iconMap[activity.icon] ?? ActivityIcon
 
 	return (
-		<div className="flex h-full flex-col gap-3 rounded-lg border border-border p-4">
-			<Icon className="size-6 text-muted-foreground" aria-hidden="true" />
-			<h3 className="font-medium">{activity.name}</h3>
+		<article className="flex h-full flex-col gap-4 border border-foreground bg-background p-6">
+			<Icon className="size-8 text-electric-violet" aria-hidden="true" />
+			<h3 className="text-h3 font-bold">{activity.name}</h3>
 			<p className="text-sm text-muted-foreground">{activity.description}</p>
-			{gyms.length > 0 && (
-				<div className="mt-auto flex flex-wrap gap-2 pt-2">
-					{gyms.map(gym => {
+			{bookableGyms.length > 0 && (
+				<div className="mt-auto flex flex-wrap gap-2 pt-4">
+					{bookableGyms.map(gym => {
 						const city = getGymCity(gym.name)
 
 						return (
 							<Button
 								key={gym.slug}
 								variant="outline"
+								size="sm"
 								aria-label={t("bookActivityIn", {
 									activity: activity.name,
 									city,
@@ -70,6 +75,6 @@ export function ActivityCard({ activity, gyms }: ActivityCardProps) {
 					})}
 				</div>
 			)}
-		</div>
+		</article>
 	)
 }

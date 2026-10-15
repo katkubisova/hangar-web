@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 
-import { FaqAccordion } from "@/components/shared/faq-accordion"
+import { FaqSection } from "@/components/shared/faq-section"
 import { HeroSection } from "@/components/shared/hero-section"
 import { LocationCard } from "@/components/shared/location-card"
 import { PhotoGallery } from "@/components/shared/photo-gallery"
 import { Section } from "@/components/shared/section"
+import { SectionHeading } from "@/components/shared/section-heading"
 import { getPageMetadata } from "@/i18n/metadata"
 import { getPageLocale, type LocaleParams } from "@/i18n/page-locale"
 import { faqItems } from "@/lib/data/faq-items"
@@ -16,7 +17,10 @@ const visibleGyms = gyms
 	.filter(gym => gym.status !== "hidden")
 	.sort((a, b) => a.displayOrder - b.displayOrder)
 
-const galleryImages = gyms.flatMap(gym => gym.galleryImages)
+// A mix of both branches: the first three photos of each, interleaved.
+const galleryImages = [0, 1, 2].flatMap(index =>
+	visibleGyms.flatMap(gym => gym.galleryImages[index] ?? [])
+)
 
 export async function generateMetadata({
 	params,
@@ -33,12 +37,15 @@ export default async function VisitPage({ params }: LocaleParams) {
 
 	return (
 		<>
-			<HeroSection title={t("title")} subtitle={t("subtitle")} />
+			<HeroSection
+				eyebrow={t("eyebrow")}
+				title={t("title")}
+				subtitle={t("subtitle")}
+				image={{ src: "/photos/ostrava-training.jpg", alt: t("imageLabel") }}
+			/>
 
 			<Section>
-				<div className="mb-8 text-center">
-					<h2 className="text-3xl font-bold">{t("chooseLocation")}</h2>
-				</div>
+				<SectionHeading title={t("chooseLocation")} />
 				<ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 					{localize(visibleGyms, locale).map(gym => (
 						<li key={gym.slug}>
@@ -49,14 +56,15 @@ export default async function VisitPage({ params }: LocaleParams) {
 			</Section>
 
 			<Section tone="muted">
-				<h2 className="mb-6 text-2xl font-bold">{common("gallery")}</h2>
+				<SectionHeading title={common("gallery")} />
 				<PhotoGallery images={localize(galleryImages, locale)} />
 			</Section>
 
-			<Section>
-				<h2 className="mb-4 text-2xl font-bold">{common("faq")}</h2>
-				<FaqAccordion items={localize(faqItems, locale)} />
-			</Section>
+			<FaqSection
+				title={common("faq")}
+				items={localize(faqItems, locale)}
+				tone="default"
+			/>
 		</>
 	)
 }

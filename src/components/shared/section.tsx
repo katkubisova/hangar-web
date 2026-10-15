@@ -20,7 +20,7 @@ export function Section({
 		<section
 			id={id}
 			className={cn(
-				"scroll-mt-16",
+				"scroll-mt-28",
 				tone === "muted" && "bg-muted",
 				tone === "dark" && "dark"
 			)}

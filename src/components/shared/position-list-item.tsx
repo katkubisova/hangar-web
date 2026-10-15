@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from "@/components/ui/icons"
 import { Link } from "@/i18n/navigation"
 import { gyms } from "@/lib/data/gyms"
 import type { Position } from "@/lib/types/position"
@@ -18,10 +19,16 @@ export function PositionListItem({ position }: PositionListItemProps) {
 				pathname: "/about/careers/[slug]",
 				params: { slug: position.slug },
 			}}
-			className="flex items-center justify-between gap-4 rounded-lg border border-border p-4 hover:bg-muted/50"
+			className="group flex flex-col gap-2 border-b border-foreground py-6 transition-colors hover:text-link sm:flex-row sm:items-center sm:justify-between sm:gap-6"
 		>
-			<span className="font-medium">{position.title}</span>
-			<span className="text-sm text-muted-foreground">{locationNames}</span>
+			<span className="text-h3 font-bold">{position.title}</span>
+			<span className="flex items-center gap-4 text-sm text-muted-foreground">
+				{locationNames}
+				<ArrowRightIcon
+					aria-hidden="true"
+					className="size-5 text-foreground transition-transform group-hover:translate-x-1"
+				/>
+			</span>
 		</Link>
 	)
 }

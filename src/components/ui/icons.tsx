@@ -7,9 +7,12 @@ export type { IconProps } from "tdesign-icons-react"
 export {
 	ActivityIcon,
 	ArrowDownIcon,
+	ArrowLeftIcon,
+	ArrowRightIcon,
 	ArrowRightUpIcon,
 	CakeIcon,
 	CalendarEventIcon,
+	CallIcon,
 	CheckIcon,
 	ChevronDownIcon,
 	ChevronRightIcon,
