@@ -8,7 +8,7 @@ export type PositionStatus = "open" | "closed"
 export interface ContactPerson {
 	name: string
 	role: Localized<string>
-	phone: string
+	phone?: string
 	email: string
 }
 
@@ -18,7 +18,11 @@ export interface PositionData {
 	slug: string
 	locationSlugs: GymSlug[]
 	employmentType: EmploymentType
-	description: Localized<string>
+	// Intro paragraphs, then optional bullet lists.
+	description: Localized<string[]>
+	responsibilities?: Localized<string[]>
+	requirements?: Localized<string[]>
+	offer?: Localized<string[]>
 	contactPerson: ContactPerson
 	applicationRecipientEmail: string
 	status: PositionStatus

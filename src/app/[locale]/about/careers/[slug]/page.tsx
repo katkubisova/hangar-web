@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 
 import { ContactForm } from "@/components/shared/contact-form"
+import { Paragraphs } from "@/components/shared/paragraphs"
 import { Section } from "@/components/shared/section"
 import { Badge } from "@/components/ui/badge"
 import { getPageMetadata } from "@/i18n/metadata"
@@ -76,8 +77,23 @@ export default async function PositionPage({ params }: PositionPageProps) {
 				</Badge>
 			</div>
 
-			<div className="mb-8 max-w-2xl space-y-4 text-muted-foreground leading-relaxed">
-				<p>{position.description}</p>
+			<div className="mb-8 max-w-2xl space-y-6 text-muted-foreground">
+				<Paragraphs paragraphs={position.description} />
+				{(["responsibilities", "requirements", "offer"] as const).map(
+					list =>
+						position[list] && (
+							<div key={list}>
+								<h2 className="mb-2 font-medium text-foreground">
+									{t(`lists.${list}`)}
+								</h2>
+								<ul className="list-disc space-y-1 pl-5">
+									{position[list].map(item => (
+										<li key={item}>{item}</li>
+									))}
+								</ul>
+							</div>
+						)
+				)}
 			</div>
 
 			<div className="mb-8 max-w-md rounded-lg border border-border p-4">
@@ -85,12 +101,17 @@ export default async function PositionPage({ params }: PositionPageProps) {
 				<p className="text-sm">
 					{position.contactPerson.name} — {position.contactPerson.role}
 				</p>
-				<p className="text-sm text-muted-foreground">
-					{position.contactPerson.phone}
-				</p>
-				<p className="text-sm text-muted-foreground">
+				{position.contactPerson.phone && (
+					<p className="text-sm text-muted-foreground">
+						{position.contactPerson.phone}
+					</p>
+				)}
+				<a
+					href={`mailto:${position.contactPerson.email}`}
+					className="text-sm text-muted-foreground hover:text-foreground"
+				>
 					{position.contactPerson.email}
-				</p>
+				</a>
 			</div>
 
 			{company && (
@@ -98,7 +119,6 @@ export default async function PositionPage({ params }: PositionPageProps) {
 					<p>{company.companyName}</p>
 					<p>{company.companyId}</p>
 					<p>{company.taxId}</p>
-					<p>{company.address}</p>
 				</div>
 			)}
 

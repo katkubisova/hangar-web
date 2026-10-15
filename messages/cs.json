@@ -1,7 +1,7 @@
 {
 	"Metadata": {
 		"siteName": "HangarGyms",
-		"description": "Síť lezeckých stěn v České republice."
+		"description": "Hangar — climbing playground by Adam Ondra. Boulderové stěny v Brně a Ostravě: přes 300 boulderů, tréninkové zóny, dětské parky a kavárna."
 	},
 	"Navigation": {
 		"home": "HangarGyms — úvod",
@@ -24,11 +24,12 @@
 		"label": "Jazyk"
 	},
 	"Footer": {
-		"tagline": "Česká síť boulderingových a lezeckých stěn, za kterou stojí Adam Ondra.",
+		"tagline": "Climbing playground by Adam Ondra. Boulderové stěny v Brně a Ostravě.",
 		"contact": "Kontakt",
 		"navigation": "Navigace",
 		"legal": "Právní informace",
-		"copyright": "© {year} HangarGyms. Všechna práva vyhrazena."
+		"copyright": "© {year} HangarGyms. Všechna práva vyhrazena.",
+		"operator": "Provozovatel {gym}"
 	},
 	"Common": {
 		"status": {
@@ -69,23 +70,23 @@
 		},
 		"success": {
 			"title": "Zpráva přijata",
-			"description": "Tohle je prototyp — zpráva se ve skutečnosti neodeslala.",
+			"description": "Tohle je zatím ukázková verze webu, takže se zpráva neodeslala.",
 			"sendAnother": "Poslat další zprávu"
 		}
 	},
 	"HomePage": {
-		"metaTitle": "Síť lezeckých stěn v Česku",
+		"metaTitle": "Boulderové stěny v Brně a Ostravě",
 		"hero": {
 			"imageLabel": "Úvodní fotka",
-			"title": "Síť lezeckých stěn v Česku",
-			"subtitle": "Zástupný text představující síť Hangar. Druhý zástupný řádek s krátkým doplněním.",
-			"cta": "Najdi svou pobočku"
+			"title": "Boulderuj s námi v Brně a Ostravě",
+			"subtitle": "Lezecká centra, která vznikla ve spolupráci s Adamem Ondrou. Přes 300 boulderů pro začátečníky i profíky a každý týden nové.",
+			"cta": "Najdi svůj Hangar"
 		},
 		"about": {
 			"title": "O Hangaru",
-			"paragraph1": "Zástupný odstavec jedna — o vzniku a poslání sítě Hangar v České republice.",
-			"paragraph2": "Zástupný odstavec dva — o zázemí a o tom, čím se Hangar liší od jiných lezeckých stěn.",
-			"paragraph3": "Zástupný odstavec tři — o komunitě a o tom, co síť čeká dál.",
+			"paragraph1": "Hangar je climbing playground by Adam Ondra: lezecké centrum zaměřené výhradně na bouldering, které vzniklo ve spolupráci se světovou lezeckou špičkou. V roce 2019 jsme v Brně odstartovali novou éru moderního boulderingu v Česku a dnes nás najdeš i v Ostravě.",
+			"paragraph2": "Přes 300 boulderů od úplných začátečníků po 8A a tréninkové zóny s Moonboardy, spray wally a v Ostravě i s Kilterboardem. Stavěči každý týden přidávají nové bouldery, takže se nic neokouká.",
+			"paragraph3": "Hangar je hlavně komunita. Každý měsíc lezeme Hangar Challenge, v oddílu Hangar Rockets rostou malí závodníci a po lezení se potkáváme u výběrové kávy v našem Cafe Baru.",
 			"imageLabel": "Fotka — o Hangaru"
 		},
 		"locations": {
@@ -93,15 +94,15 @@
 		},
 		"events": {
 			"title": "Akce a aktivity",
-			"line1": "Zástupný text — kurzy, lekce a jednorázové akce.",
-			"line2": "Zástupný text — celoroční Hangar Challenge.",
+			"line1": "Lezecké kurzy pro děti i dospělé, fitness lekce, narozeninové oslavy a příměšťáky.",
+			"line2": "A každý měsíc Hangar Challenge: 30 nových boulderů a závod pro všechny.",
 			"cta": "Co se děje",
 			"imageLabel": "Fotka — akce"
 		},
 		"visit": {
 			"title": "Přijď k nám",
-			"line1": "Zástupný text — plánování návštěvy, registrace a co čekat.",
-			"line2": "Zástupný text — otevírací doba, ceny a rezervace vstupu.",
+			"line1": "Poprvé na Hangaru? Zaregistruj se online předem a ušetříš čas sobě i nám na baru.",
+			"line2": "Máme otevřeno každý den kromě Štědrého dne a vstupné platí celý den. Lezečky ti půjčíme.",
 			"cta": "Naplánuj návštěvu",
 			"imageLabel": "Fotka — návštěva"
 		},
@@ -109,7 +110,7 @@
 	},
 	"VisitPage": {
 		"title": "Pobočky",
-		"subtitle": "Zástupný text o plánování návštěvy pobočky Hangar.",
+		"subtitle": "Brno, nebo Ostrava? Vyber si svůj Hangar a mrkni na otevírací dobu, ceník a na to, co tě čeká.",
 		"chooseLocation": "Vyber pobočku"
 	},
 	"BranchPage": {
@@ -118,7 +119,7 @@
 		"facebook": "{gym} na Facebooku",
 		"register": {
 			"title": "Online registrace",
-			"text": "Zástupný text o online registraci před první návštěvou.",
+			"text": "Poprvé u nás? Zaregistruj se online předem. Registruješ se jen jednou, potvrdíš v ní návštěvní řád a ušetříš čas na baru. Každá pobočka má vlastní registraci.",
 			"cta": "Registrovat se"
 		},
 		"occupancy": {
@@ -126,12 +127,13 @@
 			"empty": "Údaje o aktuální obsazenosti zatím nejsou k dispozici."
 		},
 		"booking": {
-			"title": "Rezervace vstupu a aktivit",
-			"ticketsTitle": "Vstupy",
-			"ticketsText": "Zástupný text o online rezervaci vstupu před návštěvou.",
+			"title": "Vstupy a aktivity",
+			"ticketsTitle": "Permanentky a členství",
+			"ticketsText": "Ve svém zákaznickém účtu vložíš depozit, koupíš permanentku nebo členství.",
 			"activitiesTitle": "Akce a aktivity",
-			"activitiesText": "Zástupný text o rezervaci kurzů, lekcí a akcí.",
-			"allActivityTypes": "Všechny typy aktivit"
+			"activitiesText": "Kurzy, fitness lekce, narozeninové oslavy, příměšťáky a další akce si rezervuješ online.",
+			"allActivityTypes": "Všechny typy aktivit",
+			"ticketsCta": "Můj účet"
 		},
 		"prices": "Ceník",
 		"documents": {
@@ -140,12 +142,10 @@
 			"visitorRules": "Návštěvní řád (PDF)"
 		},
 		"cafe": {
-			"title": "Hangar Cafe",
+			"title": "Cafe Bar",
 			"coffeeTitle": "Výběrová káva",
-			"coffeeText": "Zástupný text o nabídce výběrové kávy.",
 			"coffeeImageLabel": "Fotka — výběrová káva",
-			"bistroTitle": "Čerstvé bistro",
-			"bistroText": "Zástupný text o nabídce čerstvého bistra.",
+			"bistroTitle": "Fresh bistro",
 			"bistroImageLabel": "Fotka — bistro",
 			"menu": "Stáhnout menu (PDF)"
 		},
@@ -153,68 +153,74 @@
 			"title": "Fyzioterapie",
 			"empty": "Fyzioterapie na této pobočce zatím není.",
 			"service": "Služba",
-			"duration": "Délka",
+			"duration": "Rozsah",
 			"price": "Cena",
-			"bookTitle": "Objednat se",
-			"bookText": "Zástupný text o online objednání k fyzioterapeutovi.",
+			"bookTitle": "Objednej se",
+			"bookText": "Jak se objednat ke konkrétnímu terapeutovi, najdeš výše u jeho jména.",
 			"messageTitle": "Nebo nám napiš"
 		}
 	},
 	"EventsPage": {
 		"title": "Akce a aktivity",
-		"subtitle": "Zástupný text o akcích a aktivitách v síti Hangar.",
+		"subtitle": "Kurzy, lekce, oslavy, příměšťáky i závody. Na Hangaru se pořád něco děje.",
 		"bookTitle": "Rezervace aktivit",
 		"bookingUnavailable": "Rezervace na této pobočce zatím nejsou dostupné.",
 		"activityTypes": "Typy aktivit",
 		"challenge": {
 			"title": "Hangar Challenge",
-			"text": "Zástupný text o celoroční Hangar Challenge na všech pobočkách.",
+			"text": "Každý měsíc 30 nových boulderů a závod pro všechny, od hobíků po elitu. Výsledky si zapisuješ sám v aplikaci TopLogger.",
 			"cta": "Jak to funguje"
 		}
 	},
 	"ChallengePage": {
 		"title": "Hangar Challenge",
-		"subtitle": "Celoroční výzva pro lezce všech úrovní.",
+		"subtitle": "Závod pro všechny. Každý měsíc 30 boulderů, spousta zábavy a posouvání limitů.",
 		"what": {
 			"title": "Co je Hangar Challenge?",
-			"text": "Zástupný odstavec — o celoroční boulderingové výzvě vlastním tempem, která běží na všech pobočkách Hangar a je otevřená lezcům všech úrovní.",
-			"imageLabel": "Fotka — Hangar Challenge"
+			"text": "Každý měsíc postavíme 30 boulderů označených kartičkami Hangar Challenge s čísly 1–30. Obtížnost stoupá, takže na zahřátí začni u jedničky. Závodí se ve třech kategoriích, Hobby, Sport a Elite, a cílem je vylézt co nejvíc boulderů na co nejméně pokusů. Všechno v duchu fair play: výsledky si zapisuje každý sám. V Brně běží Challenge od prvního do posledního dne v měsíci, v Ostravě vždy od 15. do 15. dne dalšího měsíce.",
+			"imageLabel": "Fotka — Hangar Challenge",
+			"challenger": "Challenger 2026 je boulderová série závodů, kde gravitace ztrácí moc! Dvakrát do roka na každé pobočce lezeme Challenge v závodním režimu: od 17:00 do 20:30, s vyhodnocením na místě a násobně hodnotnějšími cenami. Termíny: Ostrava 20. 3. a 18. 9., Brno 30. 4. a 27. 10. Na konci roku vyhlásíme Krále a Královnu Challengeru."
 		},
 		"howItWorks": "Jak to funguje",
 		"stepLabel": "Krok {number}",
 		"steps": {
-			"step1": "Vyzvedni si kartu výzvy",
-			"step2": "Lez cesty vlastním tempem",
-			"step3": "Zapisuj postup na tabuli výzvy",
-			"step4": "Vyzvedni si odměnu na recepci"
+			"step1": "Stáhni si aplikaci TopLogger a najdi svůj Hangar.",
+			"step2": "V sekci Competitions vyber Hangar Challenge a klikni na Register.",
+			"step3": "Lez bouldery 1–30 a zapisuj každý pokus (Try), přelez (Top) i Flash.",
+			"step4": "Nejlepší lezec a lezkyně v každé kategorii vyhrávají volný vstup a kostku magnézia."
 		}
 	},
 	"TeamPage": {
 		"title": "Náš tým",
-		"subtitle": "Zástupný text představující lidi, kteří stojí za Hangarem.",
+		"subtitle": "Lidé, kteří stojí za Hangarem, od CEO po vedoucí směn. Potřebuješ něco konkrétního? Napiš rovnou tomu správnému.",
 		"coreGroup": "Hangar Core"
 	},
 	"CareersPage": {
 		"title": "Kariéra",
-		"subtitle": "Zástupný text o práci v Hangaru.",
-		"whyTitle": "Proč pracovat v Hangaru",
+		"subtitle": "Chceš se přidat k Hangar Crew? Hledáme lidi, kteří mají rádi lezení, kávu a práci s lidmi.",
+		"whyTitle": "Proč pracovat na Hangaru",
 		"openPositions": "Volná místa",
-		"empty": "Momentálně nemáme volná místa — ale pořád rosteme.",
+		"empty": "Momentálně máme plno, ale naše crew čas od času roste. Ozvi se nám.",
 		"emptyCta": "Ozvi se nám"
 	},
 	"PositionPage": {
 		"back": "Zpět na kariéru",
 		"employmentType": {
 			"full-time": "Plný úvazek",
-			"part-time": "Částečný úvazek",
+			"part-time": "Brigáda / částečný úvazek",
 			"contract": "Smlouva / DPP"
 		},
 		"contact": "Kontakt",
-		"apply": "Přihlásit se"
+		"apply": "Přihlásit se",
+		"lists": {
+			"responsibilities": "Co tě čeká",
+			"requirements": "Co od tebe čekáme",
+			"offer": "Co nabízíme"
+		}
 	},
 	"ContactPage": {
 		"title": "Kontakt",
-		"subtitle": "Zástupný text o tom, jak kontaktovat pobočku Hangar.",
+		"subtitle": "Kde nás najdeš, jak se k nám dostaneš a komu napsat.",
 		"whereTitle": "Kde nás najdeš",
 		"comingSoon": "{gym} se brzy otevírá — podrobnosti o pobočce oznámíme před otevřením.",
 		"mapLabel": "Mapa — {gym}",
@@ -223,22 +229,22 @@
 		"companyTitle": "Firemní údaje",
 		"quickContactsTitle": "Rychlý kontakt",
 		"formTitle": "Napiš nám",
-		"formPending": "Kontaktní formulář — již brzy."
+		"formPending": "Kontaktní formulář brzy spustíme. Do té doby nám napiš e-mail nebo zavolej."
 	},
 	"PrivacyPage": {
 		"title": "Ochrana osobních údajů",
-		"paragraph1": "Zástupný text. Tady bude skutečné znění zásad ochrany osobních údajů — jak síť Hangar shromažďuje, používá a uchovává osobní údaje.",
-		"paragraph2": "Zástupný odstavec dva — místo pro části o době uchovávání údajů, zpracovatelích a právech návštěvníků."
+		"paragraph1": "Osobní údaje zpracovávají provozovatelé jednotlivých poboček: VerticalBlock s.r.o. (Hangar Brno) a CLIMBING GYM s.r.o. (Hangar Ostrava), obě se sídlem U Soudu 6200/19, 708 00 Ostrava.",
+		"paragraph2": "Úplné znění zásad ochrany osobních údajů sem doplníme po právní kontrole. Do té doby platí dokumenty GDPR zveřejněné na hangarbrno.cz a hangarostrava.cz."
 	},
 	"CookiePage": {
 		"title": "Zásady cookies",
-		"paragraph1": "Zástupný text. Tady budou skutečné zásady cookies — které cookies používáme, proč a jak můžeš souhlas spravovat.",
-		"paragraph2": "Zástupný odstavec dva — místo pro přehled kategorií cookies (nezbytné, analytické, marketingové), až přibude analytika."
+		"paragraph1": "Tento web zatím nepoužívá žádné analytické ani marketingové cookies.",
+		"paragraph2": "Až přibude analytika, najdeš tu přehled všech cookies a nastavení souhlasu."
 	},
 	"VisitorRulesPage": {
 		"title": "Návštěvní řád",
-		"paragraph1": "Zástupný text. Tady bude skutečný návštěvní řád — bezpečnostní pravidla, chování na stěně a věkové podmínky.",
-		"paragraph2": "Zástupný odstavec dva — místo pro pravidla k vybavení na jednotlivých pobočkách."
+		"paragraph1": "Každý návštěvník se musí seznámit s návštěvním řádem, souhlas s ním potvrzuješ při registraci. Každá pobočka má vlastní návštěvní řád.",
+		"paragraph2": "To nejdůležitější: děti do 13 let jen pod neustálým dohledem dospělého, mladiství od 13 do 18 let potřebují souhlas zákonného zástupce a na boso se lézt nesmí. Úplné znění najdeš v sekci Dokumenty na stránce každé pobočky."
 	},
 	"NotFound": {
 		"title": "Stránka nenalezena",

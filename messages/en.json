@@ -1,7 +1,7 @@
 {
 	"Metadata": {
 		"siteName": "HangarGyms",
-		"description": "The climbing gym network of the Czech Republic."
+		"description": "Hangar — climbing playground by Adam Ondra. Bouldering gyms in Brno and Ostrava: over 300 boulders, training zones, kids' parks and a cafe."
 	},
 	"Navigation": {
 		"home": "HangarGyms — home",
@@ -24,11 +24,12 @@
 		"label": "Language"
 	},
 	"Footer": {
-		"tagline": "Czech bouldering and climbing gym network, backed by Adam Ondra.",
+		"tagline": "Climbing playground by Adam Ondra. Bouldering gyms in Brno and Ostrava.",
 		"contact": "Contact",
 		"navigation": "Navigation",
 		"legal": "Legal",
-		"copyright": "© {year} HangarGyms. All rights reserved."
+		"copyright": "© {year} HangarGyms. All rights reserved.",
+		"operator": "{gym} operator"
 	},
 	"Common": {
 		"status": {
@@ -69,39 +70,39 @@
 		},
 		"success": {
 			"title": "Message received",
-			"description": "This is a wireframe prototype — no message was actually sent.",
+			"description": "This is a preview version of the site, so your message wasn't actually sent.",
 			"sendAnother": "Send another message"
 		}
 	},
 	"HomePage": {
-		"metaTitle": "The Climbing Gym Network of the Czech Republic",
+		"metaTitle": "Bouldering gyms in Brno and Ostrava",
 		"hero": {
 			"imageLabel": "Hero image",
-			"title": "The Climbing Gym Network of the Czech Republic",
-			"subtitle": "Placeholder subtext introducing the Hangar network. Second placeholder line with a short supporting detail.",
-			"cta": "Find your gym"
+			"title": "Come bouldering in Brno and Ostrava",
+			"subtitle": "Climbing centres created with Adam Ondra. Over 300 boulders for beginners and pros, with new ones every week.",
+			"cta": "Find your Hangar"
 		},
 		"about": {
 			"title": "About Hangar",
-			"paragraph1": "Placeholder paragraph one — describing the Hangar network's origins and mission across the Czech Republic.",
-			"paragraph2": "Placeholder paragraph two — describing the facilities and what makes a Hangar gym different from other climbing walls.",
-			"paragraph3": "Placeholder paragraph three — describing the community and what's next for the network.",
+			"paragraph1": "Hangar is a climbing playground by Adam Ondra: a climbing centre dedicated entirely to bouldering, created with one of the world's best climbers. In 2019 we kicked off a new era of modern bouldering in the Czech Republic in Brno, and today you'll find us in Ostrava too.",
+			"paragraph2": "Over 300 boulders from total beginner to 8A, and training zones with Moonboards, spray walls and, in Ostrava, a Kilterboard. Our setters add new boulders every week, so nothing gets old.",
+			"paragraph3": "Most of all, Hangar is a community. Every month we climb the Hangar Challenge, young competitors grow up in the Hangar Rockets club, and after climbing we meet over specialty coffee at our Cafe Bar.",
 			"imageLabel": "About Hangar photo"
 		},
 		"locations": {
 			"title": "Find your Hangar"
 		},
 		"events": {
-			"title": "Events & Activities",
-			"line1": "Placeholder copy line one — courses, classes, and one-off events.",
-			"line2": "Placeholder copy line two — the year-round Hangar Challenge.",
+			"title": "Events & activities",
+			"line1": "Climbing courses for kids and adults, fitness classes, birthday parties and day camps.",
+			"line2": "And every month, the Hangar Challenge: 30 new boulders and a competition for everyone.",
 			"cta": "See what's on",
 			"imageLabel": "Events photo"
 		},
 		"visit": {
-			"title": "Visit Us",
-			"line1": "Placeholder copy line one — planning a visit, registration, and what to expect.",
-			"line2": "Placeholder copy line two — hours, pricing, and booking a ticket.",
+			"title": "Visit us",
+			"line1": "First time at Hangar? Register online beforehand and save time for yourself and our bar staff.",
+			"line2": "We're open every day except Christmas Eve, and your entry is valid all day. We'll lend you climbing shoes.",
 			"cta": "Plan your visit",
 			"imageLabel": "Visit Us photo"
 		},
@@ -109,7 +110,7 @@
 	},
 	"VisitPage": {
 		"title": "Visit Us",
-		"subtitle": "Placeholder subtext about planning a visit to a Hangar gym.",
+		"subtitle": "Brno or Ostrava? Pick your Hangar and check the opening hours, prices and what's waiting for you.",
 		"chooseLocation": "Choose your location"
 	},
 	"BranchPage": {
@@ -118,7 +119,7 @@
 		"facebook": "{gym} on Facebook",
 		"register": {
 			"title": "Register online",
-			"text": "Placeholder copy about registering online before your first visit.",
+			"text": "First time here? Register online beforehand. You only do it once, it confirms you know the visitor rules, and it saves time at the bar. Each branch has its own registration.",
 			"cta": "Register"
 		},
 		"occupancy": {
@@ -126,12 +127,13 @@
 			"empty": "Live occupancy data isn't available yet."
 		},
 		"booking": {
-			"title": "Book a Ticket & Activities",
-			"ticketsTitle": "Tickets",
-			"ticketsText": "Placeholder copy about booking a ticket online ahead of your visit.",
+			"title": "Tickets & activities",
+			"ticketsTitle": "Passes & memberships",
+			"ticketsText": "In your customer account you can add credit and buy a pass or membership.",
 			"activitiesTitle": "Events & activities",
-			"activitiesText": "Placeholder copy about booking courses, classes, and events.",
-			"allActivityTypes": "See all activity types"
+			"activitiesText": "Book courses, fitness classes, birthday parties, day camps and other events online.",
+			"allActivityTypes": "See all activity types",
+			"ticketsCta": "My account"
 		},
 		"prices": "Prices",
 		"documents": {
@@ -140,66 +142,65 @@
 			"visitorRules": "Visitor Rules (PDF)"
 		},
 		"cafe": {
-			"title": "Hangar Cafe",
-			"coffeeTitle": "Specialty Coffee",
-			"coffeeText": "Placeholder copy about the specialty coffee offer.",
+			"title": "Cafe Bar",
+			"coffeeTitle": "Specialty coffee",
 			"coffeeImageLabel": "Specialty coffee photo",
-			"bistroTitle": "Fresh Bistro",
-			"bistroText": "Placeholder copy about the fresh bistro food offer.",
+			"bistroTitle": "Fresh bistro",
 			"bistroImageLabel": "Fresh bistro photo",
 			"menu": "Download menu (PDF)"
 		},
 		"physio": {
-			"title": "Physio",
+			"title": "Physiotherapy",
 			"empty": "Physio isn't offered at this location yet.",
 			"service": "Service",
-			"duration": "Duration",
+			"duration": "Length",
 			"price": "Price",
 			"bookTitle": "Book an appointment",
-			"bookText": "Placeholder copy about booking a physio appointment online.",
-			"messageTitle": "Or send a message"
+			"bookText": "How to book each therapist is listed under their name above.",
+			"messageTitle": "Or send us a message"
 		}
 	},
 	"EventsPage": {
-		"title": "Events & Activities",
-		"subtitle": "Placeholder subtext about events and activities across the Hangar network.",
-		"bookTitle": "Book Activities",
+		"title": "Events & activities",
+		"subtitle": "Courses, classes, parties, day camps and competitions. There's always something on at Hangar.",
+		"bookTitle": "Book activities",
 		"bookingUnavailable": "Booking isn't available yet for this location.",
-		"activityTypes": "Activity Types",
+		"activityTypes": "Activity types",
 		"challenge": {
 			"title": "Hangar Challenge",
-			"text": "Placeholder copy about the year-round Hangar Challenge running across all locations.",
+			"text": "Every month, 30 new boulders and a competition for everyone, from hobby climbers to the elite. You log your own results in the TopLogger app.",
 			"cta": "How it works"
 		}
 	},
 	"ChallengePage": {
 		"title": "Hangar Challenge",
-		"subtitle": "A year-round challenge for climbers of all levels.",
+		"subtitle": "A competition for everyone. Every month: 30 boulders, loads of fun and pushing your limits.",
 		"what": {
 			"title": "What is the Hangar Challenge?",
-			"text": "Placeholder paragraph — explaining the self-paced, year-round bouldering challenge that runs across all Hangar locations, open to climbers of every level.",
-			"imageLabel": "Hangar Challenge photo"
+			"text": "Every month we set 30 boulders marked with numbered Hangar Challenge cards, 1 to 30. They get harder as you go, so start at number one to warm up. There are three categories, Hobby, Sport and Elite, and the goal is to top as many boulders as possible in as few attempts as possible. It's all about fair play: everyone logs their own results. In Brno the Challenge runs from the first to the last day of the month; in Ostrava, from the 15th to the 15th of the following month.",
+			"imageLabel": "Hangar Challenge photo",
+			"challenger": "Challenger 2026 is a bouldering competition series where gravity loses its grip! Twice a year at each branch we climb the Challenge in competition mode: from 17:00 to 20:30, with results on the spot and much bigger prizes. Dates: Ostrava 20 March and 18 September, Brno 30 April and 27 October. At the end of the year we crown the King and Queen of the Challenger."
 		},
 		"howItWorks": "How it works",
 		"stepLabel": "Step {number}",
 		"steps": {
-			"step1": "Pick up a challenge card",
-			"step2": "Complete routes at your own pace",
-			"step3": "Log progress on the challenge board",
-			"step4": "Collect your reward at reception"
+			"step1": "Download the TopLogger app and find your Hangar.",
+			"step2": "Under Competitions, pick Hangar Challenge and tap Register.",
+			"step3": "Climb boulders 1 to 30 and log every attempt (Try), every send (Top) and every Flash.",
+			"step4": "The best man and woman in each category win a free entry and a block of chalk."
 		}
 	},
 	"TeamPage": {
 		"title": "Our Team",
-		"subtitle": "Placeholder subtext introducing the people behind Hangar.",
+		"subtitle": "The people behind Hangar, from the CEO to our shift leads. Need something specific? Write straight to the right person.",
 		"coreGroup": "Hangar Core"
 	},
 	"CareersPage": {
 		"title": "Careers",
-		"subtitle": "Placeholder subtext about working at Hangar.",
+		"subtitle": "Want to join the Hangar Crew? We're looking for people who love climbing, coffee and working with people.",
 		"whyTitle": "Why work at Hangar",
-		"openPositions": "Open Positions",
-		"empty": "No open positions right now — but we're always growing.",
+		"openPositions": "Open positions",
+		"empty": "We're fully staffed right now, but our crew grows from time to time. Get in touch.",
 		"emptyCta": "Get in touch"
 	},
 	"PositionPage": {
@@ -210,11 +211,16 @@
 			"contract": "Contract"
 		},
 		"contact": "Contact",
-		"apply": "Apply"
+		"apply": "Apply",
+		"lists": {
+			"responsibilities": "What you'll do",
+			"requirements": "What we're looking for",
+			"offer": "What we offer"
+		}
 	},
 	"ContactPage": {
 		"title": "Contact",
-		"subtitle": "Placeholder subtext about getting in touch with a Hangar location.",
+		"subtitle": "Where to find us, how to get here and who to write to.",
 		"whereTitle": "Where to find us",
 		"comingSoon": "{gym} is coming soon — location details will be announced closer to opening.",
 		"mapLabel": "Map — {gym}",
@@ -223,22 +229,22 @@
 		"companyTitle": "Company info",
 		"quickContactsTitle": "Quick contacts",
 		"formTitle": "Get in touch",
-		"formPending": "Contact form — coming soon."
+		"formPending": "The contact form is coming soon. Until then, email or call us."
 	},
 	"PrivacyPage": {
 		"title": "Privacy Policy",
-		"paragraph1": "Placeholder rich-text body. This page will hold the real privacy policy copy — how personal data is collected, used, and stored across the Hangar network.",
-		"paragraph2": "Placeholder paragraph two, standing in for sections on data retention, third-party processors, and visitor rights."
+		"paragraph1": "Personal data is processed by the operators of each branch: VerticalBlock s.r.o. (Hangar Brno) and CLIMBING GYM s.r.o. (Hangar Ostrava), both registered at U Soudu 6200/19, 708 00 Ostrava.",
+		"paragraph2": "The full privacy policy will be added here after legal review. Until then, the GDPR documents published on hangarbrno.cz and hangarostrava.cz apply."
 	},
 	"CookiePage": {
 		"title": "Cookie Policy",
-		"paragraph1": "Placeholder rich-text body. This page will hold the real cookie policy copy — which cookies are used, why, and how visitors can manage consent.",
-		"paragraph2": "Placeholder paragraph two, standing in for a breakdown of cookie categories (essential, analytics, marketing) once analytics is in scope."
+		"paragraph1": "This website doesn't use any analytics or marketing cookies yet.",
+		"paragraph2": "Once analytics are added, you'll find an overview of all cookies and your consent settings here."
 	},
 	"VisitorRulesPage": {
 		"title": "Visitor Rules",
-		"paragraph1": "Placeholder rich-text body. This page will hold the real visitor rules — safety guidelines, conduct on the wall, and age requirements.",
-		"paragraph2": "Placeholder paragraph two, standing in for equipment policies specific to each location."
+		"paragraph1": "Every visitor must read the visitor rules; you confirm you agree to them when you register. Each branch has its own visitor rules.",
+		"paragraph2": "The key points: children under 13 only under constant adult supervision, teens aged 13 to 18 need a legal guardian's consent, and no barefoot climbing. You'll find the full rules under Documents on each branch's page."
 	},
 	"NotFound": {
 		"title": "Page not found",

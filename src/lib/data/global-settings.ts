@@ -7,6 +7,10 @@ import type { GlobalSettings } from "@/lib/types/global-settings"
  * per-location or to one global inbox?"). Confirm with the client before
  * Phase 5 wires up real submission handling.
  *
+ * Not shown on the site any more: the live sites have no network-wide
+ * legal entity, email or phone, so the footer lists each branch's operator
+ * and contacts instead (Phase 2). Kept for the launch checklist decision.
+ *
  * `company`, `generalEmail`, and `generalPhone` exist to satisfy the
  * footer's "Company block — global legal entity" and "general email/phone"
  * requirements (spec Section 2.2), which aren't covered by the spec's own

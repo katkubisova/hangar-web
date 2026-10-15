@@ -1,39 +1,41 @@
 import type { BenefitCardData } from "@/lib/types/benefit-card"
 
+// From the Ostrava job ads (hangarostrava.cz/volna-mista/): bar staff and
+// cleaning crew.
 export const benefitCards: BenefitCardData[] = [
 	{
-		icon: "users",
-		title: { cs: "Skvělá komunita", en: "Great Community" },
+		icon: "building",
+		title: { cs: "Lezení zdarma", en: "Free climbing" },
 		text: {
-			cs: "Zástupný text — přidej se k lezcům a kolegům, které tenhle sport opravdu baví.",
-			en: "Placeholder copy — join a network of climbers and staff who genuinely love the sport.",
+			cs: "Užij si naše zázemí naplno. K tomu slevy na outdoorové vybavení.",
+			en: "Make the most of our facilities, plus discounts on outdoor gear.",
 		},
 		displayOrder: 1,
 	},
 	{
-		icon: "building",
-		title: { cs: "Moderní zázemí", en: "Modern Facilities" },
+		icon: "clock",
+		title: { cs: "Flexibilní směny", en: "Flexible shifts" },
 		text: {
-			cs: "Zástupný text — pracuj v nově postavených halách s moderním vybavením.",
-			en: "Placeholder copy — work in newly built gyms with up-to-date equipment.",
+			cs: "Směny si skládáš podle svých možností, ať studuješ, trénuješ, nebo děláš něco dalšího.",
+			en: "Shifts that fit around you, whether you study, train or do something else.",
 		},
 		displayOrder: 2,
 	},
 	{
-		icon: "clock",
-		title: { cs: "Flexibilní směny", en: "Flexible Hours" },
+		icon: "users",
+		title: { cs: "Parta, která drží spolu", en: "A crew that sticks together" },
 		text: {
-			cs: "Zástupný text — směny, které skloubíš se studiem, tréninkem i dalšími povinnostmi.",
-			en: "Placeholder copy — shifts that work around study, training, or other commitments.",
+			cs: "Mladý, otevřený kolektiv a teambuildingy na stěně i mimo ni.",
+			en: "A young, open team and team-building events on the wall and beyond.",
 		},
 		displayOrder: 3,
 	},
 	{
 		icon: "trending-up",
-		title: { cs: "Prostor růst", en: "Room to Grow" },
+		title: { cs: "Férová odměna", en: "Fair pay" },
 		text: {
-			cs: "Zástupný text — rostoucí síť se skutečnou šancí převzít víc odpovědnosti.",
-			en: "Placeholder copy — a growing network with real opportunities to take on more.",
+			cs: "Férové finanční ohodnocení a možnost profesního růstu i dlouhodobé spolupráce.",
+			en: "Fair pay and room to grow, with long-term opportunities.",
 		},
 		displayOrder: 4,
 	},

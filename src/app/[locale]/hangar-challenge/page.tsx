@@ -36,6 +36,9 @@ export default async function HangarChallengePage({ params }: LocaleParams) {
 						<p className="text-muted-foreground leading-relaxed">
 							{t("what.text")}
 						</p>
+						<p className="text-muted-foreground leading-relaxed">
+							{t("what.challenger")}
+						</p>
 					</div>
 					<PlaceholderImage
 						label={t("what.imageLabel")}

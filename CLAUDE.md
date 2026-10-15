@@ -103,8 +103,9 @@ flag it**. Don't silently resolve it, don't guess, don't pick the
 
 ### Phase 2 — Copy
 
-- [ ] Pull facts from the live sites, rewrite CZ first, then EN.
-- [ ] Copy review doc (CZ/EN side by side, sources noted) for approval.
+- [x] Pull facts from the live sites, rewrite CZ first, then EN.
+- [x] Copy review doc (CZ/EN side by side, sources noted) for approval:
+      `docs/copy-review.md` (+ shared page). Open flags listed there.
 
 ### Phase 3 — Links and URLs
 

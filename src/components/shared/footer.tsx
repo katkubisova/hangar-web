@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl"
 
 import { type AppHref, Link } from "@/i18n/navigation"
-import { globalSettings } from "@/lib/data/global-settings"
 import { gyms } from "@/lib/data/gyms"
 
 interface FooterLink {
@@ -48,37 +47,39 @@ export function Footer() {
 						<p className="text-sm leading-relaxed text-muted-foreground">
 							{t("tagline")}
 						</p>
-						<div className="space-y-0.5 text-xs text-muted-foreground">
-							<p>{globalSettings.company.name}</p>
-							<p>{globalSettings.company.companyId}</p>
-							<p>{globalSettings.company.taxId}</p>
-							<p>{globalSettings.company.address}</p>
+						{/* Each branch has its own operator; there's no network-wide
+						legal entity on the live sites. */}
+						<div className="space-y-2 text-xs text-muted-foreground">
+							{openLocations.map(gym => (
+								<p key={gym.slug}>
+									{t("operator", { gym: gym.name })}: {gym.companyName},{" "}
+									{gym.companyId}, {gym.taxId}
+								</p>
+							))}
 						</div>
 					</div>
 
 					<div className="space-y-4">
 						<h3 className="text-sm font-semibold">{t("contact")}</h3>
-						<div className="space-y-2 text-sm">
-							<a
-								href={`mailto:${globalSettings.generalEmail}`}
-								className="block text-foreground hover:underline"
-							>
-								{globalSettings.generalEmail}
-							</a>
-							<a
-								href={`tel:${globalSettings.generalPhone.replace(/\s/g, "")}`}
-								className="block text-foreground hover:underline"
-							>
-								{globalSettings.generalPhone}
-							</a>
-							<ul className="space-y-1 pt-1 text-muted-foreground">
-								{openLocations.map(gym => (
-									<li key={gym.slug}>
-										{gym.name} — {gym.phone}
-									</li>
-								))}
-							</ul>
-						</div>
+						<ul className="space-y-3 text-sm">
+							{openLocations.map(gym => (
+								<li key={gym.slug} className="space-y-0.5">
+									<p className="font-medium">{gym.name}</p>
+									<a
+										href={`mailto:${gym.email}`}
+										className="block text-muted-foreground hover:text-foreground"
+									>
+										{gym.email}
+									</a>
+									<a
+										href={`tel:${gym.phone.replace(/\s/g, "")}`}
+										className="block text-muted-foreground hover:text-foreground"
+									>
+										{gym.phone}
+									</a>
+								</li>
+							))}
+						</ul>
 					</div>
 
 					<div className="space-y-4">
