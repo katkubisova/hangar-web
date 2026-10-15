@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { type FormEvent, useId, useState } from "react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -8,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { Link } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 
 const ACCEPTED_CV_EXTENSIONS = [".pdf", ".doc", ".docx"]
@@ -33,6 +35,7 @@ export function ContactForm({
 	variant = "default",
 	className,
 }: ContactFormProps) {
+	const t = useTranslations("ContactForm")
 	const formId = useId()
 	const [errors, setErrors] = useState<FormErrors>({})
 	const [submitted, setSubmitted] = useState(false)
@@ -43,10 +46,10 @@ export function ContactForm({
 			file.name.toLowerCase().endsWith(ext)
 		)
 		if (!hasAcceptedExtension) {
-			return "File must be a PDF, DOC, or DOCX."
+			return t("errors.cvType")
 		}
 		if (file.size > MAX_CV_SIZE_BYTES) {
-			return "File must be 5 MB or smaller."
+			return t("errors.cvSize")
 		}
 		return undefined
 	}
@@ -66,14 +69,14 @@ export function ContactForm({
 				: undefined
 
 		const nextErrors: FormErrors = {}
-		if (!name) nextErrors.name = "Name is required."
+		if (!name) nextErrors.name = t("errors.nameRequired")
 		if (!email) {
-			nextErrors.email = "Email is required."
+			nextErrors.email = t("errors.emailRequired")
 		} else if (!EMAIL_PATTERN.test(email)) {
-			nextErrors.email = "Enter a valid email address."
+			nextErrors.email = t("errors.emailInvalid")
 		}
-		if (!phone) nextErrors.phone = "Phone number is required."
-		if (!message) nextErrors.message = "Message is required."
+		if (!phone) nextErrors.phone = t("errors.phoneRequired")
+		if (!message) nextErrors.message = t("errors.messageRequired")
 		if (variant === "careers") {
 			const cvError = validateCvFile(
 				cvFile && cvFile.size > 0 ? cvFile : undefined
@@ -81,7 +84,7 @@ export function ContactForm({
 			if (cvError) nextErrors.cv = cvError
 		}
 		if (!consent) {
-			nextErrors.consent = "You must agree before submitting."
+			nextErrors.consent = t("errors.consentRequired")
 		}
 
 		setErrors(nextErrors)
@@ -96,9 +99,9 @@ export function ContactForm({
 	if (submitted) {
 		return (
 			<Alert className={className}>
-				<AlertTitle>Message received</AlertTitle>
+				<AlertTitle>{t("success.title")}</AlertTitle>
 				<AlertDescription>
-					This is a wireframe prototype — no message was actually sent.
+					{t("success.description")}
 					<div className="mt-3">
 						<Button
 							type="button"
@@ -106,7 +109,7 @@ export function ContactForm({
 							size="sm"
 							onClick={() => setSubmitted(false)}
 						>
-							Send another message
+							{t("success.sendAnother")}
 						</Button>
 					</div>
 				</AlertDescription>
@@ -121,7 +124,7 @@ export function ContactForm({
 			className={cn("flex flex-col gap-4", className)}
 		>
 			<div className="flex flex-col gap-1.5">
-				<Label htmlFor={`${formId}-name`}>Name</Label>
+				<Label htmlFor={`${formId}-name`}>{t("name")}</Label>
 				<Input
 					id={`${formId}-name`}
 					name="name"
@@ -136,7 +139,7 @@ export function ContactForm({
 			</div>
 
 			<div className="flex flex-col gap-1.5">
-				<Label htmlFor={`${formId}-email`}>Email</Label>
+				<Label htmlFor={`${formId}-email`}>{t("email")}</Label>
 				<Input
 					id={`${formId}-email`}
 					name="email"
@@ -152,7 +155,7 @@ export function ContactForm({
 			</div>
 
 			<div className="flex flex-col gap-1.5">
-				<Label htmlFor={`${formId}-phone`}>Phone</Label>
+				<Label htmlFor={`${formId}-phone`}>{t("phone")}</Label>
 				<Input
 					id={`${formId}-phone`}
 					name="phone"
@@ -168,7 +171,7 @@ export function ContactForm({
 			</div>
 
 			<div className="flex flex-col gap-1.5">
-				<Label htmlFor={`${formId}-message`}>Message</Label>
+				<Label htmlFor={`${formId}-message`}>{t("message")}</Label>
 				<Textarea
 					id={`${formId}-message`}
 					name="message"
@@ -190,9 +193,7 @@ export function ContactForm({
 
 			{variant === "careers" && (
 				<div className="flex flex-col gap-1.5">
-					<Label htmlFor={`${formId}-cv`}>
-						CV (PDF, DOC, or DOCX, max 5 MB)
-					</Label>
+					<Label htmlFor={`${formId}-cv`}>{t("cv")}</Label>
 					<Input
 						id={`${formId}-cv`}
 						name="cv"
@@ -220,11 +221,13 @@ export function ContactForm({
 						}
 					/>
 					<Label htmlFor={`${formId}-consent`} className="font-normal">
-						I agree to have my data processed in accordance with the{" "}
-						<a href="/privacy-policy" className="underline">
-							Privacy Policy
-						</a>
-						.
+						{t.rich("consent", {
+							link: chunks => (
+								<Link href="/privacy-policy" className="underline">
+									{chunks}
+								</Link>
+							),
+						})}
 					</Label>
 				</div>
 				{errors.consent && (
@@ -238,7 +241,7 @@ export function ContactForm({
 			</div>
 
 			<Button type="submit" className="w-fit">
-				Submit
+				{t("submit")}
 			</Button>
 		</form>
 	)

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { cn, formatPrice } from "./utils"
+import { cn, formatPrice, localize } from "./utils"
 
 describe("cn", () => {
 	it("should merge classes correctly", () => {
@@ -47,5 +47,39 @@ describe("formatPrice", () => {
 	it("should separate thousands with a non-breaking space", () => {
 		expect(formatPrice(1940)).toBe("1\u00a0940\u00a0Kč")
 		expect(formatPrice(26700)).toBe("26\u00a0700\u00a0Kč")
+	})
+})
+
+describe("localize", () => {
+	it("should pick the requested language", () => {
+		expect(localize({ cs: "Ahoj", en: "Hello" }, "cs")).toBe("Ahoj")
+		expect(localize({ cs: "Ahoj", en: "Hello" }, "en")).toBe("Hello")
+	})
+
+	it("should resolve localized values at any depth", () => {
+		const data = {
+			slug: "brno",
+			rows: [{ label: { cs: "Dospělý", en: "Adult" }, cells: [215, null] }],
+		}
+		expect(localize(data, "cs")).toEqual({
+			slug: "brno",
+			rows: [{ label: "Dospělý", cells: [215, null] }],
+		})
+	})
+
+	it("should resolve localized arrays", () => {
+		const label = {
+			cs: [{ text: "Dítě", marker: "2" }],
+			en: [{ text: "Child", marker: "2" }],
+		}
+		expect(localize(label, "en")).toEqual([{ text: "Child", marker: "2" }])
+	})
+
+	it("should leave objects with other keys untouched", () => {
+		expect(localize({ cs: "a", en: "b", note: "c" }, "cs")).toEqual({
+			cs: "a",
+			en: "b",
+			note: "c",
+		})
 	})
 })

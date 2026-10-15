@@ -1,22 +1,18 @@
-import Link from "next/link"
+import { useTranslations } from "next-intl"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { PlaceholderImage } from "@/components/ui/placeholder-image"
-import type { Gym, GymStatus } from "@/lib/types/gym"
+import { Link } from "@/i18n/navigation"
+import type { Gym } from "@/lib/types/gym"
 import { cn } from "@/lib/utils"
 
 interface LocationCardProps {
 	gym: Gym
 }
 
-const statusLabel: Record<GymStatus, string> = {
-	open: "Open",
-	"coming-soon": "Coming soon",
-	hidden: "Hidden",
-}
-
 export function LocationCard({ gym }: LocationCardProps) {
+	const t = useTranslations("Common")
 	const isComingSoon = gym.status === "coming-soon"
 
 	return (
@@ -32,7 +28,7 @@ export function LocationCard({ gym }: LocationCardProps) {
 			<div className="flex items-center justify-between gap-2">
 				<h3 className="font-medium">{gym.name}</h3>
 				<Badge variant={isComingSoon ? "secondary" : "default"}>
-					{statusLabel[gym.status]}
+					{t(`status.${gym.status}`)}
 				</Badge>
 			</div>
 			<p className="text-sm text-muted-foreground">{gym.shortDescription}</p>
@@ -50,10 +46,14 @@ export function LocationCard({ gym }: LocationCardProps) {
 				<Button
 					variant="outline"
 					className="w-fit after:absolute after:inset-0 after:rounded-lg after:content-[''] active:not-aria-[haspopup]:translate-none"
-					aria-label={`Visit ${gym.name}`}
-					render={<Link href={`/visit/${gym.slug}`} />}
+					aria-label={t("visitGym", { gym: gym.name })}
+					render={
+						<Link
+							href={{ pathname: "/visit/[gym]", params: { gym: gym.slug } }}
+						/>
+					}
 				>
-					Visit
+					{t("visit")}
 				</Button>
 			)}
 		</div>

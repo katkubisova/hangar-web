@@ -4,16 +4,17 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion"
+import type { Resolved } from "@/lib/types/localized"
 import type {
 	PriceCategory,
 	PriceCell,
 	PriceLabel,
-	PriceTable as PriceTableData,
+	PriceTable,
 } from "@/lib/types/price-list"
 import { formatPrice } from "@/lib/utils"
 
 interface PricesAccordionProps {
-	categories: PriceCategory[]
+	categories: Resolved<PriceCategory>[]
 }
 
 export function PricesAccordion({ categories }: PricesAccordionProps) {
@@ -26,7 +27,7 @@ export function PricesAccordion({ categories }: PricesAccordionProps) {
 						<div className="space-y-4">
 							{category.tables.map((table, index) => (
 								// biome-ignore lint/suspicious/noArrayIndexKey: tables are static and never reorder
-								<PriceTable key={index} table={table} />
+								<PriceTableView key={index} table={table} />
 							))}
 							{category.footnotes && category.footnotes.length > 0 && (
 								<ul className="space-y-1 text-xs text-muted-foreground">
@@ -54,7 +55,7 @@ export function PricesAccordion({ categories }: PricesAccordionProps) {
 
 // Wide tables scroll horizontally inside their own container on small
 // screens (never the page), with the label column pinned to the left.
-function PriceTable({ table }: { table: PriceTableData }) {
+function PriceTableView({ table }: { table: Resolved<PriceTable> }) {
 	const [labelColumn, ...valueColumns] = table.columns
 
 	return (
@@ -103,7 +104,7 @@ function PriceTable({ table }: { table: PriceTableData }) {
 	)
 }
 
-function Label({ label }: { label: PriceLabel }) {
+function Label({ label }: { label: Resolved<PriceLabel> }) {
 	if (typeof label === "string") {
 		return label
 	}
@@ -116,7 +117,7 @@ function Label({ label }: { label: PriceLabel }) {
 	))
 }
 
-function formatCell(cell: PriceCell) {
+function formatCell(cell: Resolved<PriceCell>) {
 	if (cell === null) {
 		return "–"
 	}

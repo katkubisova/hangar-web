@@ -1,6 +1,248 @@
 {
+	"Metadata": {
+		"siteName": "HangarGyms",
+		"description": "Síť lezeckých stěn v České republice."
+	},
+	"Navigation": {
+		"home": "HangarGyms — úvod",
+		"main": "Hlavní navigace",
+		"mobile": "Mobilní navigace",
+		"toggleMenu": "Otevřít nebo zavřít menu",
+		"visit": "Pobočky",
+		"events": "Akce",
+		"about": "O nás",
+		"team": "Náš tým",
+		"careers": "Kariéra",
+		"contact": "Kontakt",
+		"eshop": "E-shop",
+		"challenge": "Hangar Challenge",
+		"privacy": "Ochrana osobních údajů",
+		"cookies": "Zásady cookies",
+		"visitorRules": "Návštěvní řád"
+	},
+	"LanguageSwitcher": {
+		"label": "Jazyk"
+	},
+	"Footer": {
+		"tagline": "Česká síť boulderingových a lezeckých stěn, za kterou stojí Adam Ondra.",
+		"contact": "Kontakt",
+		"navigation": "Navigace",
+		"legal": "Právní informace",
+		"copyright": "© {year} HangarGyms. Všechna práva vyhrazena."
+	},
+	"Common": {
+		"status": {
+			"open": "Otevřeno",
+			"coming-soon": "Již brzy",
+			"hidden": "Skryto"
+		},
+		"visit": "Navštívit",
+		"visitGym": "Navštívit {gym}",
+		"selectLocation": "Vyber pobočku",
+		"noPhotos": "Zatím tu nejsou žádné fotky.",
+		"gallery": "Galerie",
+		"faq": "Časté dotazy",
+		"bookNow": "Rezervovat",
+		"bookActivities": "Rezervovat aktivity"
+	},
+	"ActivityCard": {
+		"bookIn": "Rezervovat — {city}",
+		"bookActivityIn": "Rezervovat {activity} — {city}"
+	},
+	"ContactForm": {
+		"name": "Jméno",
+		"email": "E-mail",
+		"phone": "Telefon",
+		"message": "Zpráva",
+		"cv": "Životopis (PDF, DOC nebo DOCX, max. 5 MB)",
+		"consent": "Souhlasím se zpracováním osobních údajů podle <link>zásad ochrany osobních údajů</link>.",
+		"submit": "Odeslat",
+		"errors": {
+			"nameRequired": "Vyplň jméno.",
+			"emailRequired": "Vyplň e-mail.",
+			"emailInvalid": "Zadej platnou e-mailovou adresu.",
+			"phoneRequired": "Vyplň telefon.",
+			"messageRequired": "Napiš zprávu.",
+			"cvType": "Soubor musí být PDF, DOC nebo DOCX.",
+			"cvSize": "Soubor může mít nejvýš 5 MB.",
+			"consentRequired": "Před odesláním je potřeba souhlas."
+		},
+		"success": {
+			"title": "Zpráva přijata",
+			"description": "Tohle je prototyp — zpráva se ve skutečnosti neodeslala.",
+			"sendAnother": "Poslat další zprávu"
+		}
+	},
 	"HomePage": {
-		"title": "Ahoj světe!",
-		"welcome": "Vítejte ve Speculibro"
+		"metaTitle": "Síť lezeckých stěn v Česku",
+		"hero": {
+			"imageLabel": "Úvodní fotka",
+			"title": "Síť lezeckých stěn v Česku",
+			"subtitle": "Zástupný text představující síť Hangar. Druhý zástupný řádek s krátkým doplněním.",
+			"cta": "Najdi svou pobočku"
+		},
+		"about": {
+			"title": "O Hangaru",
+			"paragraph1": "Zástupný odstavec jedna — o vzniku a poslání sítě Hangar v České republice.",
+			"paragraph2": "Zástupný odstavec dva — o zázemí a o tom, čím se Hangar liší od jiných lezeckých stěn.",
+			"paragraph3": "Zástupný odstavec tři — o komunitě a o tom, co síť čeká dál.",
+			"imageLabel": "Fotka — o Hangaru"
+		},
+		"locations": {
+			"title": "Najdi svůj Hangar"
+		},
+		"events": {
+			"title": "Akce a aktivity",
+			"line1": "Zástupný text — kurzy, lekce a jednorázové akce.",
+			"line2": "Zástupný text — celoroční Hangar Challenge.",
+			"cta": "Co se děje",
+			"imageLabel": "Fotka — akce"
+		},
+		"visit": {
+			"title": "Přijď k nám",
+			"line1": "Zástupný text — plánování návštěvy, registrace a co čekat.",
+			"line2": "Zástupný text — otevírací doba, ceny a rezervace vstupu.",
+			"cta": "Naplánuj návštěvu",
+			"imageLabel": "Fotka — návštěva"
+		},
+		"faqTitle": "Časté dotazy"
+	},
+	"VisitPage": {
+		"title": "Pobočky",
+		"subtitle": "Zástupný text o plánování návštěvy pobočky Hangar.",
+		"chooseLocation": "Vyber pobočku"
+	},
+	"BranchPage": {
+		"about": "O pobočce",
+		"instagram": "{gym} na Instagramu",
+		"facebook": "{gym} na Facebooku",
+		"register": {
+			"title": "Online registrace",
+			"text": "Zástupný text o online registraci před první návštěvou.",
+			"cta": "Registrovat se"
+		},
+		"occupancy": {
+			"title": "Aktuální obsazenost",
+			"empty": "Údaje o aktuální obsazenosti zatím nejsou k dispozici."
+		},
+		"booking": {
+			"title": "Rezervace vstupu a aktivit",
+			"ticketsTitle": "Vstupy",
+			"ticketsText": "Zástupný text o online rezervaci vstupu před návštěvou.",
+			"activitiesTitle": "Akce a aktivity",
+			"activitiesText": "Zástupný text o rezervaci kurzů, lekcí a akcí.",
+			"allActivityTypes": "Všechny typy aktivit"
+		},
+		"prices": "Ceník",
+		"documents": {
+			"title": "Dokumenty",
+			"consentForm": "Souhlas zákonného zástupce (PDF)",
+			"visitorRules": "Návštěvní řád (PDF)"
+		},
+		"cafe": {
+			"title": "Hangar Cafe",
+			"coffeeTitle": "Výběrová káva",
+			"coffeeText": "Zástupný text o nabídce výběrové kávy.",
+			"coffeeImageLabel": "Fotka — výběrová káva",
+			"bistroTitle": "Čerstvé bistro",
+			"bistroText": "Zástupný text o nabídce čerstvého bistra.",
+			"bistroImageLabel": "Fotka — bistro",
+			"menu": "Stáhnout menu (PDF)"
+		},
+		"physio": {
+			"title": "Fyzioterapie",
+			"empty": "Fyzioterapie na této pobočce zatím není.",
+			"service": "Služba",
+			"duration": "Délka",
+			"price": "Cena",
+			"bookTitle": "Objednat se",
+			"bookText": "Zástupný text o online objednání k fyzioterapeutovi.",
+			"messageTitle": "Nebo nám napiš"
+		}
+	},
+	"EventsPage": {
+		"title": "Akce a aktivity",
+		"subtitle": "Zástupný text o akcích a aktivitách v síti Hangar.",
+		"bookTitle": "Rezervace aktivit",
+		"bookingUnavailable": "Rezervace na této pobočce zatím nejsou dostupné.",
+		"activityTypes": "Typy aktivit",
+		"challenge": {
+			"title": "Hangar Challenge",
+			"text": "Zástupný text o celoroční Hangar Challenge na všech pobočkách.",
+			"cta": "Jak to funguje"
+		}
+	},
+	"ChallengePage": {
+		"title": "Hangar Challenge",
+		"subtitle": "Celoroční výzva pro lezce všech úrovní.",
+		"what": {
+			"title": "Co je Hangar Challenge?",
+			"text": "Zástupný odstavec — o celoroční boulderingové výzvě vlastním tempem, která běží na všech pobočkách Hangar a je otevřená lezcům všech úrovní.",
+			"imageLabel": "Fotka — Hangar Challenge"
+		},
+		"howItWorks": "Jak to funguje",
+		"stepLabel": "Krok {number}",
+		"steps": {
+			"step1": "Vyzvedni si kartu výzvy",
+			"step2": "Lez cesty vlastním tempem",
+			"step3": "Zapisuj postup na tabuli výzvy",
+			"step4": "Vyzvedni si odměnu na recepci"
+		}
+	},
+	"TeamPage": {
+		"title": "Náš tým",
+		"subtitle": "Zástupný text představující lidi, kteří stojí za Hangarem.",
+		"coreGroup": "Hangar Core"
+	},
+	"CareersPage": {
+		"title": "Kariéra",
+		"subtitle": "Zástupný text o práci v Hangaru.",
+		"whyTitle": "Proč pracovat v Hangaru",
+		"openPositions": "Volná místa",
+		"empty": "Momentálně nemáme volná místa — ale pořád rosteme.",
+		"emptyCta": "Ozvi se nám"
+	},
+	"PositionPage": {
+		"back": "Zpět na kariéru",
+		"employmentType": {
+			"full-time": "Plný úvazek",
+			"part-time": "Částečný úvazek",
+			"contract": "Smlouva / DPP"
+		},
+		"contact": "Kontakt",
+		"apply": "Přihlásit se"
+	},
+	"ContactPage": {
+		"title": "Kontakt",
+		"subtitle": "Zástupný text o tom, jak kontaktovat pobočku Hangar.",
+		"whereTitle": "Kde nás najdeš",
+		"comingSoon": "{gym} se brzy otevírá — podrobnosti o pobočce oznámíme před otevřením.",
+		"mapLabel": "Mapa — {gym}",
+		"directionsTitle": "Jak se k nám dostaneš",
+		"directionsVideoLabel": "Video s cestou",
+		"companyTitle": "Firemní údaje",
+		"quickContactsTitle": "Rychlý kontakt",
+		"formTitle": "Napiš nám",
+		"formPending": "Kontaktní formulář — již brzy."
+	},
+	"PrivacyPage": {
+		"title": "Ochrana osobních údajů",
+		"paragraph1": "Zástupný text. Tady bude skutečné znění zásad ochrany osobních údajů — jak síť Hangar shromažďuje, používá a uchovává osobní údaje.",
+		"paragraph2": "Zástupný odstavec dva — místo pro části o době uchovávání údajů, zpracovatelích a právech návštěvníků."
+	},
+	"CookiePage": {
+		"title": "Zásady cookies",
+		"paragraph1": "Zástupný text. Tady budou skutečné zásady cookies — které cookies používáme, proč a jak můžeš souhlas spravovat.",
+		"paragraph2": "Zástupný odstavec dva — místo pro přehled kategorií cookies (nezbytné, analytické, marketingové), až přibude analytika."
+	},
+	"VisitorRulesPage": {
+		"title": "Návštěvní řád",
+		"paragraph1": "Zástupný text. Tady bude skutečný návštěvní řád — bezpečnostní pravidla, chování na stěně a věkové podmínky.",
+		"paragraph2": "Zástupný odstavec dva — místo pro pravidla k vybavení na jednotlivých pobočkách."
+	},
+	"NotFound": {
+		"title": "Stránka nenalezena",
+		"description": "Stránka, kterou hledáš, neexistuje nebo byla přesunuta.",
+		"cta": "Zpět na úvod"
 	}
 }

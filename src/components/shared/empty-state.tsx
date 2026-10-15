@@ -1,11 +1,12 @@
-import Link from "next/link"
 import type { ReactNode } from "react"
+
 import { Button } from "@/components/ui/button"
+import { type AppHref, Link } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 
 interface EmptyStateAction {
 	label: string
-	href?: string
+	href?: AppHref
 	onClick?: () => void
 }
 

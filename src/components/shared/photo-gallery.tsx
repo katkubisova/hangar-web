@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl"
+
 import { EmptyState } from "@/components/shared/empty-state"
 import { PlaceholderImage } from "@/components/ui/placeholder-image"
 
@@ -6,8 +8,10 @@ interface PhotoGalleryProps {
 }
 
 export function PhotoGallery({ images }: PhotoGalleryProps) {
+	const t = useTranslations("Common")
+
 	if (images.length === 0) {
-		return <EmptyState message="No gallery photos yet." />
+		return <EmptyState message={t("noPhotos")} />
 	}
 
 	return (

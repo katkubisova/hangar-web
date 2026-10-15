@@ -1,9 +1,10 @@
 "use client"
 
 import { Menu, X } from "lucide-react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
+
+import { LanguageSwitcher } from "@/components/shared/language-switcher"
 import { Button } from "@/components/ui/button"
 import {
 	DropdownMenu,
@@ -11,16 +12,21 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Link, usePathname } from "@/i18n/navigation"
+import type { AppPathname, StaticPathname } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
 
+// Labels are keys in the "Navigation" messages.
+type NavLabel = "visit" | "events" | "about" | "team" | "careers" | "contact"
+
 interface NavLink {
-	label: string
-	href: string
+	label: NavLabel
+	href: StaticPathname
 }
 
 interface NavGroup {
-	trigger: string
-	activeMatch: string[]
+	trigger: NavLabel
+	activeMatch: AppPathname[]
 	items: NavLink[]
 }
 
@@ -30,23 +36,24 @@ const ESHOP_URL = "https://www.hangareshop.cz/"
 // NOT count as active even though it's grouped here. That's a deliberate
 // quirk documented in the spec (Section 2.1), not a bug.
 const aboutGroup: NavGroup = {
-	trigger: "About",
+	trigger: "about",
 	activeMatch: ["/about"],
 	items: [
-		{ label: "Our Team", href: "/about/team" },
-		{ label: "Careers", href: "/about/careers" },
-		{ label: "Contact", href: "/contact" },
+		{ label: "team", href: "/about/team" },
+		{ label: "careers", href: "/about/careers" },
+		{ label: "contact", href: "/contact" },
 	],
 }
 
 const directLinks: NavLink[] = [
-	{ label: "Visit Us", href: "/visit" },
-	{ label: "Events", href: "/events" },
+	{ label: "visit", href: "/visit" },
+	{ label: "events", href: "/events" },
 ]
 
 const mobileLinks: NavLink[] = [...directLinks, ...aboutGroup.items]
 
 export function Header() {
+	const t = useTranslations("Navigation")
 	const pathname = usePathname()
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -56,13 +63,17 @@ export function Header() {
 	return (
 		<header className="sticky top-0 z-50 w-full border-b bg-background">
 			<div className="container mx-auto flex h-16 items-center justify-between px-4">
-				<Link href="/" className="text-lg font-bold tracking-tight">
+				<Link
+					href="/"
+					className="text-lg font-bold tracking-tight"
+					aria-label={t("home")}
+				>
 					HANGARGYMS
 				</Link>
 
 				<nav
 					className="hidden items-center gap-1 md:flex"
-					aria-label="Main navigation"
+					aria-label={t("main")}
 				>
 					{directLinks.map(link => (
 						<Button
@@ -73,7 +84,7 @@ export function Header() {
 							)}
 							render={<Link href={link.href} />}
 						>
-							{link.label}
+							{t(link.label)}
 						</Button>
 					))}
 
@@ -86,32 +97,19 @@ export function Header() {
 							<a href={ESHOP_URL} target="_blank" rel="noopener noreferrer" />
 						}
 					>
-						E-shop
+						{t("eshop")}
 					</Button>
 				</nav>
 
 				<div className="flex items-center gap-3">
-					<div className="hidden items-center gap-1 text-sm sm:flex">
-						<span className="sr-only">
-							Language switcher (not yet functional)
-						</span>
-						<span className="text-muted-foreground" aria-hidden="true">
-							CZ
-						</span>
-						<span className="text-muted-foreground" aria-hidden="true">
-							/
-						</span>
-						<span className="font-medium text-foreground" aria-hidden="true">
-							EN
-						</span>
-					</div>
+					<LanguageSwitcher className="hidden sm:flex" />
 
 					<Button
 						variant="ghost"
 						size="icon"
 						className="md:hidden"
 						onClick={() => setIsMenuOpen(!isMenuOpen)}
-						aria-label="Toggle menu"
+						aria-label={t("toggleMenu")}
 						aria-expanded={isMenuOpen}
 					>
 						{isMenuOpen ? (
@@ -127,7 +125,7 @@ export function Header() {
 				<div className="border-t md:hidden">
 					<nav
 						className="container mx-auto flex flex-col gap-1 px-4 py-4"
-						aria-label="Mobile navigation"
+						aria-label={t("mobile")}
 					>
 						{mobileLinks.map(link => (
 							<Button
@@ -138,7 +136,7 @@ export function Header() {
 									<Link href={link.href} onClick={() => setIsMenuOpen(false)} />
 								}
 							>
-								{link.label}
+								{t(link.label)}
 							</Button>
 						))}
 						<Button
@@ -148,22 +146,9 @@ export function Header() {
 								<a href={ESHOP_URL} target="_blank" rel="noopener noreferrer" />
 							}
 						>
-							E-shop
+							{t("eshop")}
 						</Button>
-						<div className="flex items-center gap-2 px-2.5 py-1.5 text-sm">
-							<span className="sr-only">
-								Language switcher (not yet functional)
-							</span>
-							<span className="text-muted-foreground" aria-hidden="true">
-								CZ
-							</span>
-							<span className="text-muted-foreground" aria-hidden="true">
-								/
-							</span>
-							<span className="font-medium text-foreground" aria-hidden="true">
-								EN
-							</span>
-						</div>
+						<LanguageSwitcher className="gap-2 px-2.5 py-1.5" />
 					</nav>
 				</div>
 			)}
@@ -172,6 +157,8 @@ export function Header() {
 }
 
 function NavDropdown({ group, active }: { group: NavGroup; active: boolean }) {
+	const t = useTranslations("Navigation")
+
 	return (
 		<DropdownMenu>
 			<Button
@@ -179,12 +166,12 @@ function NavDropdown({ group, active }: { group: NavGroup; active: boolean }) {
 				className={cn(!active && "text-muted-foreground")}
 				render={<DropdownMenuTrigger />}
 			>
-				{group.trigger}
+				{t(group.trigger)}
 			</Button>
 			<DropdownMenuContent>
 				{group.items.map(item => (
 					<DropdownMenuItem key={item.href} render={<Link href={item.href} />}>
-						{item.label}
+						{t(item.label)}
 					</DropdownMenuItem>
 				))}
 			</DropdownMenuContent>
