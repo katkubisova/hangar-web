@@ -14,19 +14,22 @@ export interface PriceItem {
 	name: Localized<string>
 	// CZK, formatted as "900 Kč".
 	price: number
-	note?: string
+	// Duration or package size, e.g. "60 min".
+	note?: Localized<string>
 }
 
 export interface PhysioTeamMember {
 	photo: Localized<string>
 	name: string
 	specialisation: Localized<string>
+	// How to book this person (booking system or phone).
 	bio: Localized<string>
 }
 
 export interface PhysioInfo {
 	enabled: boolean
-	intro: Localized<string>
+	// Paragraphs.
+	intro: Localized<string[]>
 	team: PhysioTeamMember[]
 	prices: PriceItem[]
 	// Placeholder — no real booking system is wired up yet; see the
@@ -40,6 +43,8 @@ export interface GymData {
 	status: GymStatus
 	heroImage: Localized<string>
 	shortDescription: Localized<string>
+	// Paragraphs for the branch page's "About this location" section.
+	description: Localized<string[]>
 	address: Localized<string>
 	companyName: string
 	companyId: string
@@ -48,7 +53,8 @@ export interface GymData {
 	email: string
 	phone: string
 	mapEmbedUrl: string
-	directionsText: Localized<string>
+	// Paragraphs.
+	directionsText: Localized<string[]>
 	directionsVideoUrl: string
 	registrationUrl: Localized<string>
 	bookingUrl: Localized<string>
@@ -58,6 +64,10 @@ export interface GymData {
 	consentFormUrl: string
 	visitorRulesUrl: string
 	cafeMenuUrl: string
+	cafe: {
+		coffee: Localized<string>
+		bistro: Localized<string>
+	}
 	cafeMenuThumbnail: Localized<string>
 	galleryImages: Localized<string>[]
 	instagramUrl: string

@@ -5,6 +5,7 @@ import { Suspense } from "react"
 
 import { HeroSection } from "@/components/shared/hero-section"
 import { LocationSelector } from "@/components/shared/location-selector"
+import { Paragraphs } from "@/components/shared/paragraphs"
 import { Section } from "@/components/shared/section"
 import { PlaceholderImage } from "@/components/ui/placeholder-image"
 import { useGymSelector } from "@/hooks/use-gym-selector"
@@ -86,9 +87,12 @@ function ContactPageSections() {
 					<Section className="bg-muted/30">
 						<h2 className="mb-6 text-2xl font-bold">{t("directionsTitle")}</h2>
 						<div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-							<p className="text-muted-foreground leading-relaxed">
-								{selected.directionsText}
-							</p>
+							<div className="space-y-3">
+								<Paragraphs
+									paragraphs={selected.directionsText}
+									className="text-muted-foreground"
+								/>
+							</div>
 							<PlaceholderImage
 								label={t("directionsVideoLabel")}
 								className="rounded-lg"
@@ -102,7 +106,6 @@ function ContactPageSections() {
 							<p>{selected.companyName}</p>
 							<p>{selected.companyId}</p>
 							<p>{selected.taxId}</p>
-							<p>{selected.address}</p>
 						</div>
 					</Section>
 

@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server"
 
 import { ContactForm } from "@/components/shared/contact-form"
 import { HeroSection } from "@/components/shared/hero-section"
+import { Paragraphs } from "@/components/shared/paragraphs"
 import { PhotoGallery } from "@/components/shared/photo-gallery"
 import { PricesAccordion } from "@/components/shared/prices-accordion"
 import { Section } from "@/components/shared/section"
@@ -65,9 +66,10 @@ export default async function BranchPage({ params }: BranchPageProps) {
 				<div className="grid gap-8 lg:grid-cols-2">
 					<div className="space-y-4">
 						<h2 className="text-2xl font-bold">{t("about")}</h2>
-						<p className="text-muted-foreground leading-relaxed">
-							{gym.shortDescription}
-						</p>
+						<Paragraphs
+							paragraphs={gym.description}
+							className="text-muted-foreground"
+						/>
 						<div className="flex gap-3">
 							<Button
 								variant="outline"
@@ -180,7 +182,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 								/>
 							}
 						>
-							{common("bookNow")}
+							{t("booking.ticketsCta")}
 						</Button>
 					</div>
 					<div>
@@ -252,7 +254,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 						<div className="space-y-3">
 							<h3 className="text-lg font-medium">{t("cafe.coffeeTitle")}</h3>
 							<p className="text-muted-foreground leading-relaxed">
-								{t("cafe.coffeeText")}
+								{gym.cafe.coffee}
 							</p>
 							<PlaceholderImage
 								label={t("cafe.coffeeImageLabel")}
@@ -262,7 +264,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 						<div className="space-y-3">
 							<h3 className="text-lg font-medium">{t("cafe.bistroTitle")}</h3>
 							<p className="text-muted-foreground leading-relaxed">
-								{t("cafe.bistroText")}
+								{gym.cafe.bistro}
 							</p>
 							<PlaceholderImage
 								label={t("cafe.bistroImageLabel")}
@@ -298,9 +300,10 @@ export default async function BranchPage({ params }: BranchPageProps) {
 					<p className="text-muted-foreground">{t("physio.empty")}</p>
 				) : (
 					<div className="space-y-6">
-						<p className="text-muted-foreground leading-relaxed">
-							{gym.physio.intro}
-						</p>
+						<Paragraphs
+							paragraphs={gym.physio.intro}
+							className="text-muted-foreground"
+						/>
 						<ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 							{gym.physio.team.map(member => (
 								<li
@@ -334,7 +337,10 @@ export default async function BranchPage({ params }: BranchPageProps) {
 							</thead>
 							<tbody>
 								{gym.physio.prices.map(item => (
-									<tr key={item.name} className="border-b border-border">
+									<tr
+										key={`${item.name} ${item.note}`}
+										className="border-b border-border"
+									>
 										<td className="py-2">{item.name}</td>
 										<td className="py-2 text-muted-foreground">{item.note}</td>
 										<td className="py-2 text-right font-medium">

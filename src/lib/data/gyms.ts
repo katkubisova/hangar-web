@@ -1,6 +1,12 @@
 import { brnoPrices, ostravaPrices } from "@/lib/data/price-lists"
 import type { GymData } from "@/lib/types/gym"
 
+// Facts verified against the live sites on 15 Oct 2026:
+// - Brno: hangarbrno.cz (/, /hangar/, /kontakt/, /hangar-cafe/, /fyzio-hangar/)
+// - Ostrava: hangarostrava.cz (/, /hangar/, /kontakt/, /hangar-cafe/, /fyzio-hangar/)
+// Copy is rewritten from those facts; anything the sites don't cover is
+// flagged in docs/copy-review.md, not invented.
+
 export const gyms: GymData[] = [
 	{
 		name: "Hangar Brno",
@@ -11,33 +17,51 @@ export const gyms: GymData[] = [
 			en: "Gym photo — Hangar Brno",
 		},
 		shortDescription: {
-			cs: "Naše vlajková pobočka s největší boulderingovou plochou v síti, samostatnou tréninkovou zónou a Hangar Cafe přímo na místě.",
-			en: "Our flagship location with the largest bouldering surface in the network, a dedicated training zone, and Hangar Cafe on site.",
+			cs: "Dvě haly, přes 200 boulderů a tréninkové zóny, ve kterých se nikdo nenudí. Tady to v roce 2019 celé začalo.",
+			en: "Two halls, over 200 boulders and training zones where nobody gets bored. This is where it all started in 2019.",
+		},
+		description: {
+			cs: [
+				"Hangar Brno v roce 2019 odstartoval novou éru moderního boulderingu v Česku. Hala A má přes 1 000 m² lezecké plochy a 120 boulderů od 5A do 8A. Mladší dvoupatrová Hala B přidává 700 m² a 70 boulderů na profilech, které navrhl Adam Ondra s předními českými stavěči.",
+				"Chceš makat? Čekají tě dva Moonboardy (40° a 25°), kampus, fingerboard a spray wall o ploše 40 m² se sklonem 40°. Každé pondělí stavěči sundají 10–25 boulderů a v úterý staví nové. Co přibylo, najdeš v aplikaci TopLogger.",
+				"Pro děti je tu pohybový park s hradem, skluzavkou a cvičnou stěnou (od 2 let), dětský koutek v Hale A a Rocket's Zone: 250 m² závodních boulderů oddílu Hangar Rockets, které si může zkusit každý (ve všední dny 15:30–19:00 v ní trénuje oddíl). Klimatizovaný gym máš v ceně vstupu, po lezení zajdi do Cafe Baru nebo do outdoor shopu.",
+			],
+			en: [
+				"Hangar Brno kicked off a new era of modern bouldering in the Czech Republic in 2019. Hall A has over 1,000 m² of climbing surface and 120 boulders from 5A to 8A. The younger two-storey Hall B adds 700 m² and 70 boulders on wall profiles designed by Adam Ondra with top Czech routesetters.",
+				"Want to train hard? There are two Moonboards (40° and 25°), a campus board, a fingerboard and a 40 m² spray wall at 40°. Every Monday the setters strip 10–25 boulders and set new ones on Tuesday. Find what's new in the TopLogger app.",
+				"For kids there's a movement park with a castle, a slide and a practice wall (from age 2), a kids' corner in Hall A and Rocket's Zone: 250 m² of competition boulders from the Hangar Rockets club that anyone can try (the club trains there on weekdays 15:30–19:00). The air-conditioned gym is included in your entry; after climbing, drop by the Cafe Bar or the outdoor shop.",
+			],
 		},
 		address: {
-			cs: "Zástupná ulice 1, 602 00 Brno, Česká republika",
-			en: "Placeholder Street 1, 602 00 Brno, Czech Republic",
+			cs: "Pražákova 1027/53, 619 00 Brno",
+			en: "Pražákova 1027/53, 619 00 Brno",
 		},
-		companyName:
-			"Hangar Brno s.r.o. (placeholder — pending legal confirmation)",
-		companyId: "IČO 00000000 (placeholder)",
-		taxId: "DIČ CZ00000000 (placeholder)",
+		companyName: "VerticalBlock s.r.o., U Soudu 6200/19, 708 00 Ostrava",
+		companyId: "IČO 05488648",
+		taxId: "DIČ CZ05488648",
 		openingHours: [
+			{ label: { cs: "Pondělí", en: "Monday" }, hours: "9:00–22:00" },
 			{
-				label: { cs: "Pondělí–pátek", en: "Monday–Friday" },
-				hours: "9:00–22:00",
+				label: { cs: "Úterý–pátek", en: "Tuesday–Friday" },
+				hours: "7:00–22:00",
 			},
 			{
 				label: { cs: "Sobota–neděle", en: "Saturday–Sunday" },
-				hours: "9:00–21:00",
+				hours: "9:00–22:00",
 			},
 		],
-		email: "brno@hangargyms.example",
-		phone: "+420 000 000 001",
+		email: "info@hangarbrno.cz",
+		phone: "+420 608 987 910",
 		mapEmbedUrl: "#",
 		directionsText: {
-			cs: "Kousek pěšky od nejbližší tramvajové zastávky; parkování přímo na místě.",
-			en: "A short walk from the nearest tram stop; parking available on site.",
+			cs: [
+				"MHD: tramvají č. 2 nebo 5 na zastávku Ústřední hřbitov, odtud je to asi 10 minut pěšky. Blízko je i zastávka Pražákova.",
+				"Autem: parkuj v areálu jen na vyznačených místech Hangar. Když je plno, využij odstavné parkoviště vlevo od areálu.",
+			],
+			en: [
+				"Public transport: tram 2 or 5 to the Ústřední hřbitov stop, then about a 10-minute walk. The Pražákova stop is close too.",
+				"By car: park in the grounds only in the marked Hangar spaces. If they're full, use the overflow car park to the left of the grounds.",
+			],
 		},
 		directionsVideoUrl: "#",
 		registrationUrl: {
@@ -53,36 +77,126 @@ export const gyms: GymData[] = [
 		physio: {
 			enabled: true,
 			intro: {
-				cs: "Náš fyzioterapeutický tým pomáhá lezcům rychleji regenerovat a lépe se hýbat. Ošetření probíhá přímo na pobočce.",
-				en: "Our physiotherapy team helps climbers recover faster and move better, with sessions available on site.",
+				cs: [
+					"Bolest nebo strach ze zranění ti brání v pohybu? Tým Fyzio Hangar tě naučí vnímat své tělo, objevit jeho možnosti a zranění předcházet.",
+					"Terapie jsou delší než obvykle: konzultace, pohybová terapie a další odborné metody v tempu, které sedí právě tobě. Sportovcům nabízíme i analýzu sportovní činnosti a zapojení terapie přímo do tréninku.",
+					"Služby hradíš přímo, zdravotní pojišťovny je neproplácí (ani zpětně). Objednat se můžeš nejpozději den předem.",
+				],
+				en: [
+					"Is pain or fear of injury holding you back? The Fyzio Hangar team helps you read your body, discover what it can do and prevent injuries.",
+					"Sessions are longer than usual: consultation, movement therapy and other specialist methods at a pace that suits you. For athletes we also analyse your sport and build the therapy into your training.",
+					"Services are paid directly; health insurers don't cover them (not even retroactively). Book at least one day ahead.",
+				],
 			},
 			team: [
+				...["Karolína Nevělíková", "Markéta Nevělíková", "Anna Deuserová"].map(
+					name => ({
+						photo: { cs: `Foto — ${name}`, en: `Photo — ${name}` },
+						name,
+						specialisation: { cs: "Fyzioterapie", en: "Physiotherapy" },
+						bio: {
+							cs: "Objednání přes rezervační systém.",
+							en: "Book through the booking system.",
+						},
+					})
+				),
+				{
+					photo: { cs: "Foto — Antonín Tomáš", en: "Photo — Antonín Tomáš" },
+					name: "Antonín Tomáš",
+					specialisation: { cs: "Fyzioterapie", en: "Physiotherapy" },
+					bio: {
+						cs: "Objednání na telefonu 723 815 363.",
+						en: "Book by phone: 723 815 363.",
+					},
+				},
 				{
 					photo: {
-						cs: "Foto fyzioterapeuta — Jana Nováková",
-						en: "Physio photo — Jana Nováková",
+						cs: "Foto — Michal Kačerovský",
+						en: "Photo — Michal Kačerovský",
 					},
-					name: "Jana Nováková",
+					name: "Michal Kačerovský",
 					specialisation: {
-						cs: "Sportovní fyzioterapie, rehabilitace pro lezce",
-						en: "Sports physiotherapy, climbing-specific rehab",
+						cs: "Fyzioterapie a silový trénink",
+						en: "Physiotherapy and strength training",
 					},
 					bio: {
-						cs: "Zástupný medailonek — zkušenosti se sportovní fyzioterapií a s lezci všech úrovní.",
-						en: "Placeholder bio — background in sports physiotherapy working with climbers of all levels.",
+						cs: "Objednání přes rezervační systém.",
+						en: "Book through the booking system.",
+					},
+				},
+				{
+					photo: { cs: "Foto — Anna Čermáková", en: "Photo — Anna Čermáková" },
+					name: "Anna Čermáková",
+					specialisation: { cs: "Silový trénink", en: "Strength training" },
+					bio: {
+						cs: "Objednání na telefonu 608 340 118.",
+						en: "Book by phone: 608 340 118.",
 					},
 				},
 			],
 			prices: [
 				{
-					name: { cs: "Vstupní vyšetření", en: "Initial consultation" },
-					price: 900,
-					note: "60 min",
+					name: {
+						cs: "Vstupní vyšetření s terapií",
+						en: "Initial assessment with therapy",
+					},
+					price: 1300,
+					note: { cs: "60 min", en: "60 min" },
 				},
 				{
-					name: { cs: "Navazující terapie", en: "Follow-up session" },
-					price: 700,
-					note: "45 min",
+					name: { cs: "Jednorázová návštěva", en: "Single visit" },
+					price: 1200,
+					note: { cs: "55 min", en: "55 min" },
+				},
+				{
+					name: {
+						cs: "Navazující terapie (po vstupním vyšetření)",
+						en: "Follow-up therapy (after the initial assessment)",
+					},
+					price: 1100,
+					note: { cs: "55 min", en: "55 min" },
+				},
+				{
+					name: {
+						cs: "Balíček navazujících terapií",
+						en: "Follow-up therapy package",
+					},
+					price: 5250,
+					note: { cs: "5 terapií", en: "5 sessions" },
+				},
+				{
+					name: {
+						cs: "Balíček navazujících terapií",
+						en: "Follow-up therapy package",
+					},
+					price: 10000,
+					note: { cs: "10 terapií", en: "10 sessions" },
+				},
+				{
+					name: { cs: "Sportovní masáž", en: "Sports massage" },
+					price: 800,
+					note: { cs: "55 min", en: "55 min" },
+				},
+				{
+					name: { cs: "Relaxační masáž", en: "Relaxation massage" },
+					price: 800,
+					note: { cs: "55 min", en: "55 min" },
+				},
+				{
+					name: {
+						cs: "Vstupní individuální silový trénink",
+						en: "Initial one-to-one strength session",
+					},
+					price: 850,
+					note: { cs: "75 min", en: "75 min" },
+				},
+				{
+					name: {
+						cs: "Navazující individuální silový trénink",
+						en: "Follow-up one-to-one strength session",
+					},
+					price: 750,
+					note: { cs: "60 min", en: "60 min" },
 				},
 			],
 			bookingUrl: "#",
@@ -90,30 +204,40 @@ export const gyms: GymData[] = [
 		consentFormUrl: "#",
 		visitorRulesUrl: "#",
 		cafeMenuUrl: "#",
+		cafe: {
+			coffee: {
+				cs: "Espresso, cappuccino nebo americano z výběrové kávy od pražírny Father's. K tomu výhled přímo na lezeckou plochu.",
+				en: "Espresso, cappuccino or americano made with specialty coffee from Father's roastery, with a view straight onto the climbing floor.",
+			},
+			bistro: {
+				cs: "Snídaně, bagety, pizza i bowl z čerstvých surovin, vegani a vegetariáni si vyberou taky. Sladké od brněnské pekařky Cukrevolta. Poslední objednávky do 20:00.",
+				en: "Breakfasts, baguettes, pizza and bowls made from fresh ingredients, with vegan and vegetarian options. Sweets from Brno bakery Cukrevolta. Last orders at 20:00.",
+			},
+		},
 		cafeMenuThumbnail: {
 			cs: "Náhled menu — kavárna Brno",
 			en: "Gallery image — Brno cafe menu",
 		},
 		galleryImages: [
 			{
-				cs: "Fotka z galerie — Hangar Brno, boulderingová hala",
-				en: "Gallery image — Hangar Brno bouldering hall",
+				cs: "Fotka z galerie — Hangar Brno, Hala A",
+				en: "Gallery image — Hangar Brno, Hall A",
+			},
+			{
+				cs: "Fotka z galerie — Hangar Brno, Hala B",
+				en: "Gallery image — Hangar Brno, Hall B",
 			},
 			{
 				cs: "Fotka z galerie — Hangar Brno, tréninková zóna",
-				en: "Gallery image — Hangar Brno training zone",
+				en: "Gallery image — Hangar Brno, training zone",
 			},
 			{
-				cs: "Fotka z galerie — Hangar Brno, interiér kavárny",
-				en: "Gallery image — Hangar Brno cafe interior",
-			},
-			{
-				cs: "Fotka z galerie — Hangar Brno, recepce",
-				en: "Gallery image — Hangar Brno reception",
+				cs: "Fotka z galerie — Hangar Brno, Cafe Bar",
+				en: "Gallery image — Hangar Brno, Cafe Bar",
 			},
 		],
-		instagramUrl: "https://instagram.com/hangarbrno",
-		facebookUrl: "https://facebook.com/hangarbrno",
+		instagramUrl: "https://www.instagram.com/hangarbrno/",
+		facebookUrl: "https://www.facebook.com/hangarbrno",
 		displayOrder: 1,
 	},
 	{
@@ -125,33 +249,50 @@ export const gyms: GymData[] = [
 			en: "Gym photo — Hangar Ostrava",
 		},
 		shortDescription: {
-			cs: "Boulderingová hala v industriálním stylu s vysokou stěnou a rostoucí komunitou místních lezců.",
-			en: "An industrial-style bouldering hall with high-wall climbing and a growing community of local climbers.",
+			cs: "Největší boulderovka v Moravskoslezském kraji: 1 500 m² lezecké plochy, Kilterboard a dvoupatrový dětský park.",
+			en: "The biggest bouldering gym in the Moravian-Silesian Region: 1,500 m² of climbing surface, a Kilterboard and a two-storey kids' park.",
+		},
+		description: {
+			cs: [
+				"Největší boulderingové centrum v Moravskoslezském kraji má 1 500 m² lezecké plochy a přes 100 boulderů od 5A do 8A. Profily všech sklonů, od základních kroků po silové kousky a moderní dynamické skoky. Každé pondělí stavěči obmění jeden sektor a každý měsíc přibude 30 boulderů Hangar Challenge.",
+				"Druhé patro patří tréninku: spray wall o ploše 55 m², dva Moonboardy (40° a 25°), hangboardy, kampus a Kilterboard s nastavitelným sklonem 0–70°, jeden ze dvou v Česku. Čeká na něm přes 120 000 boulderů včetně replik slavných problémů jako Off the Wagon nebo Midnight Lightning.",
+				"Děti mají dvoupatrový pohybový park s hradní věží, lanovým mostem, tobogánem a dětskou boulderovou stěnou. Nahoře je Rocket's Zone oddílu Hangar Rockets Ostrava (ve všední dny 15:30–19:00 v ní trénuje oddíl). Gym máš v ceně vstupu a k tomu Cafe & Bistro s výhledem na stěnu, obchod s lezeckým vybavením a místnosti pro narozeninové oslavy.",
+			],
+			en: [
+				"The biggest bouldering centre in the Moravian-Silesian Region has 1,500 m² of climbing surface and over 100 boulders from 5A to 8A. Wall profiles at every angle, from basic moves to power problems and modern dynamic jumps. Every Monday the setters reset one sector, and every month 30 Hangar Challenge boulders go up.",
+				"The second floor is for training: a 55 m² spray wall, two Moonboards (40° and 25°), hangboards, a campus board and a Kilterboard with adjustable angle from 0° to 70°, one of only two in the Czech Republic. It holds over 120,000 boulders, including replicas of famous problems like Off the Wagon and Midnight Lightning.",
+				"Kids get a two-storey movement park with a castle tower, a rope bridge, a tube slide and a kids' bouldering wall. Upstairs is Rocket's Zone of the Hangar Rockets Ostrava club (the club trains there on weekdays 15:30–19:00). The gym is included in your entry, plus there's a Cafe & Bistro overlooking the wall, a climbing gear shop and party rooms for kids' birthdays.",
+			],
 		},
 		address: {
-			cs: "Zástupná ulice 2, 702 00 Ostrava, Česká republika",
-			en: "Placeholder Street 2, 702 00 Ostrava, Czech Republic",
+			cs: "Nad Porubkou 2405, 708 00 Ostrava-Poruba",
+			en: "Nad Porubkou 2405, 708 00 Ostrava-Poruba",
 		},
-		companyName:
-			"Hangar Ostrava s.r.o. (placeholder — pending legal confirmation)",
-		companyId: "IČO 00000001 (placeholder)",
-		taxId: "DIČ CZ00000001 (placeholder)",
+		companyName: "CLIMBING GYM s.r.o., U Soudu 6200/19, 708 00 Ostrava",
+		companyId: "IČO 17445078",
+		taxId: "DIČ CZ17445078",
 		openingHours: [
+			{ label: { cs: "Pondělí", en: "Monday" }, hours: "9:00–22:00" },
+			{ label: { cs: "Úterý", en: "Tuesday" }, hours: "7:00–22:00" },
+			{ label: { cs: "Středa", en: "Wednesday" }, hours: "9:00–22:00" },
+			{ label: { cs: "Čtvrtek", en: "Thursday" }, hours: "7:00–22:00" },
 			{
-				label: { cs: "Pondělí–pátek", en: "Monday–Friday" },
+				label: { cs: "Pátek–neděle", en: "Friday–Sunday" },
 				hours: "9:00–22:00",
 			},
-			{
-				label: { cs: "Sobota–neděle", en: "Saturday–Sunday" },
-				hours: "9:00–21:00",
-			},
 		],
-		email: "ostrava@hangargyms.example",
-		phone: "+420 000 000 002",
+		email: "info@hangarostrava.cz",
+		phone: "+420 606 766 983",
 		mapEmbedUrl: "#",
 		directionsText: {
-			cs: "Blízko centra s přímým spojením tramvají a parkováním v okolí.",
-			en: "Located close to the city centre with direct tram access and nearby parking.",
+			cs: [
+				"MHD: autobusem na zastávku Bytostav nebo Dělnická, odtud jsi u nás za 4 minuty. Jezdí sem spoje z centra Ostravy, z Poruby i od nádraží Ostrava-Svinov.",
+				"Autem: kolem Hangaru je velké parkoviště i nabíječka pro elektroauta. Když je plno, zaparkuj u krajnice cesty k lesíku a mysli na projíždějící auta.",
+			],
+			en: [
+				"Public transport: bus to the Bytostav or Dělnická stop, then a 4-minute walk. Buses run here from the centre of Ostrava, from Poruba and from Ostrava-Svinov station.",
+				"By car: there's a large car park around Hangar and an EV charger. If it's full, park at the side of the road towards the woods, and mind the passing traffic.",
+			],
 		},
 		directionsVideoUrl: "#",
 		registrationUrl: {
@@ -167,36 +308,108 @@ export const gyms: GymData[] = [
 		physio: {
 			enabled: true,
 			intro: {
-				cs: "Náš fyzioterapeutický tým pomáhá lezcům rychleji regenerovat a lépe se hýbat. Ošetření probíhá přímo na pobočce.",
-				en: "Our physiotherapy team helps climbers recover faster and move better, with sessions available on site.",
+				cs: [
+					"Fyzioterapii v Ostravě zajišťuje náš partner Fyzio Gym Cooper, fyzioterapeutické a tréninkové centrum s 10letou tradicí. Od roku 2018 garantuje fyzioterapii české reprezentace ve sportovním lezení.",
+					"Specializací je lezení: od hobby lezců po závodníky, s důrazem na prevenci zranění a podporu výkonu. Na zranění prstů používají unikátní metodu Isele. Uvedené ceny jsou zvýhodněné pro Hangar Ostrava.",
+				],
+				en: [
+					"Physiotherapy in Ostrava is provided by our partner Fyzio Gym Cooper, a physiotherapy and training centre with a 10-year track record. Since 2018 it has been the physiotherapy provider for the Czech national sport climbing team.",
+					"Climbing is their specialty, from hobby climbers to competitors, with a focus on preventing injuries and supporting performance. For finger injuries they use the unique Isele method. Prices shown are Hangar Ostrava discounts.",
+				],
 			},
 			team: [
 				{
 					photo: {
-						cs: "Foto fyzioterapeuta — Tomáš Dvořák",
-						en: "Physio photo — Tomáš Dvořák",
+						cs: "Foto — Nikol Chovanová",
+						en: "Photo — Nikol Chovanová",
 					},
-					name: "Tomáš Dvořák",
+					name: "Nikol Chovanová",
 					specialisation: {
-						cs: "Sportovní fyzioterapie, rehabilitace pro lezce",
-						en: "Sports physiotherapy, climbing-specific rehab",
+						cs: "Fyzioterapie, certifikovaná lektorka metody Isele",
+						en: "Physiotherapy, certified Isele method instructor",
 					},
 					bio: {
-						cs: "Zástupný medailonek — zkušenosti se sportovní fyzioterapií a s lezci všech úrovní.",
-						en: "Placeholder bio — background in sports physiotherapy working with climbers of all levels.",
+						cs: "Objednání přes Fyzio Gym Cooper: +420 777 640 621, info@fyziogym.cz.",
+						en: "Book via Fyzio Gym Cooper: +420 777 640 621, info@fyziogym.cz.",
 					},
 				},
 			],
 			prices: [
 				{
-					name: { cs: "Vstupní vyšetření", en: "Initial consultation" },
-					price: 900,
-					note: "60 min",
+					name: {
+						cs: "Komplexní péče — 1 lekce",
+						en: "Complete care — 1 session",
+					},
+					price: 1100,
+					note: { cs: "55 min", en: "55 min" },
 				},
 				{
-					name: { cs: "Navazující terapie", en: "Follow-up session" },
-					price: 700,
-					note: "45 min",
+					name: {
+						cs: "Komplexní péče — balíček",
+						en: "Complete care — package",
+					},
+					price: 980,
+					note: { cs: "6 lekcí", en: "6 sessions" },
+				},
+				{
+					name: {
+						cs: "Komplexní péče — balíček",
+						en: "Complete care — package",
+					},
+					price: 900,
+					note: { cs: "12 lekcí", en: "12 sessions" },
+				},
+				{
+					name: {
+						cs: "Komplexní péče — balíček",
+						en: "Complete care — package",
+					},
+					price: 800,
+					note: { cs: "20 lekcí", en: "20 sessions" },
+				},
+				{
+					name: {
+						cs: "Komplexní diagnostika pohybového aparátu",
+						en: "Complete musculoskeletal assessment",
+					},
+					price: 2100,
+					note: { cs: "120 + 30 min", en: "120 + 30 min" },
+				},
+				{
+					name: {
+						cs: "Komplexní diagnostika pro lezce",
+						en: "Complete assessment for climbers",
+					},
+					price: 2100,
+					note: { cs: "120 + 30 min", en: "120 + 30 min" },
+				},
+				{
+					name: {
+						cs: "Testování lezeckých silových schopností (po základní diagnostice)",
+						en: "Climbing strength testing (after the basic assessment)",
+					},
+					price: 2100,
+				},
+				{
+					name: { cs: "Isele terapie ruky", en: "Isele hand therapy" },
+					price: 1190,
+					note: { cs: "1 terapie", en: "1 session" },
+				},
+				{
+					name: {
+						cs: "Isele terapie ruky — balíček",
+						en: "Isele hand therapy — package",
+					},
+					price: 5100,
+					note: { cs: "5 terapií", en: "5 sessions" },
+				},
+				{
+					name: {
+						cs: "Tréninkový plán (po komplexní diagnostice)",
+						en: "Training plan (after the complete assessment)",
+					},
+					price: 3400,
+					note: { cs: "4 týdny", en: "4 weeks" },
 				},
 			],
 			bookingUrl: "#",
@@ -204,6 +417,16 @@ export const gyms: GymData[] = [
 		consentFormUrl: "#",
 		visitorRulesUrl: "#",
 		cafeMenuUrl: "#",
+		cafe: {
+			coffee: {
+				cs: "Espresso, cappuccino nebo americano z výběrové kávy od pražírny Father's, k tomu domácí limonáda nebo pořádné pivo. Všechno s výhledem na celou stěnu.",
+				en: "Espresso, cappuccino or americano made with specialty coffee from Father's roastery, plus homemade lemonade or a proper beer, all with a view of the whole wall.",
+			},
+			bistro: {
+				cs: "Teplá i studená jídla z čerstvých surovin každý den, od granoly po pizzu a Bún Cha. Dorty, koláče a cookies od Croissant House Ostrava. Poslední objednávky do 20:00.",
+				en: "Hot and cold dishes made fresh every day, from granola to pizza and bún chả. Cakes, pastries and cookies from Croissant House Ostrava. Last orders at 20:00.",
+			},
+		},
 		cafeMenuThumbnail: {
 			cs: "Náhled menu — kavárna Ostrava",
 			en: "Gallery image — Ostrava cafe menu",
@@ -211,23 +434,23 @@ export const gyms: GymData[] = [
 		galleryImages: [
 			{
 				cs: "Fotka z galerie — Hangar Ostrava, boulderingová hala",
-				en: "Gallery image — Hangar Ostrava bouldering hall",
+				en: "Gallery image — Hangar Ostrava, bouldering hall",
 			},
 			{
-				cs: "Fotka z galerie — Hangar Ostrava, vysoká stěna",
-				en: "Gallery image — Hangar Ostrava high-wall area",
+				cs: "Fotka z galerie — Hangar Ostrava, Kilterboard",
+				en: "Gallery image — Hangar Ostrava, Kilterboard",
 			},
 			{
-				cs: "Fotka z galerie — Hangar Ostrava, interiér kavárny",
-				en: "Gallery image — Hangar Ostrava cafe interior",
+				cs: "Fotka z galerie — Hangar Ostrava, dětský park",
+				en: "Gallery image — Hangar Ostrava, kids' park",
 			},
 			{
-				cs: "Fotka z galerie — Hangar Ostrava, recepce",
-				en: "Gallery image — Hangar Ostrava reception",
+				cs: "Fotka z galerie — Hangar Ostrava, Cafe & Bistro",
+				en: "Gallery image — Hangar Ostrava, Cafe & Bistro",
 			},
 		],
-		instagramUrl: "https://instagram.com/hangarostrava",
-		facebookUrl: "https://facebook.com/hangarostrava",
+		instagramUrl: "https://www.instagram.com/hangarostrava/",
+		facebookUrl: "https://www.facebook.com/hangarostrava",
 		displayOrder: 2,
 	},
 	{
@@ -239,9 +462,10 @@ export const gyms: GymData[] = [
 			en: "Gym photo — Hangar Plzeň (coming soon)",
 		},
 		shortDescription: {
-			cs: "Naše nejnovější pobočka je na cestě — podrobnosti oznámíme před otevřením.",
-			en: "Our newest location is on the way — details will be announced closer to opening.",
+			cs: "Hangar míří do Plzně. Podrobnosti oznámíme před otevřením.",
+			en: "Hangar is heading to Plzeň. Details coming closer to opening.",
 		},
+		description: { cs: [], en: [] },
 		address: {
 			cs: "Adresu oznámíme, Plzeň, Česká republika",
 			en: "Address to be announced, Plzeň, Czech Republic",
@@ -254,7 +478,7 @@ export const gyms: GymData[] = [
 		email: "plzen@hangargyms.example",
 		phone: "+420 000 000 003",
 		mapEmbedUrl: "#",
-		directionsText: { cs: "", en: "" },
+		directionsText: { cs: [], en: [] },
 		directionsVideoUrl: "#",
 		registrationUrl: { cs: "#", en: "#" },
 		bookingUrl: { cs: "#", en: "#" },
@@ -263,6 +487,7 @@ export const gyms: GymData[] = [
 		consentFormUrl: "#",
 		visitorRulesUrl: "#",
 		cafeMenuUrl: "#",
+		cafe: { coffee: { cs: "", en: "" }, bistro: { cs: "", en: "" } },
 		cafeMenuThumbnail: {
 			cs: "Náhled menu — kavárna Plzeň (již brzy)",
 			en: "Gallery image — Plzeň cafe menu (coming soon)",
