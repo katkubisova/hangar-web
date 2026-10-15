@@ -24,8 +24,9 @@ interface BrandImageProps {
 	// Without a photo, the gradient and label stand in for it.
 	src?: string
 	alt: string
-	// Brand treatment: black-and-white photo under a gradient overlay
-	// (guide p. 44). Without a gradient the photo shows in full colour.
+	// Brand treatment: black-and-white photo under the gradient at 80 %
+	// opacity (guide p. 44 asks for 80–90 %). Without a gradient the photo
+	// shows in full colour.
 	gradient?: BrandGradient
 	aspectRatio?: string
 	sizes?: string
@@ -65,7 +66,7 @@ export function BrandImage({
 					aria-hidden="true"
 					className={cn(
 						"absolute inset-0",
-						src && "opacity-85 mix-blend-multiply",
+						src && "opacity-80",
 						GRADIENT_CLASS[gradient]
 					)}
 				/>

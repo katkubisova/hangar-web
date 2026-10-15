@@ -84,7 +84,7 @@ function ContactPageSections() {
 			how Visit Us treats coming-soon locations; flag if that's wrong. */}
 			{!isComingSoon && (
 				<>
-					<Section className="bg-muted/30">
+					<Section tone="muted">
 						<h2 className="mb-6 text-2xl font-bold">{t("directionsTitle")}</h2>
 						<div className="grid gap-8 lg:grid-cols-2 lg:items-center">
 							<div className="space-y-3">
@@ -109,7 +109,7 @@ function ContactPageSections() {
 						</div>
 					</Section>
 
-					<Section className="bg-muted/30">
+					<Section tone="muted">
 						<h2 className="mb-4 text-2xl font-bold">
 							{t("quickContactsTitle")}
 						</h2>

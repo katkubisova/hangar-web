@@ -48,7 +48,7 @@ export default async function VisitPage({ params }: LocaleParams) {
 				</ul>
 			</Section>
 
-			<Section className="bg-muted/30">
+			<Section tone="muted">
 				<h2 className="mb-6 text-2xl font-bold">{common("gallery")}</h2>
 				<PhotoGallery images={localize(galleryImages, locale)} />
 			</Section>

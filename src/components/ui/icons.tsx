@@ -6,6 +6,8 @@
 export type { IconProps } from "tdesign-icons-react"
 export {
 	ActivityIcon,
+	ArrowDownIcon,
+	ArrowRightUpIcon,
 	CakeIcon,
 	CalendarEventIcon,
 	CheckIcon,
@@ -22,9 +24,9 @@ export {
 	LogoFacebookIcon,
 	LogoInstagramIcon,
 	MailIcon,
-	MenuIcon,
 	SunRisingIcon,
 	TimeIcon,
 	TrendingUpIcon,
 	UsergroupIcon,
+	ViewListIcon,
 } from "tdesign-icons-react"
