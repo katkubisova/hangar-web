@@ -1,3 +1,5 @@
+import type { Localized } from "@/lib/types/localized"
+
 // A footnote marker as shown on the source price list, e.g. "1" or "**".
 // Rendered as superscript next to the text it belongs to.
 export type FootnoteMarker = string
@@ -9,11 +11,12 @@ export interface PriceLabelPart {
 
 // A plain string, or parts when the label carries footnote markers —
 // e.g. "Child² / Senior³" is two parts, each with its own marker.
-export type PriceLabel = string | PriceLabelPart[]
+export type PriceLabel = Localized<string> | Localized<PriceLabelPart[]>
 
 // A number is a price in CZK (formatted as "1 940 Kč"), a string is shown
-// as-is (e.g. "15 %"), and null means "not offered" (rendered as "–").
-export type PriceCell = number | string | null
+// as-is (e.g. "15 %"; localized when it holds words, e.g. "1 month"), and
+// null means "not offered" (rendered as "–").
+export type PriceCell = number | string | Localized<string> | null
 
 export interface PriceRow {
 	label: PriceLabel
@@ -29,12 +32,12 @@ export interface PriceTable {
 
 export interface PriceFootnote {
 	marker: FootnoteMarker
-	text: string
+	text: Localized<string>
 }
 
 export interface PriceCategory {
-	category: string
+	category: Localized<string>
 	tables: PriceTable[]
 	footnotes?: PriceFootnote[]
-	notes?: string[]
+	notes?: Localized<string>[]
 }

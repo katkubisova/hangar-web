@@ -1,3 +1,4 @@
+import type { Localized, Resolved } from "@/lib/types/localized"
 import type { PriceCategory } from "@/lib/types/price-list"
 
 export type GymSlug = "brno" | "ostrava" | "plzen"
@@ -5,26 +6,27 @@ export type GymSlug = "brno" | "ostrava" | "plzen"
 export type GymStatus = "open" | "coming-soon" | "hidden"
 
 export interface OpeningHoursRow {
-	label: string
+	label: Localized<string>
 	hours: string
 }
 
 export interface PriceItem {
-	name: string
-	price: string
+	name: Localized<string>
+	// CZK, formatted as "900 Kč".
+	price: number
 	note?: string
 }
 
 export interface PhysioTeamMember {
-	photo: string
+	photo: Localized<string>
 	name: string
-	specialisation: string
-	bio: string
+	specialisation: Localized<string>
+	bio: Localized<string>
 }
 
 export interface PhysioInfo {
 	enabled: boolean
-	intro: string
+	intro: Localized<string>
 	team: PhysioTeamMember[]
 	prices: PriceItem[]
 	// Placeholder — no real booking system is wired up yet; see the
@@ -32,13 +34,13 @@ export interface PhysioInfo {
 	bookingUrl: string
 }
 
-export interface Gym {
+export interface GymData {
 	name: string
 	slug: GymSlug
 	status: GymStatus
-	heroImage: string
-	shortDescription: string
-	address: string
+	heroImage: Localized<string>
+	shortDescription: Localized<string>
+	address: Localized<string>
 	companyName: string
 	companyId: string
 	taxId: string
@@ -46,19 +48,21 @@ export interface Gym {
 	email: string
 	phone: string
 	mapEmbedUrl: string
-	directionsText: string
+	directionsText: Localized<string>
 	directionsVideoUrl: string
-	registrationUrl: string
-	bookingUrl: string
+	registrationUrl: Localized<string>
+	bookingUrl: Localized<string>
 	activitiesBookingUrl: string
 	prices: PriceCategory[]
 	physio?: PhysioInfo
 	consentFormUrl: string
 	visitorRulesUrl: string
 	cafeMenuUrl: string
-	cafeMenuThumbnail: string
-	galleryImages: string[]
+	cafeMenuThumbnail: Localized<string>
+	galleryImages: Localized<string>[]
 	instagramUrl: string
 	facebookUrl: string
 	displayOrder: number
 }
+
+export type Gym = Resolved<GymData>

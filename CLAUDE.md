@@ -92,13 +92,13 @@ flag it**. Don't silently resolve it, don't guess, don't pick the
 
 ### Phase 1 — Working CZ/EN switch
 
-- [ ] next-intl routing under `src/app/[locale]/`, Czech default without
+- [x] next-intl routing under `src/app/[locale]/`, Czech default without
       prefix, translated pathnames (Czech URLs as proposed in the plan,
       confirmed 15 Oct 2026).
-- [ ] Merge existing redirects in `src/middleware.ts` with the next-intl
-      middleware.
-- [ ] Move interface text into `messages/*.json`; localize content data.
-- [ ] Language switcher that keeps the current page; `<html lang>`,
+- [x] Merge existing redirects with the next-intl middleware (now
+      `src/proxy.ts`, Next 16's name for middleware).
+- [x] Move interface text into `messages/*.json`; localize content data.
+- [x] Language switcher that keeps the current page; `<html lang>`,
       translated metadata, hreflang alternates.
 
 ### Phase 2 — Copy
