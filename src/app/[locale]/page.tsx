@@ -80,14 +80,17 @@ export default async function HomePage({ params }: LocaleParams) {
 					/>
 				</div>
 
-				<ul className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-3 md:mt-24">
+				<ul className="mx-auto mt-16 grid max-w-5xl gap-8 md:grid-cols-3 md:mt-24">
 					{STATS.map(({ key, profile }) => (
-						<li key={key} className="mx-auto w-4/5 sm:w-full">
+						<li
+							key={key}
+							className="mx-auto w-4/5 max-w-sm md:w-full md:max-w-none"
+						>
 							<WallProfile
 								profile={profile}
 								contentClassName="items-center text-center"
 							>
-								<span className="font-display text-h2 font-bold tracking-heading uppercase">
+								<span className="font-display text-[1.75rem] leading-tight font-bold tracking-heading uppercase lg:text-h2">
 									{t(`stats.${key}.value`)}
 								</span>
 								<span className="text-xs font-medium tracking-eyebrow uppercase">
