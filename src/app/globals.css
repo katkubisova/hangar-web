@@ -2,27 +2,114 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* A section with class="dark" flips to the black brand surface: every
+   token below is redefined under .dark, so components inside it follow. */
 @custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------
+   HANGAR brand tokens (HANGAR_Brand_Guidelines_2026.pdf, ch. 03–04)
+   ------------------------------------------------------------------ */
+@theme {
+	/* Primary palette. Alabaster and Cod Gray carry surfaces and text;
+	   the three accents are signals only, never large fills. */
+	--color-alabaster: #fafafa;
+	--color-cod-gray: #0d0d0d;
+	--color-electric-violet: #6034ff;
+	--color-trinidad: #f25d0d;
+	--color-orient: #006b8f;
+
+	/* Secondary palette, for UI and print. */
+	--color-violet-light: #e2cbff;
+	--color-orange-light: #faded2;
+	--color-blue-light: #cceaff;
+	--color-violet: #716de3;
+	--color-orange: #df763e;
+	--color-blue: #2595bb;
+
+	/* Type. N27 is the brand's heading face but has no web licence yet,
+	   so --font-display falls back to Geist. Swapping it in later is a
+	   one-line change here. */
+	--font-display: var(--font-sans);
+
+	/* Brand type scale: headings 120 % line height and −4 % tracking,
+	   body 140 % and −2 %. */
+	--text-display: clamp(2.75rem, 1.6rem + 5vw, 5.5rem);
+	--text-display--line-height: 1;
+	--text-h1: clamp(2.25rem, 1.6rem + 2.8vw, 4rem);
+	--text-h1--line-height: 1.1;
+	--text-h2: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+	--text-h2--line-height: 1.2;
+	--text-h3: 1.25rem;
+	--text-h3--line-height: 1.2;
+	--text-lead: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+	--text-lead--line-height: 1.4;
+	--text-eyebrow: 0.75rem;
+	--text-eyebrow--line-height: 1.2;
+
+	--tracking-heading: -0.04em;
+	--tracking-body: -0.02em;
+	--tracking-eyebrow: 0.06em;
+}
+
+/* Gradients (guide p. 44–47), running from the top-left colour to the
+   bottom-right one. Saturated ones are for events, posters and
+   Challenger; soft ones for everyday UI. Never on text. */
+@utility bg-gradient-violet-trinidad {
+	background-image: linear-gradient(160deg, #6034ff, #f25d0d);
+}
+@utility bg-gradient-violet-orient {
+	background-image: linear-gradient(160deg, #6034ff, #2595bb);
+}
+@utility bg-gradient-orient-trinidad {
+	background-image: linear-gradient(160deg, #2595bb, #f25d0d);
+}
+@utility bg-gradient-soft-violet {
+	background-image: linear-gradient(160deg, #e2cbff, #6034ff);
+}
+@utility bg-gradient-soft-orange {
+	background-image: linear-gradient(160deg, #faded2, #f2600d);
+}
+@utility bg-gradient-soft-blue {
+	background-image: linear-gradient(160deg, #cceaff, #006b8f);
+}
+@utility bg-gradient-pastel-violet {
+	background-image: linear-gradient(160deg, #e2cbff, #716de3);
+}
+@utility bg-gradient-pastel-orange {
+	background-image: linear-gradient(160deg, #faded2, #df763e);
+}
+@utility bg-gradient-pastel-blue {
+	background-image: linear-gradient(160deg, #cceaff, #2595bb);
+}
+
+/* Small uppercase label above a heading, as on every guide page. */
+@utility eyebrow {
+	font-size: var(--text-eyebrow);
+	line-height: var(--text-eyebrow--line-height);
+	letter-spacing: var(--tracking-eyebrow);
+	text-transform: uppercase;
+	font-weight: 500;
+	color: var(--muted-foreground);
+}
+
+/* Inline text link. The brand forbids underlined text, so links are
+   marked by colour and weight, plus a clear focus ring. */
+@utility link {
+	color: var(--link);
+	font-weight: 500;
+	transition: color 150ms;
+	&:hover {
+		color: var(--foreground);
+	}
+}
 
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--font-sans: var(--font-sans);
 	--font-mono: var(--font-mono);
-	--font-serif: var(--font-serif);
-	--color-sidebar-ring: var(--sidebar-ring);
-	--color-sidebar-border: var(--sidebar-border);
-	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-	--color-sidebar-accent: var(--sidebar-accent);
-	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-	--color-sidebar-primary: var(--sidebar-primary);
-	--color-sidebar-foreground: var(--sidebar-foreground);
-	--color-sidebar: var(--sidebar);
-	--color-chart-5: var(--chart-5);
-	--color-chart-4: var(--chart-4);
-	--color-chart-3: var(--chart-3);
-	--color-chart-2: var(--chart-2);
-	--color-chart-1: var(--chart-1);
+	--font-heading: var(--font-display);
+	--color-link: var(--link);
 	--color-ring: var(--ring);
 	--color-input: var(--input);
 	--color-border: var(--border);
@@ -39,111 +126,107 @@
 	--color-popover: var(--popover);
 	--color-card-foreground: var(--card-foreground);
 	--color-card: var(--card);
-	--radius-sm: calc(var(--radius) * 0.6);
-	--radius-md: calc(var(--radius) * 0.8);
+	--radius-sm: calc(var(--radius) * 0.5);
+	--radius-md: calc(var(--radius) * 0.75);
 	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) * 1.4);
-	--radius-2xl: calc(var(--radius) * 1.8);
-	--radius-3xl: calc(var(--radius) * 2.2);
-	--radius-4xl: calc(var(--radius) * 2.6);
-	--font-heading: var(--font-sans);
+	--radius-xl: calc(var(--radius) * 1.5);
+	--radius-2xl: calc(var(--radius) * 2);
+	--radius-3xl: calc(var(--radius) * 2.5);
+	--radius-4xl: calc(var(--radius) * 3);
 }
 
+/* Semantic tokens used by the components. Light: Alabaster surface,
+   Cod Gray text and primary actions, Electric Violet as the one
+   interactive signal (links, focus). */
 :root {
-	--radius: 0.45rem;
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.145 0 0);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.145 0 0);
-	--primary: oklch(0.205 0 0);
-	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.97 0 0);
-	--secondary-foreground: oklch(0.205 0 0);
-	--muted: oklch(0.97 0 0);
-	--muted-foreground: oklch(0.556 0 0);
-	--accent: oklch(0.97 0 0);
-	--accent-foreground: oklch(0.205 0 0);
-	--destructive: oklch(0.145 0 0);
-	--border: oklch(0.922 0 0);
-	--input: oklch(0.922 0 0);
-	--ring: oklch(0.708 0 0);
-	--chart-1: oklch(0.87 0 0);
-	--chart-2: oklch(0.556 0 0);
-	--chart-3: oklch(0.439 0 0);
-	--chart-4: oklch(0.371 0 0);
-	--chart-5: oklch(0.269 0 0);
-	--sidebar: oklch(0.985 0 0);
-	--sidebar-foreground: oklch(0.145 0 0);
-	--sidebar-primary: oklch(0.205 0 0);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(0.97 0 0);
-	--sidebar-accent-foreground: oklch(0.205 0 0);
-	--sidebar-border: oklch(0.922 0 0);
-	--sidebar-ring: oklch(0.708 0 0);
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.145 0 0);
+	/* Square corners, matching the brand's sharp line icons. The radius
+	   scale below stays in place, so this is the one switch to change. */
+	--radius: 0rem;
+	--background: #fafafa;
+	--foreground: #0d0d0d;
+	--card: #ffffff;
+	--card-foreground: #0d0d0d;
+	--popover: #ffffff;
+	--popover-foreground: #0d0d0d;
+	--primary: #0d0d0d;
+	--primary-foreground: #fafafa;
+	--secondary: #eeeeee;
+	--secondary-foreground: #0d0d0d;
+	/* Panel grey from the guide's layouts. */
+	--muted: #eeeeee;
+	/* 6.3:1 on Alabaster (WCAG AA for body text). */
+	--muted-foreground: #5c5c5c;
+	--accent: #eeeeee;
+	--accent-foreground: #0d0d0d;
+	/* Trinidad is 3.1:1 on Alabaster: fine for borders and icons, too
+	   light for small error text. See the Phase 4 flags. */
+	--destructive: #f25d0d;
+	--border: #e2e2e2;
+	--input: #d6d6d6;
+	/* Electric Violet, 6.0:1 on Alabaster. */
+	--ring: #6034ff;
+	--link: #6034ff;
 }
 
 .dark {
-	--background: oklch(0.145 0 0);
-	--foreground: oklch(0.985 0 0);
-	--card: oklch(0.205 0 0);
-	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.205 0 0);
-	--popover-foreground: oklch(0.985 0 0);
-	--primary: oklch(0.922 0 0);
-	--primary-foreground: oklch(0.205 0 0);
-	--secondary: oklch(0.269 0 0);
-	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.269 0 0);
-	--muted-foreground: oklch(0.708 0 0);
-	--accent: oklch(0.269 0 0);
-	--accent-foreground: oklch(0.985 0 0);
-	--destructive: oklch(0.985 0 0);
-	--border: oklch(1 0 0 / 10%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.556 0 0);
-	--chart-1: oklch(0.87 0 0);
-	--chart-2: oklch(0.556 0 0);
-	--chart-3: oklch(0.439 0 0);
-	--chart-4: oklch(0.371 0 0);
-	--chart-5: oklch(0.269 0 0);
-	--sidebar: oklch(0.205 0 0);
-	--sidebar-foreground: oklch(0.985 0 0);
-	--sidebar-primary: oklch(0.922 0 0);
-	--sidebar-primary-foreground: oklch(0.985 0 0);
-	--sidebar-accent: oklch(0.269 0 0);
-	--sidebar-accent-foreground: oklch(0.985 0 0);
-	--sidebar-border: oklch(1 0 0 / 10%);
-	--sidebar-ring: oklch(0.556 0 0);
+	--background: #0d0d0d;
+	--foreground: #fafafa;
+	--card: #1a1a1a;
+	--card-foreground: #fafafa;
+	--popover: #1a1a1a;
+	--popover-foreground: #fafafa;
+	--primary: #fafafa;
+	--primary-foreground: #0d0d0d;
+	--secondary: #262626;
+	--secondary-foreground: #fafafa;
+	--muted: #262626;
+	--muted-foreground: #a8a8a8;
+	--accent: #262626;
+	--accent-foreground: #fafafa;
+	--destructive: #f25d0d;
+	--border: #2e2e2e;
+	--input: #3a3a3a;
+	/* Light Violet: Electric Violet is too dark on Cod Gray. */
+	--ring: #e2cbff;
+	--link: #e2cbff;
 }
 
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
 	}
-	body {
-		@apply bg-background text-foreground;
-	}
 	html {
 		@apply font-sans;
 	}
-}
-
-.paper-texture {
-	position: relative;
-}
-
-.paper-texture::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	pointer-events: none;
-	opacity: 0.03;
-	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-	background-repeat: repeat;
-}
-
-html.dark .paper-texture::before {
-	opacity: 0.02;
+	body {
+		@apply bg-background text-foreground;
+		letter-spacing: var(--tracking-body);
+		line-height: 1.4;
+	}
+	.dark {
+		background-color: var(--background);
+		color: var(--foreground);
+	}
+	h1,
+	h2,
+	h3,
+	h4 {
+		font-family: var(--font-heading);
+		letter-spacing: var(--tracking-heading);
+		line-height: 1.2;
+		text-wrap: balance;
+	}
+	/* Page and section titles are set in capitals, as in the guide. */
+	h1,
+	h2 {
+		text-transform: uppercase;
+	}
+	::selection {
+		background-color: var(--color-violet-light);
+		color: var(--color-cod-gray);
+	}
+	:focus-visible {
+		outline: 2px solid var(--ring);
+		outline-offset: 2px;
+	}
 }

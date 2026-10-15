@@ -114,7 +114,9 @@ flag it**. Don't silently resolve it, don't guess, don't pick the
 
 ### Phase 4 — Brand UI
 
-- [ ] 4a Tokens and type in `globals.css`.
+- [x] 4a Tokens and type in `globals.css` (decided: page/section titles
+      in capitals, square corners, form errors in black text with a
+      Trinidad marker). Internal reference page: `/styleguide`.
 - [ ] 4b Components: restyle `src/components/ui/*`, TDesign icons, Logo,
       WallProfile, Sticker, BrandImage.
 - [ ] 4c Global layout: header, footer, hero, sections, 404.
