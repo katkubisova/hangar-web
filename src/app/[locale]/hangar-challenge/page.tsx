@@ -6,6 +6,7 @@ import {
 	WallProfile,
 	type WallProfileName,
 } from "@/components/brand/wall-profile"
+import { GradientSection } from "@/components/shared/gradient-section"
 import { HeroSection } from "@/components/shared/hero-section"
 import { Section } from "@/components/shared/section"
 import { SectionHeading } from "@/components/shared/section-heading"
@@ -96,31 +97,28 @@ export default async function HangarChallengePage({ params }: LocaleParams) {
 				</ol>
 			</Section>
 
-			{/* Challenger: the race series, on the saturated gradient the
-			guide reserves for it. Text sits on the violet end. */}
-			<section className="dark relative isolate overflow-hidden bg-gradient-violet-trinidad">
-				<div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-12 lg:items-center lg:px-8">
-					<div className="lg:col-span-7">
-						<p className="eyebrow mb-4 text-alabaster">
-							{t("challengerEyebrow")}
-						</p>
-						<h2 className="mb-6 text-display font-bold text-alabaster">
-							Challenger 2026
-						</h2>
-						<p className="max-w-2xl text-lead text-alabaster">
-							{t("what.challenger")}
-						</p>
-					</div>
-					<div className="flex justify-center lg:col-span-5">
-						<Sticker
-							text="Challenger 2026"
-							className="w-48 bg-cod-gray text-alabaster md:w-64"
-						>
-							<FlagIcon aria-hidden="true" className="size-12" />
-						</Sticker>
-					</div>
+			{/* Challenger, the race series, on the events gradient. */}
+			<GradientSection>
+				<div className="lg:col-span-7">
+					<p className="eyebrow mb-4 text-alabaster">
+						{t("challengerEyebrow")}
+					</p>
+					<h2 className="mb-6 text-display font-bold text-alabaster">
+						Challenger 2026
+					</h2>
+					<p className="max-w-2xl text-lead text-alabaster">
+						{t("what.challenger")}
+					</p>
 				</div>
-			</section>
+				<div className="flex justify-center lg:col-span-5">
+					<Sticker
+						text="Challenger 2026"
+						className="w-48 bg-cod-gray text-alabaster md:w-64"
+					>
+						<FlagIcon aria-hidden="true" className="size-12" />
+					</Sticker>
+				</div>
+			</GradientSection>
 		</>
 	)
 }

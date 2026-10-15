@@ -82,7 +82,7 @@ export default async function HomePage({ params }: LocaleParams) {
 
 				<ul className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-3 md:mt-24">
 					{STATS.map(({ key, profile }) => (
-						<li key={key}>
+						<li key={key} className="mx-auto w-4/5 sm:w-full">
 							<WallProfile
 								profile={profile}
 								contentClassName="items-center text-center"

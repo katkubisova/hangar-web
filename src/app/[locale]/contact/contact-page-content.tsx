@@ -168,7 +168,7 @@ function ContactPageSections() {
 						</div>
 					</Section>
 
-					<Section tone="dark">
+					<Section tone="muted">
 						<SectionHeading title={t("formTitle")} className="mb-0 md:mb-0">
 							<p>{t("formPending")}</p>
 						</SectionHeading>

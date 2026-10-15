@@ -17,7 +17,10 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
 				<p className="text-sm text-muted-foreground">{member.bio}</p>
 			)}
 			{member.email && (
-				<a href={`mailto:${member.email}`} className="link mt-auto text-sm">
+				<a
+					href={`mailto:${member.email}`}
+					className="link mt-auto text-sm break-all"
+				>
 					{member.email}
 				</a>
 			)}

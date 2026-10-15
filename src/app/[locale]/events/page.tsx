@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server"
 import { Sticker } from "@/components/brand/sticker"
 import { WallProfile } from "@/components/brand/wall-profile"
 import { ActivityCard } from "@/components/shared/activity-card"
+import { GradientSection } from "@/components/shared/gradient-section"
 import { HeroSection } from "@/components/shared/hero-section"
 import { Section } from "@/components/shared/section"
 import { SectionHeading } from "@/components/shared/section-heading"
@@ -113,47 +114,44 @@ export default async function EventsPage({ params }: LocaleParams) {
 				</ul>
 			</Section>
 
-			{/* Saturated gradient: the guide keeps these for events and
-			Challenger. Text sits on the violet end, where contrast holds. */}
-			<section className="dark relative isolate overflow-hidden bg-gradient-violet-trinidad">
-				<div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-12 lg:items-center lg:px-8">
-					<div className="lg:col-span-6">
-						<p className="eyebrow mb-4 text-alabaster">
-							{t("challenge.eyebrow")}
-						</p>
-						<h2 className="mb-6 text-display font-bold text-alabaster">
-							{t("challenge.title")}
-						</h2>
-						<p className="mb-8 max-w-xl text-lead text-alabaster">
-							{t("challenge.text")}
-						</p>
-						<Button size="lg" render={<Link href="/hangar-challenge" />}>
-							{t("challenge.cta")}
-							<ChevronRightIcon aria-hidden="true" />
-						</Button>
-					</div>
-					<div className="relative lg:col-span-6">
-						<WallProfile
-							profile="stargate"
-							className="mx-auto w-full max-w-md"
-							contentClassName="items-center text-center"
-						>
-							<span className="font-display text-display font-bold tracking-heading">
-								30
-							</span>
-							<span className="text-xs font-medium tracking-eyebrow uppercase">
-								{t("challenge.profileLabel")}
-							</span>
-						</WallProfile>
-						<Sticker
-							text={t("challenge.title")}
-							className="absolute top-0 right-0 w-28 bg-alabaster text-cod-gray md:w-36"
-						>
-							<FlagIcon aria-hidden="true" className="size-10" />
-						</Sticker>
-					</div>
+			{/* Challenge teaser on the events gradient. */}
+			<GradientSection>
+				<div className="lg:col-span-6">
+					<p className="eyebrow mb-4 text-alabaster">
+						{t("challenge.eyebrow")}
+					</p>
+					<h2 className="mb-6 text-display font-bold text-alabaster">
+						{t("challenge.title")}
+					</h2>
+					<p className="mb-8 max-w-xl text-lead text-alabaster">
+						{t("challenge.text")}
+					</p>
+					<Button size="lg" render={<Link href="/hangar-challenge" />}>
+						{t("challenge.cta")}
+						<ChevronRightIcon aria-hidden="true" />
+					</Button>
 				</div>
-			</section>
+				<div className="relative lg:col-span-6">
+					<WallProfile
+						profile="stargate"
+						className="mx-auto w-full max-w-md"
+						contentClassName="items-center text-center"
+					>
+						<span className="font-display text-display font-bold tracking-heading">
+							30
+						</span>
+						<span className="text-xs font-medium tracking-eyebrow uppercase">
+							{t("challenge.profileLabel")}
+						</span>
+					</WallProfile>
+					<Sticker
+						text={t("challenge.title")}
+						className="absolute top-0 right-0 w-28 bg-alabaster text-cod-gray md:w-36"
+					>
+						<FlagIcon aria-hidden="true" className="size-10" />
+					</Sticker>
+				</div>
+			</GradientSection>
 		</>
 	)
 }

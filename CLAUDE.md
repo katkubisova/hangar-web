@@ -109,8 +109,13 @@ flag it**. Don't silently resolve it, don't guess, don't pick the
 
 ### Phase 3 — Links and URLs
 
-- [ ] Replace every `"#"` with a real URL, or hide the element and flag it.
-- [ ] `pnpm check:links` script: no internal 404s, no `#` links.
+- [x] Replace every `"#"` with a real URL, or hide the element and flag it.
+      Link fields in `gyms.ts` are optional; a missing one hides its
+      element (Plzeň, Ostrava directions video, Brno physio booking,
+      cafe menus).
+- [x] `pnpm check:links` script: no internal 404s, no `#` links. Run it
+      against a running build (`pnpm start`, then
+      `pnpm check:links --base=http://localhost:3000`).
 
 ### Phase 4 — Brand UI
 
@@ -130,12 +135,16 @@ flag it**. Don't silently resolve it, don't guess, don't pick the
 
 ### Phase 5 — QA
 
-- [ ] Responsive (375 / 768 / 1280+), keyboard, contrast, both languages.
-- [ ] Links, build, Biome, tests; screenshots of every page in CZ and EN.
+- [x] Responsive (375 / 768 / 1280+), keyboard, contrast, both languages.
+      Fixed: focus rings on buttons, accordions and form fields; a dark
+      overlay on the saturated gradient blocks (white text ≥ 4.5:1); the
+      contact page now renders on the server.
+- [x] Links, build, Biome, tests; screenshots of every page in CZ and EN
+      (shared QA page).
 
 ### Phase 6 — Launch checklist
 
-- [ ] `docs/launch-checklist.md` with owner, blocker and size for every item
+- [x] `docs/launch-checklist.md` with owner, blocker and size for every item
       still needed before launch (form sending, company details, photos,
       legal review, cookie consent, analytics, Plzeň, hosting, N27 licence,
       CMS decision…).

@@ -14,7 +14,18 @@ export async function generateMetadata({
 	return getPageMetadata({ locale, href: "/contact", title: t("title") })
 }
 
-export default async function ContactPage({ params }: LocaleParams) {
+interface ContactPageProps extends LocaleParams {
+	searchParams: Promise<Record<string, string | string[] | undefined>>
+}
+
+export default async function ContactPage({
+	params,
+	searchParams,
+}: ContactPageProps) {
 	await getPageLocale(params)
+	// Reading the query makes the page render per request, so the selected
+	// branch (?gym=) is in the server HTML instead of appearing only after
+	// JavaScript loads.
+	await searchParams
 	return <ContactPageContent />
 }
