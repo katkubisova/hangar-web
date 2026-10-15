@@ -10,6 +10,9 @@ export type BrandGradient =
 	| "soft-violet"
 	| "soft-orange"
 	| "soft-blue"
+	| "pastel-violet"
+	| "pastel-orange"
+	| "pastel-blue"
 
 const GRADIENT_CLASS: Record<BrandGradient, string> = {
 	"violet-trinidad": "bg-gradient-violet-trinidad",
@@ -18,6 +21,9 @@ const GRADIENT_CLASS: Record<BrandGradient, string> = {
 	"soft-violet": "bg-gradient-soft-violet",
 	"soft-orange": "bg-gradient-soft-orange",
 	"soft-blue": "bg-gradient-soft-blue",
+	"pastel-violet": "bg-gradient-pastel-violet",
+	"pastel-orange": "bg-gradient-pastel-orange",
+	"pastel-blue": "bg-gradient-pastel-blue",
 }
 
 interface BrandImageProps {

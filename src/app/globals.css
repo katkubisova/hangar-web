@@ -230,3 +230,11 @@
 		outline-offset: 2px;
 	}
 }
+
+/* TDesign injects ".t-icon { width: 1em; height: 1em }" outside any layer,
+   which beats Tailwind's size-* utilities. Hand sizing back to the layers;
+   an icon without a size class still gets 1em from its width attribute. */
+svg.t-icon {
+	width: revert-layer;
+	height: revert-layer;
+}

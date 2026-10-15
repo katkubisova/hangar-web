@@ -93,31 +93,52 @@
 			"paragraph1": "Hangar is a climbing playground by Adam Ondra: a climbing centre dedicated entirely to bouldering, created with one of the world's best climbers. In 2019 we kicked off a new era of modern bouldering in the Czech Republic in Brno, and today you'll find us in Ostrava too.",
 			"paragraph2": "Over 300 boulders from total beginner to 8A, and training zones with Moonboards, spray walls and, in Ostrava, a Kilterboard. Our setters add new boulders every week, so nothing gets old.",
 			"paragraph3": "Most of all, Hangar is a community. Every month we climb the Hangar Challenge, young competitors grow up in the Hangar Rockets club, and after climbing we meet over specialty coffee at our Cafe Bar.",
-			"imageLabel": "About Hangar photo"
+			"imageLabel": "A climber on a colourful bouldering wall",
+			"eyebrow": "Since 2019"
 		},
 		"locations": {
-			"title": "Find your Hangar"
+			"title": "Find your Hangar",
+			"eyebrow": "Brno · Ostrava · Plzeň"
 		},
 		"events": {
 			"title": "Events & activities",
 			"line1": "Climbing courses for kids and adults, fitness classes, birthday parties and day camps.",
 			"line2": "And every month, the Hangar Challenge: 30 new boulders and a competition for everyone.",
 			"cta": "See what's on",
-			"imageLabel": "Events photo"
+			"imageLabel": "A coach spotting a young climber on a boulder",
+			"eyebrow": "Courses · classes · competitions",
+			"sticker": "Hangar Challenge"
 		},
 		"visit": {
 			"title": "Visit us",
 			"line1": "First time at Hangar? Register online beforehand and save time for yourself and our bar staff.",
 			"line2": "We're open every day except Christmas Eve, and your entry is valid all day. We'll lend you climbing shoes.",
 			"cta": "Plan your visit",
-			"imageLabel": "Visit Us photo"
+			"imageLabel": "A colourful bouldering wall at Hangar Brno",
+			"eyebrow": "First time at Hangar"
 		},
-		"faqTitle": "FAQ"
+		"faqTitle": "FAQ",
+		"stats": {
+			"boulders": {
+				"value": "300+",
+				"label": "boulders across two gyms"
+			},
+			"grades": {
+				"value": "5A–8A",
+				"label": "from beginners to pros"
+			},
+			"weekly": {
+				"value": "Weekly",
+				"label": "new boulders"
+			}
+		}
 	},
 	"VisitPage": {
 		"title": "Visit Us",
 		"subtitle": "Brno or Ostrava? Pick your Hangar and check the opening hours, prices and what's waiting for you.",
-		"chooseLocation": "Choose your location"
+		"chooseLocation": "Choose your location",
+		"eyebrow": "Brno · Ostrava · Plzeň",
+		"imageLabel": "The training zone with a steep wall at Hangar Ostrava"
 	},
 	"BranchPage": {
 		"about": "About this location",
@@ -139,7 +160,8 @@
 			"activitiesTitle": "Events & activities",
 			"activitiesText": "Book courses, fitness classes, birthday parties, day camps and other events online.",
 			"allActivityTypes": "See all activity types",
-			"ticketsCta": "My account"
+			"ticketsCta": "My account",
+			"eyebrow": "Before you come"
 		},
 		"prices": "Prices",
 		"documents": {
@@ -152,8 +174,7 @@
 			"coffeeTitle": "Specialty coffee",
 			"coffeeImageLabel": "Specialty coffee photo",
 			"bistroTitle": "Fresh bistro",
-			"bistroImageLabel": "Fresh bistro photo",
-			"menu": "Download menu (PDF)"
+			"bistroImageLabel": "Fresh bistro photo"
 		},
 		"physio": {
 			"title": "Physiotherapy",
@@ -164,6 +185,12 @@
 			"bookTitle": "Book an appointment",
 			"bookText": "How to book each therapist is listed under their name above.",
 			"messageTitle": "Or send us a message"
+		},
+		"eyebrow": "Bouldering gym",
+		"sectionNav": "On this page",
+		"info": {
+			"title": "Opening hours & contact",
+			"directions": "How to get here"
 		}
 	},
 	"EventsPage": {
@@ -175,8 +202,12 @@
 		"challenge": {
 			"title": "Hangar Challenge",
 			"text": "Every month, 30 new boulders and a competition for everyone, from hobby climbers to the elite. You log your own results in the TopLogger app.",
-			"cta": "How it works"
-		}
+			"cta": "How it works",
+			"eyebrow": "Every month",
+			"profileLabel": "new boulders"
+		},
+		"eyebrow": "Courses · classes · parties · competitions",
+		"imageLabel": "Routesetters building new boulders at Hangar Ostrava"
 	},
 	"ChallengePage": {
 		"title": "Hangar Challenge",
@@ -184,7 +215,7 @@
 		"what": {
 			"title": "What is the Hangar Challenge?",
 			"text": "Every month we set 30 boulders marked with numbered Hangar Challenge cards, 1 to 30. They get harder as you go, so start at number one to warm up. There are three categories, Hobby, Sport and Elite, and the goal is to top as many boulders as possible in as few attempts as possible. It's all about fair play: everyone logs their own results. In Brno the Challenge runs from the first to the last day of the month; in Ostrava, from the 15th to the 15th of the following month.",
-			"imageLabel": "Hangar Challenge photo",
+			"imageLabel": "Routesetters building new boulders at Hangar Brno",
 			"challenger": "Challenger 2026 is a bouldering competition series where gravity loses its grip! Twice a year at each branch we climb the Challenge in competition mode: from 17:00 to 20:30, with results on the spot and much bigger prizes. Dates: Ostrava 20 March and 18 September, Brno 30 April and 27 October. At the end of the year we crown the King and Queen of the Challenger."
 		},
 		"howItWorks": "How it works",
@@ -194,12 +225,16 @@
 			"step2": "Under Competitions, pick Hangar Challenge and tap Register.",
 			"step3": "Climb boulders 1 to 30 and log every attempt (Try), every send (Top) and every Flash.",
 			"step4": "The best man and woman in each category win a free entry and a block of chalk."
-		}
+		},
+		"eyebrow": "A competition for everyone",
+		"categories": "Categories",
+		"challengerEyebrow": "Competition series"
 	},
 	"TeamPage": {
 		"title": "Our Team",
 		"subtitle": "The people behind Hangar, from the CEO to our shift leads. Need something specific? Write straight to the right person.",
-		"coreGroup": "Hangar Core"
+		"coreGroup": "Hangar Core",
+		"eyebrow": "Hangar Crew"
 	},
 	"CareersPage": {
 		"title": "Careers",
@@ -207,7 +242,9 @@
 		"whyTitle": "Why work at Hangar",
 		"openPositions": "Open positions",
 		"empty": "We're fully staffed right now, but our crew grows from time to time. Get in touch.",
-		"emptyCta": "Get in touch"
+		"emptyCta": "Get in touch",
+		"eyebrow": "Hangar Crew",
+		"imageLabel": "Specialty coffee at the bar in Hangar Ostrava"
 	},
 	"PositionPage": {
 		"back": "Back to Careers",
@@ -235,7 +272,8 @@
 		"companyTitle": "Company info",
 		"quickContactsTitle": "Quick contacts",
 		"formTitle": "Get in touch",
-		"formPending": "The contact form is coming soon. Until then, email or call us."
+		"formPending": "The contact form is coming soon. Until then, email or call us.",
+		"eyebrow": "Brno · Ostrava"
 	},
 	"PrivacyPage": {
 		"title": "Privacy Policy",

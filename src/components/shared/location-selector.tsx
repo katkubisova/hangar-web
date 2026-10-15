@@ -40,7 +40,6 @@ export function LocationSelector({
 						variant={isSelected ? "default" : "outline"}
 						disabled={isComingSoon}
 						onClick={() => onSelect(gym.slug)}
-						className="rounded-full"
 					>
 						{gym.name}
 						{isComingSoon && (

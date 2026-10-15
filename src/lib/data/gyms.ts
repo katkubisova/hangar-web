@@ -13,8 +13,11 @@ export const gyms: GymData[] = [
 		slug: "brno",
 		status: "open",
 		heroImage: {
-			cs: "Foto pobočky — Hangar Brno",
-			en: "Gym photo — Hangar Brno",
+			src: "/photos/brno-hall-b.jpg",
+			alt: {
+				cs: "Boulderová stěna plná chytů v Hangaru Brno",
+				en: "A bouldering wall full of holds at Hangar Brno",
+			},
 		},
 		shortDescription: {
 			cs: "Dvě haly, přes 200 boulderů a tréninkové zóny, ve kterých se nikdo nenudí. Tady to v roce 2019 celé začalo.",
@@ -52,7 +55,8 @@ export const gyms: GymData[] = [
 		],
 		email: "info@hangarbrno.cz",
 		phone: "+420 608 987 910",
-		mapEmbedUrl: "#",
+		mapEmbedUrl:
+			"https://maps.google.com/maps?t=m&output=embed&iwloc=near&z=14&q=Pra%C5%BE%C3%A1kova+1027%2F53%2C+619+00+Brno-st%C5%99ed",
 		directionsText: {
 			cs: [
 				"MHD: tramvají č. 2 nebo 5 na zastávku Ústřední hřbitov, odtud je to asi 10 minut pěšky. Blízko je i zastávka Pražákova.",
@@ -63,7 +67,7 @@ export const gyms: GymData[] = [
 				"By car: park in the grounds only in the marked Hangar spaces. If they're full, use the overflow car park to the left of the grounds.",
 			],
 		},
-		directionsVideoUrl: "#",
+		directionsVideoUrl: "https://www.youtube-nocookie.com/embed/uBzi9uXmsjI",
 		registrationUrl: {
 			cs: "https://rezervace.hangarbrno.cz/newRegistration?lang=cs",
 			en: "https://rezervace.hangarbrno.cz/newRegistration?lang=en",
@@ -199,12 +203,14 @@ export const gyms: GymData[] = [
 					note: { cs: "60 min", en: "60 min" },
 				},
 			],
-			bookingUrl: "#",
 		},
-		consentFormUrl: "#",
-		visitorRulesUrl: "#",
-		cafeMenuUrl: "#",
+		consentFormUrl:
+			"https://hangarbrno.cz/wp-content/uploads/2025/08/Souhlas-zakonneho-zastupce-Hangar-Brno-2.pdf",
+		visitorRulesUrl:
+			"https://hangarbrno.cz/wp-content/uploads/2026/04/Navstevni-rad-VB-2025-finalni-30_4.pdf",
 		cafe: {
+			coffeePhoto: "/photos/brno-drinks.jpg",
+			bistroPhoto: "/photos/brno-bistro.jpg",
 			coffee: {
 				cs: "Espresso, cappuccino nebo americano z výběrové kávy od pražírny Father's. K tomu výhled přímo na lezeckou plochu.",
 				en: "Espresso, cappuccino or americano made with specialty coffee from Father's roastery, with a view straight onto the climbing floor.",
@@ -214,26 +220,42 @@ export const gyms: GymData[] = [
 				en: "Breakfasts, baguettes, pizza and bowls made from fresh ingredients, with vegan and vegetarian options. Sweets from Brno bakery Cukrevolta. Last orders at 20:00.",
 			},
 		},
-		cafeMenuThumbnail: {
-			cs: "Náhled menu — kavárna Brno",
-			en: "Gallery image — Brno cafe menu",
-		},
 		galleryImages: [
 			{
-				cs: "Fotka z galerie — Hangar Brno, Hala A",
-				en: "Gallery image — Hangar Brno, Hall A",
+				src: "/photos/brno-hall-a.jpg",
+				alt: {
+					cs: "Boulderová hala shora",
+					en: "The bouldering hall from above",
+				},
 			},
 			{
-				cs: "Fotka z galerie — Hangar Brno, Hala B",
-				en: "Gallery image — Hangar Brno, Hall B",
+				src: "/photos/brno-overhang.jpg",
+				alt: {
+					cs: "Převislý boulder uprostřed haly",
+					en: "An overhanging boulder in the middle of the hall",
+				},
 			},
 			{
-				cs: "Fotka z galerie — Hangar Brno, tréninková zóna",
-				en: "Gallery image — Hangar Brno, training zone",
+				src: "/photos/brno-climber.jpg",
+				alt: {
+					cs: "Lezkyně na barevné stěně",
+					en: "A climber on a colourful wall",
+				},
 			},
 			{
-				cs: "Fotka z galerie — Hangar Brno, Cafe Bar",
-				en: "Gallery image — Hangar Brno, Cafe Bar",
+				src: "/photos/brno-routesetting.jpg",
+				alt: {
+					cs: "Stavěči při stavění nových boulderů",
+					en: "Routesetters building new boulders",
+				},
+			},
+			{
+				src: "/photos/brno-kids-park.jpg",
+				alt: { cs: "Pohybový park pro děti", en: "The kids' movement park" },
+			},
+			{
+				src: "/photos/brno-shop.jpg",
+				alt: { cs: "Outdoor shop", en: "The outdoor shop" },
 			},
 		],
 		instagramUrl: "https://www.instagram.com/hangarbrno/",
@@ -245,8 +267,11 @@ export const gyms: GymData[] = [
 		slug: "ostrava",
 		status: "open",
 		heroImage: {
-			cs: "Foto pobočky — Hangar Ostrava",
-			en: "Gym photo — Hangar Ostrava",
+			src: "/photos/ostrava-hall.jpg",
+			alt: {
+				cs: "Boulderová hala Hangaru Ostrava",
+				en: "The bouldering hall at Hangar Ostrava",
+			},
 		},
 		shortDescription: {
 			cs: "Největší boulderovka v Moravskoslezském kraji: 1 500 m² lezecké plochy, Kilterboard a dvoupatrový dětský park.",
@@ -283,7 +308,8 @@ export const gyms: GymData[] = [
 		],
 		email: "info@hangarostrava.cz",
 		phone: "+420 606 766 983",
-		mapEmbedUrl: "#",
+		mapEmbedUrl:
+			"https://maps.google.com/maps?t=m&output=embed&iwloc=near&z=14&q=Nad+Porubkou+2405%2C+708+00+Ostrava+8",
 		directionsText: {
 			cs: [
 				"MHD: autobusem na zastávku Bytostav nebo Dělnická, odtud jsi u nás za 4 minuty. Jezdí sem spoje z centra Ostravy, z Poruby i od nádraží Ostrava-Svinov.",
@@ -294,7 +320,6 @@ export const gyms: GymData[] = [
 				"By car: there's a large car park around Hangar and an EV charger. If it's full, park at the side of the road towards the woods, and mind the passing traffic.",
 			],
 		},
-		directionsVideoUrl: "#",
 		registrationUrl: {
 			cs: "https://rezervace.hangarostrava.cz/newRegistration?lang=cs",
 			en: "https://rezervace.hangarostrava.cz/newRegistration?lang=en",
@@ -412,12 +437,15 @@ export const gyms: GymData[] = [
 					note: { cs: "4 týdny", en: "4 weeks" },
 				},
 			],
-			bookingUrl: "#",
+			bookingUrl: "https://fyziogym.cz/",
 		},
-		consentFormUrl: "#",
-		visitorRulesUrl: "#",
-		cafeMenuUrl: "#",
+		consentFormUrl:
+			"https://hangarostrava.cz/wp-content/uploads/2025/08/Souhlas-zakonneho-zastupce-Ostrava.pdf",
+		visitorRulesUrl:
+			"https://hangarostrava.cz/wp-content/uploads/2025/11/CG-NAVSTEVNI-A-PROVOZNI-RAD-finalni.pdf",
 		cafe: {
+			coffeePhoto: "/photos/ostrava-coffee.jpg",
+			bistroPhoto: "/photos/ostrava-bistro.jpg",
 			coffee: {
 				cs: "Espresso, cappuccino nebo americano z výběrové kávy od pražírny Father's, k tomu domácí limonáda nebo pořádné pivo. Všechno s výhledem na celou stěnu.",
 				en: "Espresso, cappuccino or americano made with specialty coffee from Father's roastery, plus homemade lemonade or a proper beer, all with a view of the whole wall.",
@@ -427,26 +455,36 @@ export const gyms: GymData[] = [
 				en: "Hot and cold dishes made fresh every day, from granola to pizza and bún chả. Cakes, pastries and cookies from Croissant House Ostrava. Last orders at 20:00.",
 			},
 		},
-		cafeMenuThumbnail: {
-			cs: "Náhled menu — kavárna Ostrava",
-			en: "Gallery image — Ostrava cafe menu",
-		},
 		galleryImages: [
 			{
-				cs: "Fotka z galerie — Hangar Ostrava, boulderingová hala",
-				en: "Gallery image — Hangar Ostrava, bouldering hall",
+				src: "/photos/ostrava-training.jpg",
+				alt: {
+					cs: "Tréninková zóna se strmou stěnou",
+					en: "The training zone with a steep wall",
+				},
 			},
 			{
-				cs: "Fotka z galerie — Hangar Ostrava, Kilterboard",
-				en: "Gallery image — Hangar Ostrava, Kilterboard",
+				src: "/photos/ostrava-kilterboard.jpg",
+				alt: { cs: "Kilterboard", en: "The Kilterboard" },
 			},
 			{
-				cs: "Fotka z galerie — Hangar Ostrava, dětský park",
-				en: "Gallery image — Hangar Ostrava, kids' park",
+				src: "/photos/ostrava-coaching.jpg",
+				alt: {
+					cs: "Trenér jistí malého lezce",
+					en: "A coach spotting a young climber",
+				},
 			},
 			{
-				cs: "Fotka z galerie — Hangar Ostrava, Cafe & Bistro",
-				en: "Gallery image — Hangar Ostrava, Cafe & Bistro",
+				src: "/photos/ostrava-routesetting.jpg",
+				alt: { cs: "Stavění nových boulderů", en: "Building new boulders" },
+			},
+			{
+				src: "/photos/ostrava-kids-park.jpg",
+				alt: { cs: "Pohybový park pro děti", en: "The kids' movement park" },
+			},
+			{
+				src: "/photos/ostrava-shop.jpg",
+				alt: { cs: "Outdoor shop", en: "The outdoor shop" },
 			},
 		],
 		instagramUrl: "https://www.instagram.com/hangarostrava/",
@@ -458,8 +496,10 @@ export const gyms: GymData[] = [
 		slug: "plzen",
 		status: "coming-soon",
 		heroImage: {
-			cs: "Foto pobočky — Hangar Plzeň (již brzy)",
-			en: "Gym photo — Hangar Plzeň (coming soon)",
+			alt: {
+				cs: "Hangar Plzeň — již brzy",
+				en: "Hangar Plzeň — coming soon",
+			},
 		},
 		shortDescription: {
 			cs: "Hangar míří do Plzně. Podrobnosti oznámíme před otevřením.",
@@ -477,24 +517,10 @@ export const gyms: GymData[] = [
 		openingHours: [],
 		email: "plzen@hangargyms.example",
 		phone: "+420 000 000 003",
-		mapEmbedUrl: "#",
 		directionsText: { cs: [], en: [] },
-		directionsVideoUrl: "#",
-		registrationUrl: { cs: "#", en: "#" },
-		bookingUrl: { cs: "#", en: "#" },
-		activitiesBookingUrl: "#",
 		prices: [],
-		consentFormUrl: "#",
-		visitorRulesUrl: "#",
-		cafeMenuUrl: "#",
 		cafe: { coffee: { cs: "", en: "" }, bistro: { cs: "", en: "" } },
-		cafeMenuThumbnail: {
-			cs: "Náhled menu — kavárna Plzeň (již brzy)",
-			en: "Gallery image — Plzeň cafe menu (coming soon)",
-		},
 		galleryImages: [],
-		instagramUrl: "#",
-		facebookUrl: "#",
 		displayOrder: 3,
 	},
 ]

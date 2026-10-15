@@ -1,19 +1,26 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
+import { BrandImage } from "@/components/brand/brand-image"
+import { Portrait } from "@/components/brand/portrait"
 import { ContactForm } from "@/components/shared/contact-form"
 import { HeroSection } from "@/components/shared/hero-section"
 import { Paragraphs } from "@/components/shared/paragraphs"
 import { PhotoGallery } from "@/components/shared/photo-gallery"
 import { PricesAccordion } from "@/components/shared/prices-accordion"
 import { Section } from "@/components/shared/section"
+import { SectionHeading } from "@/components/shared/section-heading"
 import { Button } from "@/components/ui/button"
 import {
+	ArrowRightIcon,
+	ArrowRightUpIcon,
+	CallIcon,
 	FilePdfIcon,
+	LocationIcon,
 	LogoFacebookIcon,
 	LogoInstagramIcon,
+	MailIcon,
 } from "@/components/ui/icons"
-import { PlaceholderImage } from "@/components/ui/placeholder-image"
 import { getPageMetadata } from "@/i18n/metadata"
 import { Link } from "@/i18n/navigation"
 import { getPageLocale } from "@/i18n/page-locale"
@@ -56,268 +63,283 @@ export async function generateMetadata({
 	})
 }
 
+const EXTERNAL = { target: "_blank", rel: "noopener noreferrer" } as const
+
 export default async function BranchPage({ params }: BranchPageProps) {
 	const { gym } = await getGym(params)
 	const t = await getTranslations("BranchPage")
 	const common = await getTranslations("Common")
 
+	const sections = [
+		{ id: "about", label: t("about") },
+		{ id: "prices", label: t("prices") },
+		{ id: "cafe", label: t("cafe.title") },
+		{ id: "physio", label: t("physio.title") },
+		{ id: "gallery", label: common("gallery") },
+	]
+
+	const bookingActions = [
+		{
+			title: t("register.title"),
+			text: t("register.text"),
+			cta: t("register.cta"),
+			href: gym.registrationUrl,
+		},
+		{
+			title: t("booking.ticketsTitle"),
+			text: t("booking.ticketsText"),
+			cta: t("booking.ticketsCta"),
+			href: gym.bookingUrl,
+		},
+		{
+			title: t("booking.activitiesTitle"),
+			text: t("booking.activitiesText"),
+			cta: common("bookActivities"),
+			href: gym.activitiesBookingUrl,
+		},
+	].filter(action => action.href)
+
+	const documents = [
+		{ label: t("documents.consentForm"), href: gym.consentFormUrl },
+		{ label: t("documents.visitorRules"), href: gym.visitorRulesUrl },
+	].filter(document => document.href)
+
 	return (
 		<>
-			<HeroSection title={gym.name} subtitle={gym.shortDescription} />
+			<HeroSection
+				eyebrow={t("eyebrow")}
+				title={gym.name}
+				subtitle={gym.shortDescription}
+				image={gym.heroImage}
+			/>
 
-			<Section>
-				<div className="grid gap-8 lg:grid-cols-2">
-					<div className="space-y-4">
-						<h2 className="text-2xl font-bold">{t("about")}</h2>
-						<Paragraphs
-							paragraphs={gym.description}
-							className="text-muted-foreground"
-						/>
-						<div className="flex gap-3">
-							<Button
-								variant="outline"
-								size="icon"
-								aria-label={t("instagram", { gym: gym.name })}
-								render={
-									// biome-ignore lint/a11y/useAnchorContent: accessible label comes from the aria-label above, merged onto this anchor via the render prop
-									<a
-										href={gym.instagramUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-									/>
-								}
-							>
-								<LogoInstagramIcon className="size-4" aria-hidden="true" />
-							</Button>
-							<Button
-								variant="outline"
-								size="icon"
-								aria-label={t("facebook", { gym: gym.name })}
-								render={
-									// biome-ignore lint/a11y/useAnchorContent: accessible label comes from the aria-label above, merged onto this anchor via the render prop
-									<a
-										href={gym.facebookUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-									/>
-								}
-							>
-								<LogoFacebookIcon className="size-4" aria-hidden="true" />
-							</Button>
-						</div>
-					</div>
-					<div className="space-y-4">
-						<p>{gym.address}</p>
-						<table className="w-full text-sm">
-							<tbody>
-								{gym.openingHours.map(row => (
-									<tr key={row.label} className="border-b border-border">
-										<td className="py-2 text-muted-foreground">{row.label}</td>
-										<td className="py-2 text-right font-medium">{row.hours}</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-						<div className="space-y-1 text-sm">
-							<a href={`mailto:${gym.email}`} className="block hover:text-link">
-								{gym.email}
-							</a>
+			<nav
+				aria-label={t("sectionNav")}
+				className="sticky top-16 z-40 border-b border-foreground bg-background"
+			>
+				<ul className="mx-auto flex w-full max-w-7xl gap-6 overflow-x-auto px-4 sm:px-6 lg:px-8">
+					{sections.map(section => (
+						<li key={section.id} className="shrink-0">
 							<a
-								href={`tel:${gym.phone.replace(/\s/g, "")}`}
-								className="block hover:text-link"
+								href={`#${section.id}`}
+								className="block py-4 text-xs font-medium tracking-eyebrow text-muted-foreground uppercase transition-colors hover:text-foreground"
 							>
-								{gym.phone}
+								{section.label}
 							</a>
-						</div>
-					</div>
-				</div>
-			</Section>
-
-			<Section tone="muted">
-				<h2 className="mb-4 text-2xl font-bold">{t("register.title")}</h2>
-				<p className="mb-4 text-muted-foreground leading-relaxed">
-					{t("register.text")}
-				</p>
-				<Button
-					render={
-						// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
-						<a
-							href={gym.registrationUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-						/>
-					}
-				>
-					{t("register.cta")}
-				</Button>
-			</Section>
-
-			<Section>
-				<h2 className="mb-6 text-2xl font-bold">{common("gallery")}</h2>
-				<PhotoGallery images={gym.galleryImages} />
-			</Section>
-
-			<Section tone="muted">
-				<h2 className="mb-4 text-2xl font-bold">{t("occupancy.title")}</h2>
-				{/* No live occupancy source exists yet — spec Open Question 2 is
-				unresolved, so this always renders the fallback/empty state rather
-				than a fabricated number. */}
-				<p className="text-muted-foreground">{t("occupancy.empty")}</p>
-			</Section>
-
-			<Section>
-				<h2 className="mb-4 text-2xl font-bold">{t("booking.title")}</h2>
-				<div className="grid gap-8 md:grid-cols-2">
-					<div>
-						<h3 className="mb-2 text-lg font-medium">
-							{t("booking.ticketsTitle")}
-						</h3>
-						<p className="mb-4 text-muted-foreground leading-relaxed">
-							{t("booking.ticketsText")}
-						</p>
-						<Button
-							render={
-								// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
-								<a
-									href={gym.bookingUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-								/>
-							}
-						>
-							{t("booking.ticketsCta")}
-						</Button>
-					</div>
-					<div>
-						<h3 className="mb-2 text-lg font-medium">
-							{t("booking.activitiesTitle")}
-						</h3>
-						<p className="mb-4 text-muted-foreground leading-relaxed">
-							{t("booking.activitiesText")}
-						</p>
-						<Button
-							render={
-								// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
-								<a
-									href={gym.activitiesBookingUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-								/>
-							}
-						>
-							{common("bookActivities")}
-						</Button>
-						<Link
-							href={{ pathname: "/events", hash: "activity-types" }}
-							className="link mt-3 block w-fit text-sm"
-						>
-							{t("booking.allActivityTypes")}
-						</Link>
-					</div>
-				</div>
-			</Section>
-
-			<Section tone="muted">
-				<h2 className="mb-4 text-2xl font-bold">{t("prices")}</h2>
-				<PricesAccordion categories={gym.prices} />
-			</Section>
-
-			<Section>
-				<h2 className="mb-4 text-2xl font-bold">{t("documents.title")}</h2>
-				<ul className="space-y-2 text-sm">
-					<li>
-						<a
-							href={gym.consentFormUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 font-medium hover:text-link"
-						>
-							<FilePdfIcon className="size-4" aria-hidden="true" />
-							{t("documents.consentForm")}
-						</a>
-					</li>
-					<li>
-						<a
-							href={gym.visitorRulesUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 font-medium hover:text-link"
-						>
-							<FilePdfIcon className="size-4" aria-hidden="true" />
-							{t("documents.visitorRules")}
-						</a>
-					</li>
+						</li>
+					))}
 				</ul>
-			</Section>
+			</nav>
 
-			<Section tone="muted">
-				<h2 className="mb-6 text-2xl font-bold">{t("cafe.title")}</h2>
-				<div className="space-y-6">
-					<div className="grid gap-8 md:grid-cols-2">
-						<div className="space-y-3">
-							<h3 className="text-lg font-medium">{t("cafe.coffeeTitle")}</h3>
-							<p className="text-muted-foreground leading-relaxed">
-								{gym.cafe.coffee}
-							</p>
-							<PlaceholderImage
-								label={t("cafe.coffeeImageLabel")}
-								className="rounded-lg"
+			<Section id="about">
+				<div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+					<div className="lg:col-span-7">
+						<SectionHeading title={t("about")} />
+						<div className="space-y-4">
+							<Paragraphs
+								paragraphs={gym.description}
+								className="text-muted-foreground"
 							/>
 						</div>
-						<div className="space-y-3">
-							<h3 className="text-lg font-medium">{t("cafe.bistroTitle")}</h3>
-							<p className="text-muted-foreground leading-relaxed">
-								{gym.cafe.bistro}
-							</p>
-							<PlaceholderImage
-								label={t("cafe.bistroImageLabel")}
-								className="rounded-lg"
-							/>
+						<div className="mt-8 flex gap-3">
+							{gym.instagramUrl && (
+								<Button
+									variant="outline"
+									size="icon"
+									aria-label={t("instagram", { gym: gym.name })}
+									render={<a href={gym.instagramUrl} {...EXTERNAL} />}
+								>
+									<LogoInstagramIcon className="size-5" aria-hidden="true" />
+								</Button>
+							)}
+							{gym.facebookUrl && (
+								<Button
+									variant="outline"
+									size="icon"
+									aria-label={t("facebook", { gym: gym.name })}
+									render={<a href={gym.facebookUrl} {...EXTERNAL} />}
+								>
+									<LogoFacebookIcon className="size-5" aria-hidden="true" />
+								</Button>
+							)}
 						</div>
 					</div>
-					<div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-						<PlaceholderImage
-							label={gym.cafeMenuThumbnail}
-							aspectRatio="aspect-[3/4]"
-							className="w-40 rounded-lg"
-						/>
-						<Button
-							render={
-								// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
-								<a
-									href={gym.cafeMenuUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-								/>
-							}
-						>
-							{t("cafe.menu")}
-						</Button>
+
+					<aside className="h-fit border border-foreground lg:col-span-5">
+						<h3 className="border-b border-foreground px-5 py-4 text-xs font-medium tracking-eyebrow uppercase">
+							{t("info.title")}
+						</h3>
+						<div className="space-y-6 p-5">
+							<table className="w-full text-sm">
+								<tbody>
+									{gym.openingHours.map(row => (
+										<tr
+											key={row.label}
+											className="border-b border-border last:border-0"
+										>
+											<td className="py-2 text-muted-foreground">
+												{row.label}
+											</td>
+											<td className="py-2 text-right font-medium tabular-nums">
+												{row.hours}
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+							<ul className="space-y-3 text-sm">
+								<li className="flex gap-3">
+									<LocationIcon
+										aria-hidden="true"
+										className="size-5 shrink-0"
+									/>
+									<span>{gym.address}</span>
+								</li>
+								<li className="flex gap-3">
+									<MailIcon aria-hidden="true" className="size-5 shrink-0" />
+									<a href={`mailto:${gym.email}`} className="link">
+										{gym.email}
+									</a>
+								</li>
+								<li className="flex gap-3">
+									<CallIcon aria-hidden="true" className="size-5 shrink-0" />
+									<a
+										href={`tel:${gym.phone.replace(/\s/g, "")}`}
+										className="link"
+									>
+										{gym.phone}
+									</a>
+								</li>
+							</ul>
+							{/* No live occupancy source exists yet — spec Open
+							Question 2 is unresolved, so this always shows the
+							fallback rather than a made-up number. */}
+							<div className="border-t border-border pt-4 text-sm">
+								<p className="font-medium">{t("occupancy.title")}</p>
+								<p className="text-muted-foreground">{t("occupancy.empty")}</p>
+							</div>
+							<Link
+								href={{ pathname: "/contact", query: { gym: gym.slug } }}
+								className="inline-flex items-center gap-2 text-xs font-medium tracking-eyebrow uppercase"
+							>
+								{t("info.directions")}
+								<ArrowRightIcon aria-hidden="true" className="size-4" />
+							</Link>
+						</div>
+					</aside>
+				</div>
+			</Section>
+
+			{bookingActions.length > 0 && (
+				<Section tone="dark">
+					<SectionHeading
+						eyebrow={t("booking.eyebrow")}
+						title={t("booking.title")}
+					/>
+					<ul className="grid gap-px bg-border md:grid-cols-3">
+						{bookingActions.map(action => (
+							<li
+								key={action.title}
+								className="flex flex-col gap-4 bg-background p-6 md:p-8"
+							>
+								<h3 className="text-h3 font-bold">{action.title}</h3>
+								<p className="text-muted-foreground">{action.text}</p>
+								<Button
+									className="mt-auto w-fit"
+									render={<a href={action.href} {...EXTERNAL} />}
+								>
+									{action.cta}
+									<ArrowRightUpIcon aria-hidden="true" />
+								</Button>
+							</li>
+						))}
+					</ul>
+					<Link
+						href={{ pathname: "/events", hash: "activity-types" }}
+						className="link mt-6 inline-block text-sm"
+					>
+						{t("booking.allActivityTypes")}
+					</Link>
+				</Section>
+			)}
+
+			<Section id="prices" tone="muted">
+				<div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+					<div className="lg:col-span-4">
+						<SectionHeading title={t("prices")} />
+						{documents.length > 0 && (
+							<div>
+								<h3 className="eyebrow mb-3">{t("documents.title")}</h3>
+								<ul className="space-y-2 text-sm">
+									{documents.map(document => (
+										<li key={document.label}>
+											<a
+												href={document.href}
+												{...EXTERNAL}
+												className="link inline-flex items-center gap-2"
+											>
+												<FilePdfIcon className="size-5" aria-hidden="true" />
+												{document.label}
+											</a>
+										</li>
+									))}
+								</ul>
+							</div>
+						)}
+					</div>
+					<div className="lg:col-span-8">
+						<PricesAccordion categories={gym.prices} />
 					</div>
 				</div>
 			</Section>
 
-			<Section>
-				<h2 className="mb-6 text-2xl font-bold">{t("physio.title")}</h2>
+			<Section id="cafe">
+				<SectionHeading title={t("cafe.title")} />
+				<div className="grid gap-10 md:grid-cols-2">
+					{[
+						{
+							title: t("cafe.coffeeTitle"),
+							text: gym.cafe.coffee,
+							photo: gym.cafe.coffeePhoto,
+							alt: t("cafe.coffeeImageLabel"),
+						},
+						{
+							title: t("cafe.bistroTitle"),
+							text: gym.cafe.bistro,
+							photo: gym.cafe.bistroPhoto,
+							alt: t("cafe.bistroImageLabel"),
+						},
+					].map(item => (
+						<article key={item.title} className="space-y-4">
+							<BrandImage
+								src={item.photo}
+								alt={item.alt}
+								aspectRatio="aspect-[4/3]"
+								sizes="(min-width: 768px) 50vw, 100vw"
+							/>
+							<h3 className="text-h3 font-bold">{item.title}</h3>
+							<p className="text-muted-foreground">{item.text}</p>
+						</article>
+					))}
+				</div>
+			</Section>
+
+			<Section id="physio" tone="muted">
+				<SectionHeading title={t("physio.title")} />
 				{!gym.physio ? (
 					<p className="text-muted-foreground">{t("physio.empty")}</p>
 				) : (
-					<div className="space-y-6">
-						<Paragraphs
-							paragraphs={gym.physio.intro}
-							className="text-muted-foreground"
-						/>
-						<ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+					<div className="space-y-12">
+						<div className="max-w-3xl space-y-4">
+							<Paragraphs
+								paragraphs={gym.physio.intro}
+								className="text-muted-foreground"
+							/>
+						</div>
+						<ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
 							{gym.physio.team.map(member => (
-								<li
-									key={member.name}
-									className="flex flex-col gap-3 rounded-lg border border-border bg-background p-4"
-								>
-									<PlaceholderImage
-										label={member.photo}
-										aspectRatio="aspect-square"
-										className="rounded-full"
-									/>
+								<li key={member.name} className="flex flex-col gap-3">
+									<Portrait name={member.name} alt={member.photo} />
 									<div>
 										<p className="font-medium">{member.name}</p>
 										<p className="text-sm text-muted-foreground">
@@ -328,55 +350,63 @@ export default async function BranchPage({ params }: BranchPageProps) {
 								</li>
 							))}
 						</ul>
-						<table className="w-full max-w-lg text-sm">
-							<thead>
-								<tr className="border-b border-border text-left text-muted-foreground">
-									<th className="py-2 font-medium">{t("physio.service")}</th>
-									<th className="py-2 font-medium">{t("physio.duration")}</th>
-									<th className="py-2 text-right font-medium">
-										{t("physio.price")}
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								{gym.physio.prices.map(item => (
-									<tr
-										key={`${item.name} ${item.note}`}
-										className="border-b border-border"
-									>
-										<td className="py-2">{item.name}</td>
-										<td className="py-2 text-muted-foreground">{item.note}</td>
-										<td className="py-2 text-right font-medium">
-											{formatPrice(item.price)}
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
 
-						<div className="space-y-8">
-							<div>
-								<h3 className="mb-2 text-lg font-medium">
-									{t("physio.bookTitle")}
-								</h3>
-								<p className="mb-4 text-muted-foreground leading-relaxed">
-									{t("physio.bookText")}
-								</p>
-								<Button
-									render={
-										// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
-										<a
-											href={gym.physio.bookingUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-										/>
-									}
-								>
-									{common("bookNow")}
-								</Button>
+						<div className="grid gap-12 lg:grid-cols-2">
+							<div className="space-y-8">
+								<div className="overflow-x-auto border border-foreground bg-background">
+									<table className="w-full text-sm">
+										<thead>
+											<tr className="border-b border-foreground text-left">
+												<th className="p-3 font-medium">
+													{t("physio.service")}
+												</th>
+												<th className="p-3 font-medium">
+													{t("physio.duration")}
+												</th>
+												<th className="p-3 text-right font-medium">
+													{t("physio.price")}
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											{gym.physio.prices.map(item => (
+												<tr
+													key={`${item.name} ${item.note}`}
+													className="border-b border-border last:border-0"
+												>
+													<td className="p-3">{item.name}</td>
+													<td className="p-3 text-muted-foreground">
+														{item.note}
+													</td>
+													<td className="p-3 text-right font-medium whitespace-nowrap tabular-nums">
+														{formatPrice(item.price)}
+													</td>
+												</tr>
+											))}
+										</tbody>
+									</table>
+								</div>
+								<div>
+									<h3 className="mb-2 text-h3 font-bold">
+										{t("physio.bookTitle")}
+									</h3>
+									<p className="mb-4 text-muted-foreground">
+										{t("physio.bookText")}
+									</p>
+									{/* Brno books through a widget on the old site with no
+									URL of its own, so it has no button (launch checklist). */}
+									{gym.physio.bookingUrl && (
+										<Button
+											render={<a href={gym.physio.bookingUrl} {...EXTERNAL} />}
+										>
+											{common("bookNow")}
+											<ArrowRightUpIcon aria-hidden="true" />
+										</Button>
+									)}
+								</div>
 							</div>
-							<div className="max-w-xl">
-								<h3 className="mb-2 text-lg font-medium">
+							<div className="border border-foreground bg-background p-5 md:p-8">
+								<h3 className="mb-6 text-h3 font-bold">
 									{t("physio.messageTitle")}
 								</h3>
 								<ContactForm />
@@ -384,6 +414,11 @@ export default async function BranchPage({ params }: BranchPageProps) {
 						</div>
 					</div>
 				)}
+			</Section>
+
+			<Section id="gallery">
+				<SectionHeading title={common("gallery")} />
+				<PhotoGallery images={gym.galleryImages} />
 			</Section>
 		</>
 	)

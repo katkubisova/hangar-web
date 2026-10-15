@@ -6,6 +6,7 @@ import { EmptyState } from "@/components/shared/empty-state"
 import { HeroSection } from "@/components/shared/hero-section"
 import { PositionListItem } from "@/components/shared/position-list-item"
 import { Section } from "@/components/shared/section"
+import { SectionHeading } from "@/components/shared/section-heading"
 import { getPageMetadata } from "@/i18n/metadata"
 import { getPageLocale, type LocaleParams } from "@/i18n/page-locale"
 import { benefitCards } from "@/lib/data/benefit-cards"
@@ -34,11 +35,16 @@ export default async function CareersPage({ params }: LocaleParams) {
 
 	return (
 		<>
-			<HeroSection title={t("title")} subtitle={t("subtitle")} />
+			<HeroSection
+				eyebrow={t("eyebrow")}
+				title={t("title")}
+				subtitle={t("subtitle")}
+				image={{ src: "/photos/ostrava-coffee.jpg", alt: t("imageLabel") }}
+			/>
 
 			<Section>
-				<h2 className="mb-6 text-2xl font-bold">{t("whyTitle")}</h2>
-				<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+				<SectionHeading title={t("whyTitle")} />
+				<ul className="grid gap-px border border-foreground bg-foreground sm:grid-cols-2 lg:grid-cols-4">
 					{localize(sortedBenefitCards, locale).map(card => (
 						<li key={card.title}>
 							<BenefitCard benefit={card} />
@@ -48,14 +54,14 @@ export default async function CareersPage({ params }: LocaleParams) {
 			</Section>
 
 			<Section tone="muted">
-				<h2 className="mb-6 text-2xl font-bold">{t("openPositions")}</h2>
+				<SectionHeading title={t("openPositions")} />
 				{openPositions.length === 0 ? (
 					<EmptyState
 						message={t("empty")}
 						action={{ label: t("emptyCta"), href: "/contact" }}
 					/>
 				) : (
-					<ul className="space-y-3">
+					<ul className="border-t border-foreground">
 						{localize(openPositions, locale).map(position => (
 							<li key={position.slug}>
 								<PositionListItem position={position} />

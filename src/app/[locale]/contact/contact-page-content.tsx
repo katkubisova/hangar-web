@@ -7,7 +7,8 @@ import { HeroSection } from "@/components/shared/hero-section"
 import { LocationSelector } from "@/components/shared/location-selector"
 import { Paragraphs } from "@/components/shared/paragraphs"
 import { Section } from "@/components/shared/section"
-import { PlaceholderImage } from "@/components/ui/placeholder-image"
+import { SectionHeading } from "@/components/shared/section-heading"
+import { CallIcon, LocationIcon, MailIcon } from "@/components/ui/icons"
 import { useGymSelector } from "@/hooks/use-gym-selector"
 import { gyms } from "@/lib/data/gyms"
 import { localize } from "@/lib/utils"
@@ -33,10 +34,14 @@ function ContactPageSections() {
 
 	return (
 		<>
-			<HeroSection title={t("title")} subtitle={t("subtitle")} />
+			<HeroSection
+				eyebrow={t("eyebrow")}
+				title={t("title")}
+				subtitle={t("subtitle")}
+			/>
 
-			<div className="sticky top-16 z-40 border-b border-border bg-background py-4">
-				<div className="container mx-auto px-4">
+			<div className="sticky top-16 z-40 border-b border-foreground bg-background py-3">
+				<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 					<LocationSelector
 						gyms={selectableGyms}
 						selected={selected.slug}
@@ -46,27 +51,32 @@ function ContactPageSections() {
 			</div>
 
 			<Section>
-				<h2 className="mb-6 text-2xl font-bold">{t("whereTitle")}</h2>
+				<SectionHeading title={t("whereTitle")} />
 				{isComingSoon ? (
-					<p className="text-muted-foreground">
+					<p className="text-lead text-muted-foreground">
 						{t("comingSoon", { gym: selected.name })}
 					</p>
 				) : (
-					<div className="grid gap-8 lg:grid-cols-2">
-						<PlaceholderImage
-							label={t("mapLabel", { gym: selected.name })}
-							className="rounded-lg"
-						/>
-						<div className="space-y-4">
-							<p>{selected.address}</p>
+					<div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+						<div className="space-y-6 lg:col-span-5">
+							<p className="flex gap-3 text-lead">
+								<LocationIcon
+									aria-hidden="true"
+									className="mt-1 size-6 shrink-0"
+								/>
+								{selected.address}
+							</p>
 							<table className="w-full text-sm">
 								<tbody>
 									{selected.openingHours.map(row => (
-										<tr key={row.label} className="border-b border-border">
+										<tr
+											key={row.label}
+											className="border-b border-border last:border-0"
+										>
 											<td className="py-2 text-muted-foreground">
 												{row.label}
 											</td>
-											<td className="py-2 text-right font-medium">
+											<td className="py-2 text-right font-medium tabular-nums">
 												{row.hours}
 											</td>
 										</tr>
@@ -74,6 +84,18 @@ function ContactPageSections() {
 								</tbody>
 							</table>
 						</div>
+						{selected.mapEmbedUrl && (
+							<div className="aspect-[4/3] border border-foreground lg:col-span-7">
+								<iframe
+									key={selected.slug}
+									src={selected.mapEmbedUrl}
+									title={t("mapLabel", { gym: selected.name })}
+									loading="lazy"
+									referrerPolicy="no-referrer-when-downgrade"
+									className="size-full grayscale"
+								/>
+							</div>
+						)}
 					</div>
 				)}
 			</Section>
@@ -85,53 +107,71 @@ function ContactPageSections() {
 			{!isComingSoon && (
 				<>
 					<Section tone="muted">
-						<h2 className="mb-6 text-2xl font-bold">{t("directionsTitle")}</h2>
-						<div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-							<div className="space-y-3">
+						<SectionHeading title={t("directionsTitle")} />
+						<div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+							<div className="space-y-4 lg:col-span-5">
 								<Paragraphs
 									paragraphs={selected.directionsText}
 									className="text-muted-foreground"
 								/>
 							</div>
-							<PlaceholderImage
-								label={t("directionsVideoLabel")}
-								className="rounded-lg"
-							/>
+							{/* Only Brno has a directions video; elsewhere the
+							text stands on its own. */}
+							{selected.directionsVideoUrl && (
+								<div className="aspect-video border border-foreground lg:col-span-7">
+									<iframe
+										key={selected.slug}
+										src={selected.directionsVideoUrl}
+										title={t("directionsVideoLabel")}
+										loading="lazy"
+										allow="encrypted-media; picture-in-picture"
+										allowFullScreen
+										className="size-full"
+									/>
+								</div>
+							)}
 						</div>
 					</Section>
 
 					<Section>
-						<h2 className="mb-4 text-2xl font-bold">{t("companyTitle")}</h2>
-						<div className="space-y-1 text-sm text-muted-foreground">
-							<p>{selected.companyName}</p>
-							<p>{selected.companyId}</p>
-							<p>{selected.taxId}</p>
+						<div className="grid gap-px border border-foreground bg-foreground md:grid-cols-2">
+							<div className="bg-background p-6 md:p-8">
+								<h2 className="mb-6 text-h3 font-bold">
+									{t("quickContactsTitle")}
+								</h2>
+								<ul className="space-y-3">
+									<li className="flex items-center gap-3">
+										<MailIcon aria-hidden="true" className="size-5 shrink-0" />
+										<a href={`mailto:${selected.email}`} className="link">
+											{selected.email}
+										</a>
+									</li>
+									<li className="flex items-center gap-3">
+										<CallIcon aria-hidden="true" className="size-5 shrink-0" />
+										<a
+											href={`tel:${selected.phone.replace(/\s/g, "")}`}
+											className="link"
+										>
+											{selected.phone}
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div className="bg-background p-6 md:p-8">
+								<h2 className="mb-6 text-h3 font-bold">{t("companyTitle")}</h2>
+								<div className="space-y-1 text-sm text-muted-foreground">
+									<p className="text-foreground">{selected.companyName}</p>
+									<p>{selected.companyId}</p>
+									<p>{selected.taxId}</p>
+								</div>
+							</div>
 						</div>
 					</Section>
 
 					<Section tone="muted">
-						<h2 className="mb-4 text-2xl font-bold">
-							{t("quickContactsTitle")}
-						</h2>
-						<div className="space-y-1 text-sm">
-							<a
-								href={`mailto:${selected.email}`}
-								className="block hover:text-link"
-							>
-								{selected.email}
-							</a>
-							<a
-								href={`tel:${selected.phone.replace(/\s/g, "")}`}
-								className="block hover:text-link"
-							>
-								{selected.phone}
-							</a>
-						</div>
-					</Section>
-
-					<Section>
-						<h2 className="mb-2 text-2xl font-bold">{t("formTitle")}</h2>
-						<p className="text-muted-foreground">{t("formPending")}</p>
+						<SectionHeading title={t("formTitle")} className="mb-0 md:mb-0">
+							<p>{t("formPending")}</p>
+						</SectionHeading>
 					</Section>
 				</>
 			)}

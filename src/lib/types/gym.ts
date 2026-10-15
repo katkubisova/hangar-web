@@ -1,4 +1,5 @@
 import type { Localized, Resolved } from "@/lib/types/localized"
+import type { Photo } from "@/lib/types/photo"
 import type { PriceCategory } from "@/lib/types/price-list"
 
 export type GymSlug = "brno" | "ostrava" | "plzen"
@@ -32,16 +33,16 @@ export interface PhysioInfo {
 	intro: Localized<string[]>
 	team: PhysioTeamMember[]
 	prices: PriceItem[]
-	// Placeholder — no real booking system is wired up yet; see the
-	// physio contact form for the actual point of contact.
-	bookingUrl: string
+	// Online booking, where the branch has one with its own URL. Brno books
+	// through a widget on the old site, so it has none yet (launch checklist).
+	bookingUrl?: string
 }
 
 export interface GymData {
 	name: string
 	slug: GymSlug
 	status: GymStatus
-	heroImage: Localized<string>
+	heroImage: Photo
 	shortDescription: Localized<string>
 	// Paragraphs for the branch page's "About this location" section.
 	description: Localized<string[]>
@@ -52,26 +53,28 @@ export interface GymData {
 	openingHours: OpeningHoursRow[]
 	email: string
 	phone: string
-	mapEmbedUrl: string
+	// Links are optional: a branch that doesn't have one yet (Plzeň, or a
+	// video that doesn't exist) hides the element instead of linking to "#".
+	mapEmbedUrl?: string
 	// Paragraphs.
 	directionsText: Localized<string[]>
-	directionsVideoUrl: string
-	registrationUrl: Localized<string>
-	bookingUrl: Localized<string>
-	activitiesBookingUrl: string
+	directionsVideoUrl?: string
+	registrationUrl?: Localized<string>
+	bookingUrl?: Localized<string>
+	activitiesBookingUrl?: string
 	prices: PriceCategory[]
 	physio?: PhysioInfo
-	consentFormUrl: string
-	visitorRulesUrl: string
-	cafeMenuUrl: string
+	consentFormUrl?: string
+	visitorRulesUrl?: string
 	cafe: {
 		coffee: Localized<string>
 		bistro: Localized<string>
+		coffeePhoto?: string
+		bistroPhoto?: string
 	}
-	cafeMenuThumbnail: Localized<string>
-	galleryImages: Localized<string>[]
-	instagramUrl: string
-	facebookUrl: string
+	galleryImages: Photo[]
+	instagramUrl?: string
+	facebookUrl?: string
 	displayOrder: number
 }
 

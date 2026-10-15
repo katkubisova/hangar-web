@@ -24,10 +24,10 @@ export function BenefitCard({ benefit }: BenefitCardProps) {
 	const Icon = iconMap[benefit.icon] ?? UsergroupIcon
 
 	return (
-		<div className="flex flex-col gap-3 rounded-lg border border-border p-4">
-			<Icon className="size-6 text-muted-foreground" aria-hidden="true" />
-			<h3 className="font-medium">{benefit.title}</h3>
+		<article className="flex h-full flex-col gap-4 bg-background p-6">
+			<Icon className="size-8 text-electric-violet" aria-hidden="true" />
+			<h3 className="text-h3 font-bold">{benefit.title}</h3>
 			<p className="text-sm text-muted-foreground">{benefit.text}</p>
-		</div>
+		</article>
 	)
 }

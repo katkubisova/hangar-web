@@ -1,11 +1,20 @@
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 
+import { Sticker } from "@/components/brand/sticker"
+import { WallProfile } from "@/components/brand/wall-profile"
 import { ActivityCard } from "@/components/shared/activity-card"
+import { GradientSection } from "@/components/shared/gradient-section"
 import { HeroSection } from "@/components/shared/hero-section"
 import { Section } from "@/components/shared/section"
+import { SectionHeading } from "@/components/shared/section-heading"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import {
+	ArrowRightUpIcon,
+	ChevronRightIcon,
+	FlagIcon,
+} from "@/components/ui/icons"
 import { getPageMetadata } from "@/i18n/metadata"
 import { Link } from "@/i18n/navigation"
 import { getPageLocale, type LocaleParams } from "@/i18n/page-locale"
@@ -38,32 +47,39 @@ export default async function EventsPage({ params }: LocaleParams) {
 
 	return (
 		<>
-			<HeroSection title={t("title")} subtitle={t("subtitle")} />
+			<HeroSection
+				eyebrow={t("eyebrow")}
+				title={t("title")}
+				subtitle={t("subtitle")}
+				image={{
+					src: "/photos/ostrava-routesetting.jpg",
+					alt: t("imageLabel"),
+				}}
+			/>
 
 			<Section>
-				<h2 className="mb-6 text-2xl font-bold">{t("bookTitle")}</h2>
-				<ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				<SectionHeading title={t("bookTitle")} />
+				<ul className="grid gap-px bg-foreground border border-foreground md:grid-cols-3">
 					{localize(bookableGyms, locale).map(gym => {
 						const isComingSoon = gym.status === "coming-soon"
 
 						return (
 							<li
 								key={gym.slug}
-								className="flex flex-col gap-4 rounded-lg border border-border p-4"
+								className="flex flex-col gap-6 bg-background p-6 md:p-8"
 							>
-								<div className="flex items-center justify-between gap-2">
-									<h3 className="font-medium">{gym.name}</h3>
+								<div className="flex items-start justify-between gap-3">
+									<h3 className="text-h3 font-bold uppercase">{gym.name}</h3>
 									<Badge variant={isComingSoon ? "secondary" : "default"}>
 										{common(`status.${gym.status}`)}
 									</Badge>
 								</div>
-								{isComingSoon ? (
+								{isComingSoon || !gym.activitiesBookingUrl ? (
 									<p className="text-sm text-muted-foreground">
 										{t("bookingUnavailable")}
 									</p>
 								) : (
 									<Button
-										variant="outline"
 										className="w-fit"
 										render={
 											// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
@@ -75,6 +91,7 @@ export default async function EventsPage({ params }: LocaleParams) {
 										}
 									>
 										{common("bookActivities")}
+										<ArrowRightUpIcon aria-hidden="true" />
 									</Button>
 								)}
 							</li>
@@ -84,7 +101,7 @@ export default async function EventsPage({ params }: LocaleParams) {
 			</Section>
 
 			<Section id="activity-types" tone="muted">
-				<h2 className="mb-6 text-2xl font-bold">{t("activityTypes")}</h2>
+				<SectionHeading title={t("activityTypes")} />
 				<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{localize(sortedActivityCategories, locale).map(activity => (
 						<li key={activity.name}>
@@ -97,18 +114,44 @@ export default async function EventsPage({ params }: LocaleParams) {
 				</ul>
 			</Section>
 
-			<Section tone="dark">
-				<div className="mx-auto max-w-xl text-center">
-					<h2 className="mb-4 text-3xl font-bold">{t("challenge.title")}</h2>
-					<p className="mb-6 opacity-80">{t("challenge.text")}</p>
-					<Button
-						variant="secondary"
-						render={<Link href="/hangar-challenge" />}
-					>
+			{/* Challenge teaser on the events gradient. */}
+			<GradientSection>
+				<div className="lg:col-span-6">
+					<p className="eyebrow mb-4 text-alabaster">
+						{t("challenge.eyebrow")}
+					</p>
+					<h2 className="mb-6 text-display font-bold text-alabaster">
+						{t("challenge.title")}
+					</h2>
+					<p className="mb-8 max-w-xl text-lead text-alabaster">
+						{t("challenge.text")}
+					</p>
+					<Button size="lg" render={<Link href="/hangar-challenge" />}>
 						{t("challenge.cta")}
+						<ChevronRightIcon aria-hidden="true" />
 					</Button>
 				</div>
-			</Section>
+				<div className="relative lg:col-span-6">
+					<WallProfile
+						profile="stargate"
+						className="mx-auto w-full max-w-md"
+						contentClassName="items-center text-center"
+					>
+						<span className="font-display text-display font-bold tracking-heading">
+							30
+						</span>
+						<span className="text-xs font-medium tracking-eyebrow uppercase">
+							{t("challenge.profileLabel")}
+						</span>
+					</WallProfile>
+					<Sticker
+						text={t("challenge.title")}
+						className="absolute top-0 right-0 w-28 bg-alabaster text-cod-gray md:w-36"
+					>
+						<FlagIcon aria-hidden="true" className="size-10" />
+					</Sticker>
+				</div>
+			</GradientSection>
 		</>
 	)
 }

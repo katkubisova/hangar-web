@@ -93,31 +93,52 @@
 			"paragraph1": "Hangar je climbing playground by Adam Ondra: lezecké centrum zaměřené výhradně na bouldering, které vzniklo ve spolupráci se světovou lezeckou špičkou. V roce 2019 jsme v Brně odstartovali novou éru moderního boulderingu v Česku a dnes nás najdeš i v Ostravě.",
 			"paragraph2": "Přes 300 boulderů od úplných začátečníků po 8A a tréninkové zóny s Moonboardy, spray wally a v Ostravě i s Kilterboardem. Stavěči každý týden přidávají nové bouldery, takže se nic neokouká.",
 			"paragraph3": "Hangar je hlavně komunita. Každý měsíc lezeme Hangar Challenge, v oddílu Hangar Rockets rostou malí závodníci a po lezení se potkáváme u výběrové kávy v našem Cafe Baru.",
-			"imageLabel": "Fotka — o Hangaru"
+			"imageLabel": "Lezkyně na barevné boulderové stěně",
+			"eyebrow": "Od roku 2019"
 		},
 		"locations": {
-			"title": "Najdi svůj Hangar"
+			"title": "Najdi svůj Hangar",
+			"eyebrow": "Brno · Ostrava · Plzeň"
 		},
 		"events": {
 			"title": "Akce a aktivity",
 			"line1": "Lezecké kurzy pro děti i dospělé, fitness lekce, narozeninové oslavy a příměšťáky.",
 			"line2": "A každý měsíc Hangar Challenge: 30 nových boulderů a závod pro všechny.",
 			"cta": "Co se děje",
-			"imageLabel": "Fotka — akce"
+			"imageLabel": "Trenér jistí malého lezce na boulderu",
+			"eyebrow": "Kurzy · lekce · závody",
+			"sticker": "Hangar Challenge"
 		},
 		"visit": {
 			"title": "Přijď k nám",
 			"line1": "Poprvé na Hangaru? Zaregistruj se online předem a ušetříš čas sobě i nám na baru.",
 			"line2": "Máme otevřeno každý den kromě Štědrého dne a vstupné platí celý den. Lezečky ti půjčíme.",
 			"cta": "Naplánuj návštěvu",
-			"imageLabel": "Fotka — návštěva"
+			"imageLabel": "Barevná boulderová stěna v Hangaru Brno",
+			"eyebrow": "Poprvé na Hangaru"
 		},
-		"faqTitle": "Časté dotazy"
+		"faqTitle": "Časté dotazy",
+		"stats": {
+			"boulders": {
+				"value": "300+",
+				"label": "boulderů ve dvou halách"
+			},
+			"grades": {
+				"value": "5A–8A",
+				"label": "od začátečníků po profíky"
+			},
+			"weekly": {
+				"value": "Týdně",
+				"label": "nové bouldery"
+			}
+		}
 	},
 	"VisitPage": {
 		"title": "Pobočky",
 		"subtitle": "Brno, nebo Ostrava? Vyber si svůj Hangar a mrkni na otevírací dobu, ceník a na to, co tě čeká.",
-		"chooseLocation": "Vyber pobočku"
+		"chooseLocation": "Vyber pobočku",
+		"eyebrow": "Brno · Ostrava · Plzeň",
+		"imageLabel": "Tréninková zóna se strmou stěnou v Hangaru Ostrava"
 	},
 	"BranchPage": {
 		"about": "O pobočce",
@@ -139,7 +160,8 @@
 			"activitiesTitle": "Akce a aktivity",
 			"activitiesText": "Kurzy, fitness lekce, narozeninové oslavy, příměšťáky a další akce si rezervuješ online.",
 			"allActivityTypes": "Všechny typy aktivit",
-			"ticketsCta": "Můj účet"
+			"ticketsCta": "Můj účet",
+			"eyebrow": "Než přijdeš"
 		},
 		"prices": "Ceník",
 		"documents": {
@@ -152,8 +174,7 @@
 			"coffeeTitle": "Výběrová káva",
 			"coffeeImageLabel": "Fotka — výběrová káva",
 			"bistroTitle": "Fresh bistro",
-			"bistroImageLabel": "Fotka — bistro",
-			"menu": "Stáhnout menu (PDF)"
+			"bistroImageLabel": "Fotka — bistro"
 		},
 		"physio": {
 			"title": "Fyzioterapie",
@@ -164,6 +185,12 @@
 			"bookTitle": "Objednej se",
 			"bookText": "Jak se objednat ke konkrétnímu terapeutovi, najdeš výše u jeho jména.",
 			"messageTitle": "Nebo nám napiš"
+		},
+		"eyebrow": "Boulderové centrum",
+		"sectionNav": "Na této stránce",
+		"info": {
+			"title": "Otevírací doba a kontakt",
+			"directions": "Jak se k nám dostaneš"
 		}
 	},
 	"EventsPage": {
@@ -175,8 +202,12 @@
 		"challenge": {
 			"title": "Hangar Challenge",
 			"text": "Každý měsíc 30 nových boulderů a závod pro všechny, od hobíků po elitu. Výsledky si zapisuješ sám v aplikaci TopLogger.",
-			"cta": "Jak to funguje"
-		}
+			"cta": "Jak to funguje",
+			"eyebrow": "Každý měsíc",
+			"profileLabel": "nových boulderů"
+		},
+		"eyebrow": "Kurzy · lekce · oslavy · závody",
+		"imageLabel": "Stavěči staví nové bouldery v Hangaru Ostrava"
 	},
 	"ChallengePage": {
 		"title": "Hangar Challenge",
@@ -184,7 +215,7 @@
 		"what": {
 			"title": "Co je Hangar Challenge?",
 			"text": "Každý měsíc postavíme 30 boulderů označených kartičkami Hangar Challenge s čísly 1–30. Obtížnost stoupá, takže na zahřátí začni u jedničky. Závodí se ve třech kategoriích, Hobby, Sport a Elite, a cílem je vylézt co nejvíc boulderů na co nejméně pokusů. Všechno v duchu fair play: výsledky si zapisuje každý sám. V Brně běží Challenge od prvního do posledního dne v měsíci, v Ostravě vždy od 15. do 15. dne dalšího měsíce.",
-			"imageLabel": "Fotka — Hangar Challenge",
+			"imageLabel": "Stavěči staví nové bouldery v Hangaru Brno",
 			"challenger": "Challenger 2026 je boulderová série závodů, kde gravitace ztrácí moc! Dvakrát do roka na každé pobočce lezeme Challenge v závodním režimu: od 17:00 do 20:30, s vyhodnocením na místě a násobně hodnotnějšími cenami. Termíny: Ostrava 20. 3. a 18. 9., Brno 30. 4. a 27. 10. Na konci roku vyhlásíme Krále a Královnu Challengeru."
 		},
 		"howItWorks": "Jak to funguje",
@@ -194,12 +225,16 @@
 			"step2": "V sekci Competitions vyber Hangar Challenge a klikni na Register.",
 			"step3": "Lez bouldery 1–30 a zapisuj každý pokus (Try), přelez (Top) i Flash.",
 			"step4": "Nejlepší lezec a lezkyně v každé kategorii vyhrávají volný vstup a kostku magnézia."
-		}
+		},
+		"eyebrow": "Závod pro všechny",
+		"categories": "Kategorie",
+		"challengerEyebrow": "Závodní série"
 	},
 	"TeamPage": {
 		"title": "Náš tým",
 		"subtitle": "Lidé, kteří stojí za Hangarem, od CEO po vedoucí směn. Potřebuješ něco konkrétního? Napiš rovnou tomu správnému.",
-		"coreGroup": "Hangar Core"
+		"coreGroup": "Hangar Core",
+		"eyebrow": "Hangar Crew"
 	},
 	"CareersPage": {
 		"title": "Kariéra",
@@ -207,7 +242,9 @@
 		"whyTitle": "Proč pracovat na Hangaru",
 		"openPositions": "Volná místa",
 		"empty": "Momentálně máme plno, ale naše crew čas od času roste. Ozvi se nám.",
-		"emptyCta": "Ozvi se nám"
+		"emptyCta": "Ozvi se nám",
+		"eyebrow": "Hangar Crew",
+		"imageLabel": "Výběrová káva na baru v Hangaru Ostrava"
 	},
 	"PositionPage": {
 		"back": "Zpět na kariéru",
@@ -235,7 +272,8 @@
 		"companyTitle": "Firemní údaje",
 		"quickContactsTitle": "Rychlý kontakt",
 		"formTitle": "Napiš nám",
-		"formPending": "Kontaktní formulář brzy spustíme. Do té doby nám napiš e-mail nebo zavolej."
+		"formPending": "Kontaktní formulář brzy spustíme. Do té doby nám napiš e-mail nebo zavolej.",
+		"eyebrow": "Brno · Ostrava"
 	},
 	"PrivacyPage": {
 		"title": "Ochrana osobních údajů",
