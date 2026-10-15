@@ -1,13 +1,19 @@
-import type { LucideIcon } from "lucide-react"
-import { Building, Clock, TrendingUp, Users } from "lucide-react"
+import type { ComponentType } from "react"
+import {
+	FlagIcon,
+	type IconProps,
+	TimeIcon,
+	TrendingUpIcon,
+	UsergroupIcon,
+} from "@/components/ui/icons"
 
 import type { BenefitCard as BenefitCardData } from "@/lib/types/benefit-card"
 
-const iconMap: Record<string, LucideIcon> = {
-	users: Users,
-	building: Building,
-	clock: Clock,
-	"trending-up": TrendingUp,
+const iconMap: Record<string, ComponentType<IconProps>> = {
+	users: UsergroupIcon,
+	building: FlagIcon,
+	clock: TimeIcon,
+	"trending-up": TrendingUpIcon,
 }
 
 interface BenefitCardProps {
@@ -15,7 +21,7 @@ interface BenefitCardProps {
 }
 
 export function BenefitCard({ benefit }: BenefitCardProps) {
-	const Icon = iconMap[benefit.icon] ?? Users
+	const Icon = iconMap[benefit.icon] ?? UsergroupIcon
 
 	return (
 		<div className="flex flex-col gap-3 rounded-lg border border-border p-4">

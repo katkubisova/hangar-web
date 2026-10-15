@@ -60,7 +60,7 @@ export default async function PositionPage({ params }: PositionPageProps) {
 		<Section>
 			<Link
 				href="/about/careers"
-				className="mb-6 inline-block text-sm text-muted-foreground hover:underline"
+				className="mb-6 inline-block text-sm text-muted-foreground hover:text-foreground"
 			>
 				← {t("back")}
 			</Link>

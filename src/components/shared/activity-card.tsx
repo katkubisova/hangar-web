@@ -1,19 +1,28 @@
-import type { LucideIcon } from "lucide-react"
-import { Activity, Cake, Calendar, Dumbbell, Flower, Tent } from "lucide-react"
 import { useTranslations } from "next-intl"
-
+import type { ComponentType } from "react"
 import { Button } from "@/components/ui/button"
+import {
+	ActivityIcon,
+	CakeIcon,
+	CalendarEventIcon,
+	EducationIcon,
+	ForestIcon,
+	type IconProps,
+	SunRisingIcon,
+} from "@/components/ui/icons"
 import { getActivityBookingUrl, getGymCity } from "@/lib/gym-utils"
 import type { ActivityCategory } from "@/lib/types/activity-category"
 import type { Gym } from "@/lib/types/gym"
 
-const iconMap: Record<string, LucideIcon> = {
-	dumbbell: Dumbbell,
-	flower: Flower,
-	activity: Activity,
-	cake: Cake,
-	tent: Tent,
-	calendar: Calendar,
+// Data keys stay generic; TDesign has no dumbbell, flower or tent, so
+// each maps to the closest TDesign line icon.
+const iconMap: Record<string, ComponentType<IconProps>> = {
+	dumbbell: EducationIcon,
+	flower: SunRisingIcon,
+	activity: ActivityIcon,
+	cake: CakeIcon,
+	tent: ForestIcon,
+	calendar: CalendarEventIcon,
 }
 
 interface ActivityCardProps {
@@ -24,7 +33,7 @@ interface ActivityCardProps {
 
 export function ActivityCard({ activity, gyms }: ActivityCardProps) {
 	const t = useTranslations("ActivityCard")
-	const Icon = iconMap[activity.icon] ?? Activity
+	const Icon = iconMap[activity.icon] ?? ActivityIcon
 
 	return (
 		<div className="flex h-full flex-col gap-3 rounded-lg border border-border p-4">

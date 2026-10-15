@@ -6,6 +6,7 @@ import { type FormEvent, useId, useState } from "react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { FieldError } from "@/components/ui/field-error"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -132,9 +133,7 @@ export function ContactForm({
 					aria-describedby={errors.name ? `${formId}-name-error` : undefined}
 				/>
 				{errors.name && (
-					<p id={`${formId}-name-error`} className="text-sm text-destructive">
-						{errors.name}
-					</p>
+					<FieldError id={`${formId}-name-error`}>{errors.name}</FieldError>
 				)}
 			</div>
 
@@ -148,9 +147,7 @@ export function ContactForm({
 					aria-describedby={errors.email ? `${formId}-email-error` : undefined}
 				/>
 				{errors.email && (
-					<p id={`${formId}-email-error`} className="text-sm text-destructive">
-						{errors.email}
-					</p>
+					<FieldError id={`${formId}-email-error`}>{errors.email}</FieldError>
 				)}
 			</div>
 
@@ -164,9 +161,7 @@ export function ContactForm({
 					aria-describedby={errors.phone ? `${formId}-phone-error` : undefined}
 				/>
 				{errors.phone && (
-					<p id={`${formId}-phone-error`} className="text-sm text-destructive">
-						{errors.phone}
-					</p>
+					<FieldError id={`${formId}-phone-error`}>{errors.phone}</FieldError>
 				)}
 			</div>
 
@@ -182,12 +177,9 @@ export function ContactForm({
 					}
 				/>
 				{errors.message && (
-					<p
-						id={`${formId}-message-error`}
-						className="text-sm text-destructive"
-					>
+					<FieldError id={`${formId}-message-error`}>
 						{errors.message}
-					</p>
+					</FieldError>
 				)}
 			</div>
 
@@ -203,9 +195,7 @@ export function ContactForm({
 						aria-describedby={errors.cv ? `${formId}-cv-error` : undefined}
 					/>
 					{errors.cv && (
-						<p id={`${formId}-cv-error`} className="text-sm text-destructive">
-							{errors.cv}
-						</p>
+						<FieldError id={`${formId}-cv-error`}>{errors.cv}</FieldError>
 					)}
 				</div>
 			)}
@@ -221,22 +211,21 @@ export function ContactForm({
 						}
 					/>
 					<Label htmlFor={`${formId}-consent`} className="font-normal">
-						{t.rich("consent", {
-							link: chunks => (
-								<Link href="/privacy-policy" className="underline">
-									{chunks}
-								</Link>
-							),
-						})}
+						<span>
+							{t.rich("consent", {
+								link: chunks => (
+									<Link href="/privacy-policy" className="link">
+										{chunks}
+									</Link>
+								),
+							})}
+						</span>
 					</Label>
 				</div>
 				{errors.consent && (
-					<p
-						id={`${formId}-consent-error`}
-						className="text-sm text-destructive"
-					>
+					<FieldError id={`${formId}-consent-error`}>
 						{errors.consent}
-					</p>
+					</FieldError>
 				)}
 			</div>
 

@@ -1,8 +1,6 @@
-import { Facebook, FileText, Instagram } from "lucide-react"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
-
 import { ContactForm } from "@/components/shared/contact-form"
 import { HeroSection } from "@/components/shared/hero-section"
 import { Paragraphs } from "@/components/shared/paragraphs"
@@ -10,6 +8,11 @@ import { PhotoGallery } from "@/components/shared/photo-gallery"
 import { PricesAccordion } from "@/components/shared/prices-accordion"
 import { Section } from "@/components/shared/section"
 import { Button } from "@/components/ui/button"
+import {
+	FilePdfIcon,
+	LogoFacebookIcon,
+	LogoInstagramIcon,
+} from "@/components/ui/icons"
 import { PlaceholderImage } from "@/components/ui/placeholder-image"
 import { getPageMetadata } from "@/i18n/metadata"
 import { Link } from "@/i18n/navigation"
@@ -84,7 +87,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 									/>
 								}
 							>
-								<Instagram className="size-4" aria-hidden="true" />
+								<LogoInstagramIcon className="size-4" aria-hidden="true" />
 							</Button>
 							<Button
 								variant="outline"
@@ -99,7 +102,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 									/>
 								}
 							>
-								<Facebook className="size-4" aria-hidden="true" />
+								<LogoFacebookIcon className="size-4" aria-hidden="true" />
 							</Button>
 						</div>
 					</div>
@@ -116,12 +119,12 @@ export default async function BranchPage({ params }: BranchPageProps) {
 							</tbody>
 						</table>
 						<div className="space-y-1 text-sm">
-							<a href={`mailto:${gym.email}`} className="block hover:underline">
+							<a href={`mailto:${gym.email}`} className="block hover:text-link">
 								{gym.email}
 							</a>
 							<a
 								href={`tel:${gym.phone.replace(/\s/g, "")}`}
-								className="block hover:underline"
+								className="block hover:text-link"
 							>
 								{gym.phone}
 							</a>
@@ -206,7 +209,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 						</Button>
 						<Link
 							href={{ pathname: "/events", hash: "activity-types" }}
-							className="mt-3 block w-fit text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+							className="link mt-3 block w-fit text-sm"
 						>
 							{t("booking.allActivityTypes")}
 						</Link>
@@ -227,9 +230,9 @@ export default async function BranchPage({ params }: BranchPageProps) {
 							href={gym.consentFormUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 hover:underline"
+							className="inline-flex items-center gap-2 font-medium hover:text-link"
 						>
-							<FileText className="size-4" aria-hidden="true" />
+							<FilePdfIcon className="size-4" aria-hidden="true" />
 							{t("documents.consentForm")}
 						</a>
 					</li>
@@ -238,9 +241,9 @@ export default async function BranchPage({ params }: BranchPageProps) {
 							href={gym.visitorRulesUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 hover:underline"
+							className="inline-flex items-center gap-2 font-medium hover:text-link"
 						>
-							<FileText className="size-4" aria-hidden="true" />
+							<FilePdfIcon className="size-4" aria-hidden="true" />
 							{t("documents.visitorRules")}
 						</a>
 					</li>

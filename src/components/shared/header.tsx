@@ -1,9 +1,7 @@
 "use client"
 
-import { Menu, X } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { useState } from "react"
-
 import { LanguageSwitcher } from "@/components/shared/language-switcher"
 import { Button } from "@/components/ui/button"
 import {
@@ -12,6 +10,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { CloseIcon, MenuIcon } from "@/components/ui/icons"
 import { Link, usePathname } from "@/i18n/navigation"
 import type { AppPathname, StaticPathname } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
@@ -113,9 +112,9 @@ export function Header() {
 						aria-expanded={isMenuOpen}
 					>
 						{isMenuOpen ? (
-							<X className="size-5" aria-hidden="true" />
+							<CloseIcon className="size-5" aria-hidden="true" />
 						) : (
-							<Menu className="size-5" aria-hidden="true" />
+							<MenuIcon className="size-5" aria-hidden="true" />
 						)}
 					</Button>
 				</div>
