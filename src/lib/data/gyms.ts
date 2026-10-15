@@ -1,3 +1,4 @@
+import { brnoPrices, ostravaPrices } from "@/lib/data/price-lists"
 import type { Gym } from "@/lib/types/gym"
 
 export const gyms: Gym[] = [
@@ -26,33 +27,7 @@ export const gyms: Gym[] = [
 		registrationUrl: "https://rezervace.hangarbrno.cz/newRegistration?lang=en",
 		bookingUrl: "https://rezervace.hangarbrno.cz/?lang=en",
 		activitiesBookingUrl: "https://aktivity.hangarbrno.cz/",
-		prices: [
-			{
-				category: "Adults",
-				items: [
-					{ name: "Single entry", price: "220 CZK" },
-					{ name: "10-entry card", price: "1 900 CZK" },
-					{ name: "Monthly pass", price: "1 400 CZK" },
-				],
-			},
-			{
-				category: "Kids & Youth",
-				items: [
-					{ name: "Single entry (under 15)", price: "150 CZK" },
-					{ name: "10-entry card (under 15)", price: "1 300 CZK" },
-				],
-			},
-			{
-				category: "Annual Passes",
-				items: [
-					{
-						name: "Annual pass",
-						price: "9 900 CZK",
-						note: "Best value for regular climbers",
-					},
-				],
-			},
-		],
+		prices: brnoPrices,
 		physio: {
 			enabled: true,
 			intro:
@@ -111,33 +86,7 @@ export const gyms: Gym[] = [
 			"https://rezervace.hangarostrava.cz/newRegistration?lang=en",
 		bookingUrl: "https://rezervace.hangarostrava.cz/?lang=en",
 		activitiesBookingUrl: "https://aktivity.hangarostrava.cz/",
-		prices: [
-			{
-				category: "Adults",
-				items: [
-					{ name: "Single entry", price: "210 CZK" },
-					{ name: "10-entry card", price: "1 800 CZK" },
-					{ name: "Monthly pass", price: "1 300 CZK" },
-				],
-			},
-			{
-				category: "Kids & Youth",
-				items: [
-					{ name: "Single entry (under 15)", price: "140 CZK" },
-					{ name: "10-entry card (under 15)", price: "1 200 CZK" },
-				],
-			},
-			{
-				category: "Annual Passes",
-				items: [
-					{
-						name: "Annual pass",
-						price: "9 400 CZK",
-						note: "Best value for regular climbers",
-					},
-				],
-			},
-		],
+		prices: ostravaPrices,
 		physio: {
 			enabled: true,
 			intro:

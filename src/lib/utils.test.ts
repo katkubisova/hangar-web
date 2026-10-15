@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { cn } from "./utils"
+import { cn, formatPrice } from "./utils"
 
 describe("cn", () => {
 	it("should merge classes correctly", () => {
@@ -36,5 +36,16 @@ describe("cn", () => {
 
 	it("should handle undefined and null values", () => {
 		expect(cn(undefined, null, "bg-red-500")).toBe("bg-red-500")
+	})
+})
+
+describe("formatPrice", () => {
+	it("should format amounts below a thousand", () => {
+		expect(formatPrice(215)).toBe("215\u00a0Kč")
+	})
+
+	it("should separate thousands with a non-breaking space", () => {
+		expect(formatPrice(1940)).toBe("1\u00a0940\u00a0Kč")
+		expect(formatPrice(26700)).toBe("26\u00a0700\u00a0Kč")
 	})
 })
