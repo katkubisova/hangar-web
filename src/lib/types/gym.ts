@@ -1,3 +1,5 @@
+import type { PriceCategory } from "@/lib/types/price-list"
+
 export type GymSlug = "brno" | "ostrava" | "plzen"
 
 export type GymStatus = "open" | "coming-soon" | "hidden"
@@ -11,11 +13,6 @@ export interface PriceItem {
 	name: string
 	price: string
 	note?: string
-}
-
-export interface PriceCategory {
-	category: string
-	items: PriceItem[]
 }
 
 export interface PhysioTeamMember {
