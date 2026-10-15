@@ -117,8 +117,9 @@ flag it**. Don't silently resolve it, don't guess, don't pick the
 - [x] 4a Tokens and type in `globals.css` (decided: page/section titles
       in capitals, square corners, form errors in black text with a
       Trinidad marker). Internal reference page: `/styleguide`.
-- [ ] 4b Components: restyle `src/components/ui/*`, TDesign icons, Logo,
-      WallProfile, Sticker, BrandImage.
+- [x] 4b Components: restyle `src/components/ui/*`, TDesign icons (import
+      from `@/components/ui/icons`, client-only), Logo, WallProfile,
+      Sticker, BrandImage (`src/components/brand/`).
 - [ ] 4c Global layout: header, footer, hero, sections, 404.
 - [ ] 4d Pages, one by one.
 

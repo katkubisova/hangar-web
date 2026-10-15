@@ -1,4 +1,4 @@
-import { ImageIcon } from "lucide-react"
+import { ImageIcon } from "@/components/ui/icons"
 
 import { cn } from "@/lib/utils"
 

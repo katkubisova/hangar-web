@@ -24,7 +24,7 @@ export function TeamMemberCard({ member, groupLabel }: TeamMemberCardProps) {
 			</Badge>
 			<p className="text-sm text-muted-foreground">{member.bio}</p>
 			{member.email && (
-				<a href={`mailto:${member.email}`} className="text-sm hover:underline">
+				<a href={`mailto:${member.email}`} className="link text-sm">
 					{member.email}
 				</a>
 			)}

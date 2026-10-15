@@ -116,13 +116,13 @@ function ContactPageSections() {
 						<div className="space-y-1 text-sm">
 							<a
 								href={`mailto:${selected.email}`}
-								className="block hover:underline"
+								className="block hover:text-link"
 							>
 								{selected.email}
 							</a>
 							<a
 								href={`tel:${selected.phone.replace(/\s/g, "")}`}
-								className="block hover:underline"
+								className="block hover:text-link"
 							>
 								{selected.phone}
 							</a>

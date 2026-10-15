@@ -89,7 +89,7 @@ export function Footer() {
 								<Link
 									key={link.label}
 									href={link.href}
-									className="text-sm text-muted-foreground hover:text-foreground hover:underline"
+									className="text-sm text-muted-foreground hover:text-foreground"
 								>
 									{link.label}
 								</Link>
@@ -104,7 +104,7 @@ export function Footer() {
 								<Link
 									key={link.label}
 									href={link.href}
-									className="text-sm text-muted-foreground hover:text-foreground hover:underline"
+									className="text-sm text-muted-foreground hover:text-foreground"
 								>
 									{link.label}
 								</Link>
