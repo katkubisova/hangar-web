@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react"
 import { Activity, Cake, Calendar, Dumbbell, Flower, Tent } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 import { Button } from "@/components/ui/button"
 import { getActivityBookingUrl, getGymCity } from "@/lib/gym-utils"
@@ -22,6 +23,7 @@ interface ActivityCardProps {
 }
 
 export function ActivityCard({ activity, gyms }: ActivityCardProps) {
+	const t = useTranslations("ActivityCard")
 	const Icon = iconMap[activity.icon] ?? Activity
 
 	return (
@@ -38,7 +40,10 @@ export function ActivityCard({ activity, gyms }: ActivityCardProps) {
 							<Button
 								key={gym.slug}
 								variant="outline"
-								aria-label={`Book ${activity.name} in ${city}`}
+								aria-label={t("bookActivityIn", {
+									activity: activity.name,
+									city,
+								})}
 								render={
 									<a
 										href={getActivityBookingUrl(
@@ -50,7 +55,7 @@ export function ActivityCard({ activity, gyms }: ActivityCardProps) {
 									/>
 								}
 							>
-								Book in {city}
+								{t("bookIn", { city })}
 							</Button>
 						)
 					})}

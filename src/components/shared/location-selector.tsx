@@ -1,5 +1,7 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+
 import { Button } from "@/components/ui/button"
 import type { Gym, GymSlug } from "@/lib/types/gym"
 import { cn } from "@/lib/utils"
@@ -17,10 +19,12 @@ export function LocationSelector({
 	onSelect,
 	className,
 }: LocationSelectorProps) {
+	const t = useTranslations("Common")
+
 	return (
 		<div
 			role="tablist"
-			aria-label="Select a location"
+			aria-label={t("selectLocation")}
 			className={cn("flex flex-wrap gap-2", className)}
 		>
 			{gyms.map(gym => {
@@ -40,7 +44,9 @@ export function LocationSelector({
 					>
 						{gym.name}
 						{isComingSoon && (
-							<span className="text-xs opacity-80">(Coming soon)</span>
+							<span className="text-xs opacity-80">
+								({t("status.coming-soon")})
+							</span>
 						)}
 					</Button>
 				)

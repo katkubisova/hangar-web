@@ -1,6 +1,248 @@
 {
+	"Metadata": {
+		"siteName": "HangarGyms",
+		"description": "The climbing gym network of the Czech Republic."
+	},
+	"Navigation": {
+		"home": "HangarGyms — home",
+		"main": "Main navigation",
+		"mobile": "Mobile navigation",
+		"toggleMenu": "Toggle menu",
+		"visit": "Visit Us",
+		"events": "Events",
+		"about": "About",
+		"team": "Our Team",
+		"careers": "Careers",
+		"contact": "Contact",
+		"eshop": "E-shop",
+		"challenge": "Hangar Challenge",
+		"privacy": "Privacy Policy",
+		"cookies": "Cookie Policy",
+		"visitorRules": "Visitor Rules"
+	},
+	"LanguageSwitcher": {
+		"label": "Language"
+	},
+	"Footer": {
+		"tagline": "Czech bouldering and climbing gym network, backed by Adam Ondra.",
+		"contact": "Contact",
+		"navigation": "Navigation",
+		"legal": "Legal",
+		"copyright": "© {year} HangarGyms. All rights reserved."
+	},
+	"Common": {
+		"status": {
+			"open": "Open",
+			"coming-soon": "Coming soon",
+			"hidden": "Hidden"
+		},
+		"visit": "Visit",
+		"visitGym": "Visit {gym}",
+		"selectLocation": "Select a location",
+		"noPhotos": "No gallery photos yet.",
+		"gallery": "Gallery",
+		"faq": "FAQ",
+		"bookNow": "Book now",
+		"bookActivities": "Book activities"
+	},
+	"ActivityCard": {
+		"bookIn": "Book in {city}",
+		"bookActivityIn": "Book {activity} in {city}"
+	},
+	"ContactForm": {
+		"name": "Name",
+		"email": "Email",
+		"phone": "Phone",
+		"message": "Message",
+		"cv": "CV (PDF, DOC, or DOCX, max 5 MB)",
+		"consent": "I agree to have my data processed in accordance with the <link>Privacy Policy</link>.",
+		"submit": "Submit",
+		"errors": {
+			"nameRequired": "Name is required.",
+			"emailRequired": "Email is required.",
+			"emailInvalid": "Enter a valid email address.",
+			"phoneRequired": "Phone number is required.",
+			"messageRequired": "Message is required.",
+			"cvType": "File must be a PDF, DOC, or DOCX.",
+			"cvSize": "File must be 5 MB or smaller.",
+			"consentRequired": "You must agree before submitting."
+		},
+		"success": {
+			"title": "Message received",
+			"description": "This is a wireframe prototype — no message was actually sent.",
+			"sendAnother": "Send another message"
+		}
+	},
 	"HomePage": {
-		"title": "Hello world!",
-		"welcome": "Welcome to Speculibro"
+		"metaTitle": "The Climbing Gym Network of the Czech Republic",
+		"hero": {
+			"imageLabel": "Hero image",
+			"title": "The Climbing Gym Network of the Czech Republic",
+			"subtitle": "Placeholder subtext introducing the Hangar network. Second placeholder line with a short supporting detail.",
+			"cta": "Find your gym"
+		},
+		"about": {
+			"title": "About Hangar",
+			"paragraph1": "Placeholder paragraph one — describing the Hangar network's origins and mission across the Czech Republic.",
+			"paragraph2": "Placeholder paragraph two — describing the facilities and what makes a Hangar gym different from other climbing walls.",
+			"paragraph3": "Placeholder paragraph three — describing the community and what's next for the network.",
+			"imageLabel": "About Hangar photo"
+		},
+		"locations": {
+			"title": "Find your Hangar"
+		},
+		"events": {
+			"title": "Events & Activities",
+			"line1": "Placeholder copy line one — courses, classes, and one-off events.",
+			"line2": "Placeholder copy line two — the year-round Hangar Challenge.",
+			"cta": "See what's on",
+			"imageLabel": "Events photo"
+		},
+		"visit": {
+			"title": "Visit Us",
+			"line1": "Placeholder copy line one — planning a visit, registration, and what to expect.",
+			"line2": "Placeholder copy line two — hours, pricing, and booking a ticket.",
+			"cta": "Plan your visit",
+			"imageLabel": "Visit Us photo"
+		},
+		"faqTitle": "FAQ"
+	},
+	"VisitPage": {
+		"title": "Visit Us",
+		"subtitle": "Placeholder subtext about planning a visit to a Hangar gym.",
+		"chooseLocation": "Choose your location"
+	},
+	"BranchPage": {
+		"about": "About this location",
+		"instagram": "{gym} on Instagram",
+		"facebook": "{gym} on Facebook",
+		"register": {
+			"title": "Register online",
+			"text": "Placeholder copy about registering online before your first visit.",
+			"cta": "Register"
+		},
+		"occupancy": {
+			"title": "Current Occupancy",
+			"empty": "Live occupancy data isn't available yet."
+		},
+		"booking": {
+			"title": "Book a Ticket & Activities",
+			"ticketsTitle": "Tickets",
+			"ticketsText": "Placeholder copy about booking a ticket online ahead of your visit.",
+			"activitiesTitle": "Events & activities",
+			"activitiesText": "Placeholder copy about booking courses, classes, and events.",
+			"allActivityTypes": "See all activity types"
+		},
+		"prices": "Prices",
+		"documents": {
+			"title": "Documents",
+			"consentForm": "Consent Form (PDF)",
+			"visitorRules": "Visitor Rules (PDF)"
+		},
+		"cafe": {
+			"title": "Hangar Cafe",
+			"coffeeTitle": "Specialty Coffee",
+			"coffeeText": "Placeholder copy about the specialty coffee offer.",
+			"coffeeImageLabel": "Specialty coffee photo",
+			"bistroTitle": "Fresh Bistro",
+			"bistroText": "Placeholder copy about the fresh bistro food offer.",
+			"bistroImageLabel": "Fresh bistro photo",
+			"menu": "Download menu (PDF)"
+		},
+		"physio": {
+			"title": "Physio",
+			"empty": "Physio isn't offered at this location yet.",
+			"service": "Service",
+			"duration": "Duration",
+			"price": "Price",
+			"bookTitle": "Book an appointment",
+			"bookText": "Placeholder copy about booking a physio appointment online.",
+			"messageTitle": "Or send a message"
+		}
+	},
+	"EventsPage": {
+		"title": "Events & Activities",
+		"subtitle": "Placeholder subtext about events and activities across the Hangar network.",
+		"bookTitle": "Book Activities",
+		"bookingUnavailable": "Booking isn't available yet for this location.",
+		"activityTypes": "Activity Types",
+		"challenge": {
+			"title": "Hangar Challenge",
+			"text": "Placeholder copy about the year-round Hangar Challenge running across all locations.",
+			"cta": "How it works"
+		}
+	},
+	"ChallengePage": {
+		"title": "Hangar Challenge",
+		"subtitle": "A year-round challenge for climbers of all levels.",
+		"what": {
+			"title": "What is the Hangar Challenge?",
+			"text": "Placeholder paragraph — explaining the self-paced, year-round bouldering challenge that runs across all Hangar locations, open to climbers of every level.",
+			"imageLabel": "Hangar Challenge photo"
+		},
+		"howItWorks": "How it works",
+		"stepLabel": "Step {number}",
+		"steps": {
+			"step1": "Pick up a challenge card",
+			"step2": "Complete routes at your own pace",
+			"step3": "Log progress on the challenge board",
+			"step4": "Collect your reward at reception"
+		}
+	},
+	"TeamPage": {
+		"title": "Our Team",
+		"subtitle": "Placeholder subtext introducing the people behind Hangar.",
+		"coreGroup": "Hangar Core"
+	},
+	"CareersPage": {
+		"title": "Careers",
+		"subtitle": "Placeholder subtext about working at Hangar.",
+		"whyTitle": "Why work at Hangar",
+		"openPositions": "Open Positions",
+		"empty": "No open positions right now — but we're always growing.",
+		"emptyCta": "Get in touch"
+	},
+	"PositionPage": {
+		"back": "Back to Careers",
+		"employmentType": {
+			"full-time": "Full-time",
+			"part-time": "Part-time",
+			"contract": "Contract"
+		},
+		"contact": "Contact",
+		"apply": "Apply"
+	},
+	"ContactPage": {
+		"title": "Contact",
+		"subtitle": "Placeholder subtext about getting in touch with a Hangar location.",
+		"whereTitle": "Where to find us",
+		"comingSoon": "{gym} is coming soon — location details will be announced closer to opening.",
+		"mapLabel": "Map — {gym}",
+		"directionsTitle": "How to get here",
+		"directionsVideoLabel": "Directions video",
+		"companyTitle": "Company info",
+		"quickContactsTitle": "Quick contacts",
+		"formTitle": "Get in touch",
+		"formPending": "Contact form — coming soon."
+	},
+	"PrivacyPage": {
+		"title": "Privacy Policy",
+		"paragraph1": "Placeholder rich-text body. This page will hold the real privacy policy copy — how personal data is collected, used, and stored across the Hangar network.",
+		"paragraph2": "Placeholder paragraph two, standing in for sections on data retention, third-party processors, and visitor rights."
+	},
+	"CookiePage": {
+		"title": "Cookie Policy",
+		"paragraph1": "Placeholder rich-text body. This page will hold the real cookie policy copy — which cookies are used, why, and how visitors can manage consent.",
+		"paragraph2": "Placeholder paragraph two, standing in for a breakdown of cookie categories (essential, analytics, marketing) once analytics is in scope."
+	},
+	"VisitorRulesPage": {
+		"title": "Visitor Rules",
+		"paragraph1": "Placeholder rich-text body. This page will hold the real visitor rules — safety guidelines, conduct on the wall, and age requirements.",
+		"paragraph2": "Placeholder paragraph two, standing in for equipment policies specific to each location."
+	},
+	"NotFound": {
+		"title": "Page not found",
+		"description": "The page you're looking for doesn't exist or has been moved.",
+		"cta": "Back to Home"
 	}
 }

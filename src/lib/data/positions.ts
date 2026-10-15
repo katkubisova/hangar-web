@@ -1,16 +1,21 @@
-import type { Position } from "@/lib/types/position"
+import type { PositionData } from "@/lib/types/position"
 
-export const positions: Position[] = [
+export const positions: PositionData[] = [
 	{
-		title: "Bouldering Wall Instructor",
+		title: {
+			cs: "Instruktor/ka na boulderingové stěně",
+			en: "Bouldering Wall Instructor",
+		},
 		slug: "bouldering-wall-instructor-brno",
 		locationSlugs: ["brno"],
 		employmentType: "part-time",
-		description:
-			"Placeholder role description — supervising the climbing wall, running beginner inductions, and supporting events.",
+		description: {
+			cs: "Zástupný popis pozice — dohled na stěně, úvodní instruktáže pro začátečníky a pomoc s akcemi.",
+			en: "Placeholder role description — supervising the climbing wall, running beginner inductions, and supporting events.",
+		},
 		contactPerson: {
 			name: "Placeholder Name",
-			role: "Gym Manager",
+			role: { cs: "Vedoucí pobočky", en: "Gym Manager" },
 			phone: "+420 000 000 001",
 			email: "brno.manager@hangargyms.example",
 		},
@@ -19,15 +24,17 @@ export const positions: Position[] = [
 		displayOrder: 1,
 	},
 	{
-		title: "Cafe Barista",
+		title: { cs: "Barista/ka v kavárně", en: "Cafe Barista" },
 		slug: "cafe-barista-ostrava",
 		locationSlugs: ["ostrava"],
 		employmentType: "part-time",
-		description:
-			"Placeholder role description — preparing coffee and light bistro food at Hangar Cafe Ostrava.",
+		description: {
+			cs: "Zástupný popis pozice — příprava kávy a lehkého bistro jídla v Hangar Cafe Ostrava.",
+			en: "Placeholder role description — preparing coffee and light bistro food at Hangar Cafe Ostrava.",
+		},
 		contactPerson: {
 			name: "Placeholder Name",
-			role: "Gym Manager",
+			role: { cs: "Vedoucí pobočky", en: "Gym Manager" },
 			phone: "+420 000 000 002",
 			email: "ostrava.manager@hangargyms.example",
 		},
@@ -36,15 +43,17 @@ export const positions: Position[] = [
 		displayOrder: 2,
 	},
 	{
-		title: "Physiotherapist",
+		title: { cs: "Fyzioterapeut/ka", en: "Physiotherapist" },
 		slug: "physiotherapist-brno",
 		locationSlugs: ["brno"],
 		employmentType: "contract",
-		description:
-			"Placeholder role description — this position has since been filled and is kept here only to exercise the closed-position filtering behaviour.",
+		description: {
+			cs: "Zástupný popis pozice — tato pozice je už obsazená a zůstává tu jen kvůli otestování filtru uzavřených pozic.",
+			en: "Placeholder role description — this position has since been filled and is kept here only to exercise the closed-position filtering behaviour.",
+		},
 		contactPerson: {
 			name: "Placeholder Name",
-			role: "Gym Manager",
+			role: { cs: "Vedoucí pobočky", en: "Gym Manager" },
 			phone: "+420 000 000 001",
 			email: "brno.manager@hangargyms.example",
 		},

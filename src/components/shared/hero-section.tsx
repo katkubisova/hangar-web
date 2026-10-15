@@ -1,6 +1,6 @@
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { PlaceholderImage } from "@/components/ui/placeholder-image"
+import { type AppHref, Link } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 
 interface HeroSectionProps {
@@ -9,7 +9,8 @@ interface HeroSectionProps {
 	imageLabel?: string
 	cta?: {
 		label: string
-		href: string
+		// An internal page, or "#id" to jump to a section on this page.
+		href: AppHref | `#${string}`
 	}
 	className?: string
 	id?: string
@@ -56,10 +57,10 @@ export function HeroSection({
 					<Button
 						size="lg"
 						render={
-							cta.href.startsWith("#") ? (
+							typeof cta.href === "string" && cta.href.startsWith("#") ? (
 								<a href={cta.href} />
 							) : (
-								<Link href={cta.href} />
+								<Link href={cta.href as AppHref} />
 							)
 						}
 					>
