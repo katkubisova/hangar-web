@@ -18,7 +18,8 @@
 		"challenge": "Hangar Challenge",
 		"privacy": "Ochrana osobních údajů",
 		"cookies": "Zásady cookies",
-		"visitorRules": "Návštěvní řád"
+		"visitorRules": "Návštěvní řád",
+		"skipToContent": "Přeskočit na obsah"
 	},
 	"LanguageSwitcher": {
 		"label": "Jazyk"
@@ -29,7 +30,11 @@
 		"navigation": "Navigace",
 		"legal": "Právní informace",
 		"copyright": "© {year} HangarGyms. Všechna práva vyhrazena.",
-		"operator": "Provozovatel {gym}"
+		"operator": "Provozovatel {gym}",
+		"claim": "Let's HNG out",
+		"stickerText": "Brno · Ostrava",
+		"instagram": "{gym} na Instagramu",
+		"facebook": "{gym} na Facebooku"
 	},
 	"Common": {
 		"status": {
@@ -77,10 +82,11 @@
 	"HomePage": {
 		"metaTitle": "Boulderové stěny v Brně a Ostravě",
 		"hero": {
-			"imageLabel": "Úvodní fotka",
+			"imageLabel": "Převislá boulderová stěna v Hangaru Brno",
 			"title": "Boulderuj s námi v Brně a Ostravě",
 			"subtitle": "Lezecká centra, která vznikla ve spolupráci s Adamem Ondrou. Přes 300 boulderů pro začátečníky i profíky a každý týden nové.",
-			"cta": "Najdi svůj Hangar"
+			"cta": "Najdi svůj Hangar",
+			"eyebrow": "Climbing playground by Adam Ondra"
 		},
 		"about": {
 			"title": "O Hangaru",
@@ -247,8 +253,9 @@
 		"paragraph2": "To nejdůležitější: děti do 13 let jen pod neustálým dohledem dospělého, mladiství od 13 do 18 let potřebují souhlas zákonného zástupce a na boso se lézt nesmí. Úplné znění najdeš v sekci Dokumenty na stránce každé pobočky."
 	},
 	"NotFound": {
-		"title": "Stránka nenalezena",
-		"description": "Stránka, kterou hledáš, neexistuje nebo byla přesunuta.",
-		"cta": "Zpět na úvod"
+		"title": "Tady cesta končí",
+		"description": "Stránka, kterou hledáš, neexistuje nebo se přesunula. Zkus to znovu od startu.",
+		"cta": "Zpět na úvod",
+		"eyebrow": "Chyba 404"
 	}
 }

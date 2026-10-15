@@ -133,7 +133,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 				</div>
 			</Section>
 
-			<Section className="bg-muted/30">
+			<Section tone="muted">
 				<h2 className="mb-4 text-2xl font-bold">{t("register.title")}</h2>
 				<p className="mb-4 text-muted-foreground leading-relaxed">
 					{t("register.text")}
@@ -157,7 +157,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 				<PhotoGallery images={gym.galleryImages} />
 			</Section>
 
-			<Section className="bg-muted/30">
+			<Section tone="muted">
 				<h2 className="mb-4 text-2xl font-bold">{t("occupancy.title")}</h2>
 				{/* No live occupancy source exists yet — spec Open Question 2 is
 				unresolved, so this always renders the fallback/empty state rather
@@ -217,7 +217,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 				</div>
 			</Section>
 
-			<Section className="bg-muted/30">
+			<Section tone="muted">
 				<h2 className="mb-4 text-2xl font-bold">{t("prices")}</h2>
 				<PricesAccordion categories={gym.prices} />
 			</Section>
@@ -250,7 +250,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 				</ul>
 			</Section>
 
-			<Section className="bg-muted/30">
+			<Section tone="muted">
 				<h2 className="mb-6 text-2xl font-bold">{t("cafe.title")}</h2>
 				<div className="space-y-6">
 					<div className="grid gap-8 md:grid-cols-2">

@@ -120,7 +120,10 @@ flag it**. Don't silently resolve it, don't guess, don't pick the
 - [x] 4b Components: restyle `src/components/ui/*`, TDesign icons (import
       from `@/components/ui/icons`, client-only), Logo, WallProfile,
       Sticker, BrandImage (`src/components/brand/`).
-- [ ] 4c Global layout: header, footer, hero, sections, 404.
+- [x] 4c Global layout: header, footer, hero, sections, 404. Photos in
+      `public/photos/` are stand-ins taken from the live sites (one with a
+      third-party photographer credit left out); replace with the final
+      photography before launch.
 - [ ] 4d Pages, one by one.
 
 ### Phase 5 — QA

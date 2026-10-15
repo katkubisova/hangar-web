@@ -48,7 +48,7 @@ export default async function TeamPage({ params }: LocaleParams) {
 				return (
 					<Section
 						key={group.slug}
-						className={index % 2 === 1 ? "bg-muted/30" : undefined}
+						tone={index % 2 === 1 ? "muted" : "default"}
 					>
 						<h2 className="mb-6 text-2xl font-bold">{group.label}</h2>
 						<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

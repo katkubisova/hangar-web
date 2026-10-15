@@ -33,7 +33,8 @@ export default async function HomePage({ params }: LocaleParams) {
 	return (
 		<>
 			<HeroSection
-				imageLabel={t("hero.imageLabel")}
+				eyebrow={t("hero.eyebrow")}
+				image={{ src: "/photos/brno-overhang.jpg", alt: t("hero.imageLabel") }}
 				title={t("hero.title")}
 				subtitle={t("hero.subtitle")}
 				cta={{ label: t("hero.cta"), href: "#locations" }}
@@ -60,7 +61,7 @@ export default async function HomePage({ params }: LocaleParams) {
 				</div>
 			</Section>
 
-			<Section id="locations" className="scroll-mt-16 bg-muted/30">
+			<Section id="locations" tone="muted">
 				<div className="mb-8 text-center">
 					<h2 className="text-3xl font-bold">{t("locations.title")}</h2>
 				</div>
@@ -92,7 +93,7 @@ export default async function HomePage({ params }: LocaleParams) {
 				</div>
 			</Section>
 
-			<Section className="bg-muted/30">
+			<Section tone="muted">
 				<div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
 					<div className="space-y-4">
 						<h2 className="text-3xl font-bold">{t("visit.title")}</h2>

@@ -83,7 +83,7 @@ export default async function EventsPage({ params }: LocaleParams) {
 				</ul>
 			</Section>
 
-			<Section id="activity-types" className="scroll-mt-16 bg-muted/30">
+			<Section id="activity-types" tone="muted">
 				<h2 className="mb-6 text-2xl font-bold">{t("activityTypes")}</h2>
 				<ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{localize(sortedActivityCategories, locale).map(activity => (
@@ -97,7 +97,7 @@ export default async function EventsPage({ params }: LocaleParams) {
 				</ul>
 			</Section>
 
-			<Section className="bg-foreground text-background">
+			<Section tone="dark">
 				<div className="mx-auto max-w-xl text-center">
 					<h2 className="mb-4 text-3xl font-bold">{t("challenge.title")}</h2>
 					<p className="mb-6 opacity-80">{t("challenge.text")}</p>

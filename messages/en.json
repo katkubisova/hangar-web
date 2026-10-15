@@ -18,7 +18,8 @@
 		"challenge": "Hangar Challenge",
 		"privacy": "Privacy Policy",
 		"cookies": "Cookie Policy",
-		"visitorRules": "Visitor Rules"
+		"visitorRules": "Visitor Rules",
+		"skipToContent": "Skip to content"
 	},
 	"LanguageSwitcher": {
 		"label": "Language"
@@ -29,7 +30,11 @@
 		"navigation": "Navigation",
 		"legal": "Legal",
 		"copyright": "© {year} HangarGyms. All rights reserved.",
-		"operator": "{gym} operator"
+		"operator": "{gym} operator",
+		"claim": "Let's HNG out",
+		"stickerText": "Brno · Ostrava",
+		"instagram": "{gym} on Instagram",
+		"facebook": "{gym} on Facebook"
 	},
 	"Common": {
 		"status": {
@@ -77,10 +82,11 @@
 	"HomePage": {
 		"metaTitle": "Bouldering gyms in Brno and Ostrava",
 		"hero": {
-			"imageLabel": "Hero image",
+			"imageLabel": "Overhanging bouldering wall at Hangar Brno",
 			"title": "Come bouldering in Brno and Ostrava",
 			"subtitle": "Climbing centres created with Adam Ondra. Over 300 boulders for beginners and pros, with new ones every week.",
-			"cta": "Find your Hangar"
+			"cta": "Find your Hangar",
+			"eyebrow": "Climbing playground by Adam Ondra"
 		},
 		"about": {
 			"title": "About Hangar",
@@ -247,8 +253,9 @@
 		"paragraph2": "The key points: children under 13 only under constant adult supervision, teens aged 13 to 18 need a legal guardian's consent, and no barefoot climbing. You'll find the full rules under Documents on each branch's page."
 	},
 	"NotFound": {
-		"title": "Page not found",
-		"description": "The page you're looking for doesn't exist or has been moved.",
-		"cta": "Back to Home"
+		"title": "This route ends here",
+		"description": "The page you're looking for doesn't exist or has moved. Try again from the start.",
+		"cta": "Back to Home",
+		"eyebrow": "Error 404"
 	}
 }
