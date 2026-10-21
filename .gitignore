@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Brand guide PDF (18.8 MB) stays local
 HANGAR_Brand_Guidelines_2026.pdf
+
+# N27 fonts: desktop licence only, never commit
+N27 Desktop Complete/

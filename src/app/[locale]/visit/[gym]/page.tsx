@@ -265,7 +265,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 
 			<Section id="prices" tone="muted">
 				<div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-					<div className="lg:col-span-4">
+					<div className="min-w-0 lg:col-span-4">
 						<SectionHeading title={t("prices")} />
 						{documents.length > 0 && (
 							<div>
@@ -287,7 +287,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 							</div>
 						)}
 					</div>
-					<div className="lg:col-span-8">
+					<div className="min-w-0 lg:col-span-8">
 						<PricesAccordion categories={gym.prices} />
 					</div>
 				</div>
@@ -352,7 +352,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 						</ul>
 
 						<div className="grid gap-12 lg:grid-cols-2">
-							<div className="space-y-8">
+							<div className="min-w-0 space-y-8">
 								<div className="overflow-x-auto border border-foreground bg-background">
 									<table className="w-full text-sm">
 										<thead>
@@ -405,7 +405,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 									)}
 								</div>
 							</div>
-							<div className="border border-foreground bg-background p-5 md:p-8">
+							<div className="min-w-0 border border-foreground bg-background p-5 md:p-8">
 								<h3 className="mb-6 text-h3 font-bold">
 									{t("physio.messageTitle")}
 								</h3>
