@@ -53,13 +53,61 @@ export function PricesAccordion({ categories }: PricesAccordionProps) {
 	)
 }
 
-// Wide tables scroll horizontally inside their own container on small
-// screens (never the page), with the label column pinned to the left.
+// Below md each table becomes a list of row cards, so the whole price list
+// reads with vertical scrolling only. Both versions come from the same data;
+// the hidden one is display:none, so screen readers only get one of them.
 function PriceTableView({ table }: { table: Resolved<PriceTable> }) {
+	return (
+		<>
+			<PriceCards table={table} />
+			<PriceTableDesktop table={table} />
+		</>
+	)
+}
+
+// The first column is the row-label column; on a card its header is
+// replaced by the row label as the card heading.
+function PriceCards({ table }: { table: Resolved<PriceTable> }) {
+	const [, ...valueColumns] = table.columns
+
+	return (
+		<ul className="space-y-3 md:hidden">
+			{table.rows.map((row, rowIndex) => (
+				// biome-ignore lint/suspicious/noArrayIndexKey: rows are static and never reorder
+				<li key={rowIndex} className="border border-foreground bg-background">
+					<h4 className="border-b border-foreground px-3 py-2 text-sm font-medium">
+						<Label label={row.label} />
+					</h4>
+					<dl className="text-sm">
+						{valueColumns.map((column, columnIndex) => (
+							<div
+								// biome-ignore lint/suspicious/noArrayIndexKey: columns are static and never reorder
+								key={columnIndex}
+								className="flex items-baseline justify-between gap-4 px-3 py-2 not-last:border-b not-last:border-border"
+							>
+								<dt className="min-w-0 text-muted-foreground">
+									<Label label={column} />
+								</dt>
+								<dd className="shrink-0 text-right font-medium whitespace-nowrap tabular-nums">
+									{formatCell(row.cells[columnIndex])}
+								</dd>
+							</div>
+						))}
+					</dl>
+				</li>
+			))}
+		</ul>
+	)
+}
+
+// From md up: the full table. If it's ever wider than its container, it
+// scrolls inside its own box (never the page), with the label column
+// pinned to the left.
+function PriceTableDesktop({ table }: { table: Resolved<PriceTable> }) {
 	const [labelColumn, ...valueColumns] = table.columns
 
 	return (
-		<div className="overflow-x-auto border border-foreground bg-background">
+		<div className="hidden overflow-x-auto border border-foreground bg-background md:block">
 			<table className="w-full text-sm">
 				<thead>
 					<tr className="text-left text-muted-foreground *:border-b *:border-border">
