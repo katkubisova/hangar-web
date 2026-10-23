@@ -264,32 +264,35 @@ export default async function BranchPage({ params }: BranchPageProps) {
 			)}
 
 			<Section id="prices" tone="muted">
-				<div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-					<div className="min-w-0 lg:col-span-4">
-						<SectionHeading title={t("prices")} />
-						{documents.length > 0 && (
-							<div>
-								<h3 className="eyebrow mb-3">{t("documents.title")}</h3>
-								<ul className="space-y-2 text-sm">
-									{documents.map(document => (
-										<li key={document.label}>
-											<a
-												href={document.href}
-												{...EXTERNAL}
-												className="link inline-flex items-center gap-2"
-											>
-												<FilePdfIcon className="size-5" aria-hidden="true" />
-												{document.label}
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-						)}
-					</div>
-					<div className="min-w-0 lg:col-span-8">
+				{/* Below lg: heading, prices, documents. From lg: heading and
+				    documents on the left, prices spanning both rows on the right. */}
+				<div className="grid lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-x-16">
+					<SectionHeading
+						title={t("prices")}
+						className="min-w-0 lg:col-span-4"
+					/>
+					<div className="min-w-0 lg:col-span-8 lg:col-start-5 lg:row-span-2 lg:row-start-1">
 						<PricesAccordion categories={gym.prices} />
 					</div>
+					{documents.length > 0 && (
+						<div className="mt-10 min-w-0 lg:col-span-4 lg:col-start-1 lg:row-start-2 lg:mt-0">
+							<h3 className="eyebrow mb-3">{t("documents.title")}</h3>
+							<ul className="space-y-2 text-sm">
+								{documents.map(document => (
+									<li key={document.label}>
+										<a
+											href={document.href}
+											{...EXTERNAL}
+											className="link inline-flex items-center gap-2"
+										>
+											<FilePdfIcon className="size-5" aria-hidden="true" />
+											{document.label}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
 				</div>
 			</Section>
 
