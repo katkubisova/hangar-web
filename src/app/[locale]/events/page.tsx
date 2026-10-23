@@ -9,7 +9,7 @@ import { HeroSection } from "@/components/shared/hero-section"
 import { Section } from "@/components/shared/section"
 import { SectionHeading } from "@/components/shared/section-heading"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button-variants"
 import {
 	ArrowRightUpIcon,
 	ChevronRightIcon,
@@ -79,20 +79,15 @@ export default async function EventsPage({ params }: LocaleParams) {
 										{t("bookingUnavailable")}
 									</p>
 								) : (
-									<Button
-										className="w-fit"
-										render={
-											// biome-ignore lint/a11y/useAnchorContent: text comes from Button's children, merged onto this anchor via the render prop
-											<a
-												href={gym.activitiesBookingUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-											/>
-										}
+									<a
+										href={gym.activitiesBookingUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										className={buttonVariants({ className: "w-fit" })}
 									>
 										{common("bookActivities")}
 										<ArrowRightUpIcon aria-hidden="true" />
-									</Button>
+									</a>
 								)}
 							</li>
 						)
@@ -126,10 +121,13 @@ export default async function EventsPage({ params }: LocaleParams) {
 					<p className="mb-8 max-w-xl text-lead text-alabaster">
 						{t("challenge.text")}
 					</p>
-					<Button size="lg" render={<Link href="/hangar-challenge" />}>
+					<Link
+						href="/hangar-challenge"
+						className={buttonVariants({ size: "lg" })}
+					>
 						{t("challenge.cta")}
 						<ChevronRightIcon aria-hidden="true" />
-					</Button>
+					</Link>
 				</div>
 				<div className="relative lg:col-span-6">
 					<WallProfile

@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl"
 
 import { WallProfile } from "@/components/brand/wall-profile"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button-variants"
 import { ChevronRightIcon } from "@/components/ui/icons"
 import { Link } from "@/i18n/navigation"
 
@@ -16,10 +16,10 @@ export default function NotFound() {
 				<p className="max-w-md text-lead text-muted-foreground">
 					{t("description")}
 				</p>
-				<Button size="lg" render={<Link href="/" />}>
+				<Link href="/" className={buttonVariants({ size: "lg" })}>
 					{t("cta")}
 					<ChevronRightIcon aria-hidden="true" />
-				</Button>
+				</Link>
 			</div>
 			<WallProfile
 				profile="monster"

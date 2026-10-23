@@ -10,7 +10,7 @@ import { PhotoGallery } from "@/components/shared/photo-gallery"
 import { PricesAccordion } from "@/components/shared/prices-accordion"
 import { Section } from "@/components/shared/section"
 import { SectionHeading } from "@/components/shared/section-heading"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button-variants"
 import {
 	ArrowRightIcon,
 	ArrowRightUpIcon,
@@ -143,24 +143,30 @@ export default async function BranchPage({ params }: BranchPageProps) {
 						</div>
 						<div className="mt-8 flex gap-3">
 							{gym.instagramUrl && (
-								<Button
-									variant="outline"
-									size="icon"
+								<a
+									href={gym.instagramUrl}
+									{...EXTERNAL}
 									aria-label={t("instagram", { gym: gym.name })}
-									render={<a href={gym.instagramUrl} {...EXTERNAL} />}
+									className={buttonVariants({
+										variant: "outline",
+										size: "icon",
+									})}
 								>
 									<LogoInstagramIcon className="size-5" aria-hidden="true" />
-								</Button>
+								</a>
 							)}
 							{gym.facebookUrl && (
-								<Button
-									variant="outline"
-									size="icon"
+								<a
+									href={gym.facebookUrl}
+									{...EXTERNAL}
 									aria-label={t("facebook", { gym: gym.name })}
-									render={<a href={gym.facebookUrl} {...EXTERNAL} />}
+									className={buttonVariants({
+										variant: "outline",
+										size: "icon",
+									})}
 								>
 									<LogoFacebookIcon className="size-5" aria-hidden="true" />
-								</Button>
+								</a>
 							)}
 						</div>
 					</div>
@@ -244,13 +250,14 @@ export default async function BranchPage({ params }: BranchPageProps) {
 							>
 								<h3 className="text-h3 font-bold">{action.title}</h3>
 								<p className="text-muted-foreground">{action.text}</p>
-								<Button
-									className="mt-auto w-fit"
-									render={<a href={action.href} {...EXTERNAL} />}
+								<a
+									href={action.href}
+									{...EXTERNAL}
+									className={buttonVariants({ className: "mt-auto w-fit" })}
 								>
 									{action.cta}
 									<ArrowRightUpIcon aria-hidden="true" />
-								</Button>
+								</a>
 							</li>
 						))}
 					</ul>
@@ -399,12 +406,14 @@ export default async function BranchPage({ params }: BranchPageProps) {
 									{/* Brno books through a widget on the old site with no
 									URL of its own, so it has no button (launch checklist). */}
 									{gym.physio.bookingUrl && (
-										<Button
-											render={<a href={gym.physio.bookingUrl} {...EXTERNAL} />}
+										<a
+											href={gym.physio.bookingUrl}
+											{...EXTERNAL}
+											className={buttonVariants()}
 										>
 											{common("bookNow")}
 											<ArrowRightUpIcon aria-hidden="true" />
-										</Button>
+										</a>
 									)}
 								</div>
 							</div>
