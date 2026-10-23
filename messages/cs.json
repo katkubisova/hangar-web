@@ -155,12 +155,12 @@
 		},
 		"booking": {
 			"title": "Vstupy a aktivity",
-			"ticketsTitle": "Permanentky a členství",
+			"ticketsTitle": "Můj účet",
 			"ticketsText": "Ve svém zákaznickém účtu vložíš depozit, koupíš permanentku nebo členství.",
 			"activitiesTitle": "Akce a aktivity",
 			"activitiesText": "Kurzy, fitness lekce, narozeninové oslavy, příměšťáky a další akce si rezervuješ online.",
 			"allActivityTypes": "Všechny typy aktivit",
-			"ticketsCta": "Můj účet",
+			"ticketsCta": "Přihlásit se",
 			"eyebrow": "Než přijdeš"
 		},
 		"prices": "Ceník",

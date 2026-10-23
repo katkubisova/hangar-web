@@ -155,12 +155,12 @@
 		},
 		"booking": {
 			"title": "Tickets & activities",
-			"ticketsTitle": "Passes & memberships",
+			"ticketsTitle": "My account",
 			"ticketsText": "In your customer account you can add credit and buy a pass or membership.",
 			"activitiesTitle": "Events & activities",
 			"activitiesText": "Book courses, fitness classes, birthday parties, day camps and other events online.",
 			"allActivityTypes": "See all activity types",
-			"ticketsCta": "My account",
+			"ticketsCta": "Log in",
 			"eyebrow": "Before you come"
 		},
 		"prices": "Prices",

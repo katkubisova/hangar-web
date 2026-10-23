@@ -12,7 +12,7 @@ Czech is the source; English follows it. Facts come from hangarbrno.cz and hanga
 4. **Challenger dates will go out of date.** The Challenger 2026 dates (Ostrava 20 Mar and 18 Sep, Brno 30 Apr and 27 Oct) are written into the copy. Someone has to update them every year, or they move into a content system. _Source: hangarbrno.cz/challenger-2025/._
 5. **Yoga & studio classes aren't offered anywhere.** Neither live site nor either booking system lists yoga or studio classes. The activity card stays with neutral copy. Keep it or drop it? _Source: aktivity.hangarbrno.cz, aktivity.hangarostrava.cz._
 6. **Ostrava physio package prices are ambiguous.** Fyzio Gym Cooper lists 6, 12 and 20-session packages at 980, 900 and 800 Kč. Those look like per-session prices, but the source doesn't say. The site shows them exactly as listed. Its seminar dates are from 2024, so they're left out. _Source: hangarostrava.cz/fyzio-hangar/._
-7. **Buying single entries online isn't confirmed.** The live sites only say the customer account is for credit, passes and memberships. The wireframe's 'Book a ticket' block is now 'Passes & memberships / My account'. Can visitors buy single entries online? _Source: hangarbrno.cz/poprve-na-hangaru/._
+7. **Buying single entries online isn't confirmed.** The live sites only say the customer account is for credit, passes and memberships. The wireframe's 'Book a ticket' block is now 'My account / Log in'. Can visitors buy single entries online? _Source: hangarbrno.cz/poprve-na-hangaru/._
 8. **No network-wide company, email or phone.** Each branch has its own operator: Brno is VerticalBlock s.r.o., Ostrava is CLIMBING GYM s.r.o. No HangarGyms entity or general inbox exists on the live sites, so the footer lists each branch's operator and contacts instead of placeholders. Should a network-level entity or email appear? _Source: hangarbrno.cz/kontakt/, hangarostrava.cz/kontakt/._
 9. **Team page: email addresses and grouping.** Personal addresses are left out: Pavel Labounek (volny.cz), Štěpán Stráník (seznam.cz), Martin Chytil (gmail.com) and Mikuláš Chlebek (post.cz, shown as support@hangarbrno.cz instead). People listed on both sites are grouped as 'Hangar Core', which is our grouping. Kateřina Krestová uses katerina@hangarbrno.cz. Bios are shortened, and the two Slovak bios are rewritten in Czech. Please confirm with the people involved. _Source: hangarbrno.cz/nas-tym/, hangarostrava.cz/nas-tym/._
 10. **Form of address: 'ty' everywhere.** The live sites mix 'ty' and 'vy'. The new Czech copy uses 'ty' throughout, matching the brand's informal voice and the price lists. Confirm. _Source: Brand guidelines, live sites._
@@ -96,12 +96,12 @@ _Source: /poprve-na-hangaru/, /hangar-cafe/, /fyzio-hangar/ (both sites)_
 | `occupancy.title` | Aktuální obsazenost | Current Occupancy |
 | `occupancy.empty` | Údaje o aktuální obsazenosti zatím nejsou k dispozici. | Live occupancy data isn't available yet. |
 | `booking.title` | Vstupy a aktivity | Tickets & activities |
-| `booking.ticketsTitle` | Permanentky a členství | Passes & memberships |
+| `booking.ticketsTitle` | Můj účet | My account |
 | `booking.ticketsText` | Ve svém zákaznickém účtu vložíš depozit, koupíš permanentku nebo členství. | In your customer account you can add credit and buy a pass or membership. |
 | `booking.activitiesTitle` | Akce a aktivity | Events & activities |
 | `booking.activitiesText` | Kurzy, fitness lekce, narozeninové oslavy, příměšťáky a další akce si rezervuješ online. | Book courses, fitness classes, birthday parties, day camps and other events online. |
 | `booking.allActivityTypes` | Všechny typy aktivit | See all activity types |
-| `booking.ticketsCta` | Můj účet | My account |
+| `booking.ticketsCta` | Přihlásit se | Log in |
 | `prices` | Ceník | Prices |
 | `documents.title` | Dokumenty | Documents |
 | `documents.consentForm` | Souhlas zákonného zástupce (PDF) | Consent Form (PDF) |
@@ -439,7 +439,7 @@ _Source: hangarbrno.cz/poprve-na-hangaru/, hangarostrava.cz/nejcastejsi-otazky/_
 
 ## Activity types
 
-_Source: aktivity.hangarbrno.cz, aktivity.hangarostrava.cz_
+_Source: aktivity.hangarbrno.cz, aktivity.hangarostrava.cz; Competitions: hangarbrno.cz/zavody/, hangarostrava.cz/zavody/_
 
 | Key | Čeština | English |
 |---|---|---|
@@ -454,7 +454,10 @@ _Source: aktivity.hangarbrno.cz, aktivity.hangarostrava.cz_
 | `Kids' day camps · name` | Příměstské tábory | Kids' day camps |
 | `Kids' day camps · description` | Příměšťáky o podzimních i pololetních prázdninách: celý den lezení a pohybu na Hangaru. | Day camps during the autumn and mid-term breaks: a full day of climbing and movement at Hangar. |
 | `Other events · name` | Další akce | Other events |
-| `Other events · description` | Promítání, workshopy, závody, školní návštěvy a teambuildingy. Co se zrovna chystá, najdeš v kalendáři akcí. | Film screenings, workshops, competitions, school visits and team-building. See what's coming up in the events calendar. |
+| `Competitions · name` | Závody | Competitions |
+| `Competitions · description` | Každý měsíc lezeme na obou pobočkách Hangar Challenge: 30 bouldrů a tři kategorie. K tomu závodní série Challenger. | Every month both gyms run the Hangar Challenge: 30 boulders and three categories. Plus the Challenger competition series. |
+| `Competitions · link label` | Více o závodech | About the competitions |
+| `Other events · description` | Promítání, workshopy, školní návštěvy a teambuildingy. Co se zrovna chystá, najdeš v kalendáři akcí. | Film screenings, workshops, school visits and team-building. See what's coming up in the events calendar. |
 
 ## Open positions
 

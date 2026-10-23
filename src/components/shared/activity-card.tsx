@@ -6,10 +6,12 @@ import {
 	CakeIcon,
 	CalendarEventIcon,
 	EducationIcon,
+	FlagIcon,
 	ForestIcon,
 	type IconProps,
 	SunRisingIcon,
 } from "@/components/ui/icons"
+import { Link } from "@/i18n/navigation"
 import { getActivityBookingUrl, getGymCity } from "@/lib/gym-utils"
 import type { ActivityCategory } from "@/lib/types/activity-category"
 import type { Gym } from "@/lib/types/gym"
@@ -23,6 +25,7 @@ const iconMap: Record<string, ComponentType<IconProps>> = {
 	cake: CakeIcon,
 	tent: ForestIcon,
 	calendar: CalendarEventIcon,
+	flag: FlagIcon,
 }
 
 interface ActivityCardProps {
@@ -44,36 +47,48 @@ export function ActivityCard({ activity, gyms }: ActivityCardProps) {
 			<Icon className="size-8 text-electric-violet" aria-hidden="true" />
 			<h3 className="text-h3 font-bold">{activity.name}</h3>
 			<p className="text-sm text-muted-foreground">{activity.description}</p>
-			{bookableGyms.length > 0 && (
+			{activity.link ? (
 				<div className="mt-auto flex flex-wrap gap-2 pt-4">
-					{bookableGyms.map(gym => {
-						const city = getGymCity(gym.name)
-
-						return (
-							<Button
-								key={gym.slug}
-								variant="outline"
-								size="sm"
-								aria-label={t("bookActivityIn", {
-									activity: activity.name,
-									city,
-								})}
-								render={
-									<a
-										href={getActivityBookingUrl(
-											gym.activitiesBookingUrl,
-											activity.bookingPath
-										)}
-										target="_blank"
-										rel="noopener noreferrer"
-									/>
-								}
-							>
-								{t("bookIn", { city })}
-							</Button>
-						)
-					})}
+					<Button
+						variant="outline"
+						size="sm"
+						render={<Link href={activity.link.href} />}
+					>
+						{activity.link.label}
+					</Button>
 				</div>
+			) : (
+				bookableGyms.length > 0 && (
+					<div className="mt-auto flex flex-wrap gap-2 pt-4">
+						{bookableGyms.map(gym => {
+							const city = getGymCity(gym.name)
+
+							return (
+								<Button
+									key={gym.slug}
+									variant="outline"
+									size="sm"
+									aria-label={t("bookActivityIn", {
+										activity: activity.name,
+										city,
+									})}
+									render={
+										<a
+											href={getActivityBookingUrl(
+												gym.activitiesBookingUrl,
+												activity.bookingPath
+											)}
+											target="_blank"
+											rel="noopener noreferrer"
+										/>
+									}
+								>
+									{t("bookIn", { city })}
+								</Button>
+							)
+						})}
+					</div>
+				)
 			)}
 		</article>
 	)
