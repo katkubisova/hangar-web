@@ -58,13 +58,28 @@ export const activityCategories: ActivityCategoryData[] = [
 		bookingPath: undefined,
 	},
 	{
+		icon: "flag",
+		name: { cs: "Závody", en: "Competitions" },
+		// From hangarbrno.cz/zavody/ and hangarostrava.cz/zavody/, 23 Oct 2026.
+		description: {
+			cs: "Každý měsíc lezeme na obou pobočkách Hangar Challenge: 30 bouldrů a tři kategorie. K tomu závodní série Challenger.",
+			en: "Every month both gyms run the Hangar Challenge: 30 boulders and three categories. Plus the Challenger competition series.",
+		},
+		displayOrder: 6,
+		// Competitions aren't booked in the activity booking systems.
+		link: {
+			href: "/hangar-challenge",
+			label: { cs: "Více o závodech", en: "About the competitions" },
+		},
+	},
+	{
 		icon: "calendar",
 		name: { cs: "Další akce", en: "Other events" },
 		description: {
-			cs: "Promítání, workshopy, závody, školní návštěvy a teambuildingy. Co se zrovna chystá, najdeš v kalendáři akcí.",
-			en: "Film screenings, workshops, competitions, school visits and team-building. See what's coming up in the events calendar.",
+			cs: "Promítání, workshopy, školní návštěvy a teambuildingy. Co se zrovna chystá, najdeš v kalendáři akcí.",
+			en: "Film screenings, workshops, school visits and team-building. See what's coming up in the events calendar.",
 		},
-		displayOrder: 6,
+		displayOrder: 7,
 		bookingPath: "/akce-dalsi/",
 	},
 ]
