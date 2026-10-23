@@ -5,7 +5,10 @@ import {
 } from "@hugeicons/core-free-icons"
 import { HugeiconsIcon } from "@hugeicons/react"
 import type * as React from "react"
-import { Button } from "@/components/ui/button"
+import {
+	type ButtonVariantProps,
+	buttonVariants,
+} from "@/components/ui/button-variants"
 import { cn } from "@/lib/utils"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
@@ -38,7 +41,7 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 
 type PaginationLinkProps = {
 	isActive?: boolean
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
+} & Pick<ButtonVariantProps, "size"> &
 	React.ComponentProps<"a">
 
 function PaginationLink({
@@ -48,19 +51,16 @@ function PaginationLink({
 	...props
 }: PaginationLinkProps) {
 	return (
-		<Button
-			variant={isActive ? "outline" : "ghost"}
-			size={size}
-			className={cn(className)}
-			nativeButton={false}
-			render={
-				<a
-					aria-current={isActive ? "page" : undefined}
-					data-slot="pagination-link"
-					data-active={isActive}
-					{...props}
-				/>
-			}
+		<a
+			aria-current={isActive ? "page" : undefined}
+			data-slot="pagination-link"
+			data-active={isActive}
+			className={buttonVariants({
+				variant: isActive ? "outline" : "ghost",
+				size,
+				className,
+			})}
+			{...props}
 		/>
 	)
 }

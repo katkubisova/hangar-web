@@ -1,5 +1,5 @@
 import { BrandImage } from "@/components/brand/brand-image"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button-variants"
 import { ArrowDownIcon, ChevronRightIcon } from "@/components/ui/icons"
 import { type AppHref, Link } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
@@ -31,25 +31,20 @@ export function HeroSection({
 	id,
 }: HeroSectionProps) {
 	const isAnchor = typeof cta?.href === "string" && cta.href.startsWith("#")
-	const button = cta && (
-		<Button
-			size="lg"
-			render={
-				isAnchor ? (
-					<a href={cta.href as string} />
-				) : (
-					<Link href={cta.href as AppHref} />
-				)
-			}
-		>
-			{cta.label}
-			{isAnchor ? (
+	const buttonClass = buttonVariants({ size: "lg" })
+	const button =
+		cta &&
+		(isAnchor ? (
+			<a href={cta.href as string} className={buttonClass}>
+				{cta.label}
 				<ArrowDownIcon aria-hidden="true" />
-			) : (
+			</a>
+		) : (
+			<Link href={cta.href as AppHref} className={buttonClass}>
+				{cta.label}
 				<ChevronRightIcon aria-hidden="true" />
-			)}
-		</Button>
-	)
+			</Link>
+		))
 
 	if (image) {
 		return (

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react"
 
 import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button-variants"
 import { type AppHref, Link } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 
@@ -32,14 +33,19 @@ export function EmptyState({
 		>
 			{icon}
 			<p className="text-muted-foreground">{message}</p>
-			{action && (
-				<Button
-					variant="outline"
-					onClick={action.onClick}
-					render={action.href ? <Link href={action.href} /> : undefined}
+			{action?.href ? (
+				<Link
+					href={action.href}
+					className={buttonVariants({ variant: "outline" })}
 				>
 					{action.label}
-				</Button>
+				</Link>
+			) : (
+				action && (
+					<Button variant="outline" onClick={action.onClick}>
+						{action.label}
+					</Button>
+				)
 			)}
 		</div>
 	)

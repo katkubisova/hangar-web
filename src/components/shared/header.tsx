@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { Logo } from "@/components/brand/logo"
 import { LanguageSwitcher } from "@/components/shared/language-switcher"
 import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button-variants"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -102,17 +103,19 @@ export function Header() {
 
 				<nav className="hidden items-center md:flex" aria-label={t("main")}>
 					{directLinks.map(link => (
-						<Button
+						<Link
 							key={link.href}
-							variant="ghost"
-							className={cn(
-								NAV_ITEM,
-								!isActive(link.href) && "text-muted-foreground"
-							)}
-							render={<Link href={link.href} />}
+							href={link.href}
+							className={buttonVariants({
+								variant: "ghost",
+								className: cn(
+									NAV_ITEM,
+									!isActive(link.href) && "text-muted-foreground"
+								),
+							})}
 						>
 							{t(link.label)}
-						</Button>
+						</Link>
 					))}
 
 					<NavDropdown
@@ -120,16 +123,18 @@ export function Header() {
 						active={aboutGroup.activeMatch.some(isActive)}
 					/>
 
-					<Button
-						variant="ghost"
-						className={cn(NAV_ITEM, "text-muted-foreground")}
-						render={
-							<a href={ESHOP_URL} target="_blank" rel="noopener noreferrer" />
-						}
+					<a
+						href={ESHOP_URL}
+						target="_blank"
+						rel="noopener noreferrer"
+						className={buttonVariants({
+							variant: "ghost",
+							className: cn(NAV_ITEM, "text-muted-foreground"),
+						})}
 					>
 						{t("eshop")}
 						<ArrowRightUpIcon aria-hidden="true" className="size-3.5" />
-					</Button>
+					</a>
 				</nav>
 
 				<div className="flex items-center gap-2">

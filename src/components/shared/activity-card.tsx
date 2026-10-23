@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl"
 import type { ComponentType } from "react"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button-variants"
 import {
 	ActivityIcon,
 	CakeIcon,
@@ -49,13 +49,12 @@ export function ActivityCard({ activity, gyms }: ActivityCardProps) {
 			<p className="text-sm text-muted-foreground">{activity.description}</p>
 			{activity.link ? (
 				<div className="mt-auto flex flex-wrap gap-2 pt-4">
-					<Button
-						variant="outline"
-						size="sm"
-						render={<Link href={activity.link.href} />}
+					<Link
+						href={activity.link.href}
+						className={buttonVariants({ variant: "outline", size: "sm" })}
 					>
 						{activity.link.label}
-					</Button>
+					</Link>
 				</div>
 			) : (
 				bookableGyms.length > 0 && (
@@ -64,27 +63,22 @@ export function ActivityCard({ activity, gyms }: ActivityCardProps) {
 							const city = getGymCity(gym.name)
 
 							return (
-								<Button
+								<a
 									key={gym.slug}
-									variant="outline"
-									size="sm"
+									href={getActivityBookingUrl(
+										gym.activitiesBookingUrl,
+										activity.bookingPath
+									)}
+									target="_blank"
+									rel="noopener noreferrer"
 									aria-label={t("bookActivityIn", {
 										activity: activity.name,
 										city,
 									})}
-									render={
-										<a
-											href={getActivityBookingUrl(
-												gym.activitiesBookingUrl,
-												activity.bookingPath
-											)}
-											target="_blank"
-											rel="noopener noreferrer"
-										/>
-									}
+									className={buttonVariants({ variant: "outline", size: "sm" })}
 								>
 									{t("bookIn", { city })}
-								</Button>
+								</a>
 							)
 						})}
 					</div>

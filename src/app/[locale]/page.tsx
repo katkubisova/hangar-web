@@ -12,7 +12,7 @@ import { HeroSection } from "@/components/shared/hero-section"
 import { LocationCard } from "@/components/shared/location-card"
 import { Section } from "@/components/shared/section"
 import { SectionHeading } from "@/components/shared/section-heading"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button-variants"
 import { ChevronRightIcon, FlagIcon } from "@/components/ui/icons"
 import { getPageMetadata } from "@/i18n/metadata"
 import { Link } from "@/i18n/navigation"
@@ -142,10 +142,10 @@ export default async function HomePage({ params }: LocaleParams) {
 							<p>{t("events.line1")}</p>
 						</SectionHeading>
 						<p className="mb-8 text-muted-foreground">{t("events.line2")}</p>
-						<Button size="lg" render={<Link href="/events" />}>
+						<Link href="/events" className={buttonVariants({ size: "lg" })}>
 							{t("events.cta")}
 							<ChevronRightIcon aria-hidden="true" />
-						</Button>
+						</Link>
 					</div>
 				</div>
 			</Section>
@@ -161,10 +161,10 @@ export default async function HomePage({ params }: LocaleParams) {
 							<p>{t("visit.line1")}</p>
 						</SectionHeading>
 						<p className="mb-8 text-muted-foreground">{t("visit.line2")}</p>
-						<Button size="lg" render={<Link href="/visit" />}>
+						<Link href="/visit" className={buttonVariants({ size: "lg" })}>
 							{t("visit.cta")}
 							<ChevronRightIcon aria-hidden="true" />
-						</Button>
+						</Link>
 					</div>
 					<BrandImage
 						src="/photos/brno-wall.jpg"
